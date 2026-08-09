@@ -1,0 +1,195 @@
+/* ==========================================================================
+   NOTHING TECH LAYOUT & GRID UTILITIES (intl.nothing.tech inspired)
+   ========================================================================== */
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+.scope-container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 1.8rem;
+}
+
+/* Floating Glass Dock Navigation Header (Nothing OS Style) */
+.scope-header {
+  position: sticky;
+  top: 1.2rem;
+  z-index: 1000;
+  width: 100%;
+  padding: 0 1.2rem;
+  pointer-events: none;
+}
+
+.scope-header .scope-container {
+  pointer-events: auto;
+}
+
+.floating-glass-nav {
+  background: rgba(12, 12, 12, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-pill);
+  padding: 0.75rem 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-glass-nav:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(215, 25, 33, 0.15);
+}
+
+.brand-logo {
+  font-family: var(--font-ndot);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  text-transform: uppercase;
+  color: var(--text-main);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.brand-logo .dot-led {
+  width: 10px;
+  height: 10px;
+  background: var(--nothing-red);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--nothing-red-bright), 0 0 20px var(--nothing-red-bright);
+  animation: ledPulse 2s infinite ease-in-out;
+}
+
+@keyframes ledPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* Kinetic Dot-Matrix Marquee Ticker */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: #0A0A0A;
+  color: var(--text-main);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.ticker {
+  display: inline-block;
+  animation: marquee 28s linear infinite;
+}
+
+.ticker-item {
+  display: inline-block;
+  font-family: var(--font-ndot);
+  font-weight: 400;
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  text-transform: uppercase;
+  padding: 0 2rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+.ticker-item strong {
+  color: var(--text-main);
+}
+
+.ticker-item .red-dot {
+  color: var(--nothing-red);
+  margin-right: 0.4rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Section Containers */
+.section {
+  padding: 4.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.section-title-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.section-title {
+  font-family: var(--font-ndot);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: 1px;
+  color: var(--text-main);
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--nothing-red);
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(215, 25, 33, 0.3);
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Responsive Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .grid-2 { grid-template-columns: 1fr; gap: 1.5rem; }
+  .scope-container { padding: 0 1.2rem; }
+}
+
+@media (max-width: 768px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .section { padding: 3rem 0; }
+  .scope-header { top: 0.8rem; padding: 0 0.8rem; }
+  .floating-glass-nav { padding: 0.6rem 1.1rem; }
+}
+
+@media (max-width: 480px) {
+  .scope-container { padding: 0 1rem; }
+  .section { padding: 2.5rem 0; }
+}

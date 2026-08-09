@@ -1,0 +1,703 @@
+/* ==========================================================================
+   SCOPE COMPONENTS & POP-ART STYLES (RESPONSIVE & TAP AUDITED)
+   ========================================================================== */
+
+/* Brutalist Pop Box Cards */
+.pop-card {
+  background: var(--bg-card);
+  border: var(--border-thick);
+  position: relative;
+  padding: 1.5rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  width: 100%;
+}
+
+.pop-card.pink { box-shadow: var(--shadow-pink); }
+.pop-card.yellow { box-shadow: var(--shadow-yellow); }
+.pop-card.cyan { box-shadow: var(--shadow-cyan); }
+.pop-card.white { box-shadow: var(--shadow-white); }
+.pop-card.green { box-shadow: var(--shadow-green); }
+
+.pop-card:hover {
+  transform: translate(-4px, -4px);
+}
+.pop-card.pink:hover { box-shadow: var(--shadow-hover-pink); }
+.pop-card.yellow:hover { box-shadow: var(--shadow-hover-yellow); }
+.pop-card.cyan:hover { box-shadow: var(--shadow-hover-cyan); }
+
+/* Warhol Arts Pop-Art Cards */
+.warhol-card {
+  background: var(--bg-card);
+  border: var(--border-thick);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.warhol-card.estimator-card:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 10px 10px 0px #FFD700 !important;
+}
+
+.warhol-card.legal-card:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 10px 10px 0px #00E5FF !important;
+}
+
+/* Centered Discrete Pop-Art Navigation Tabs */
+.centered-nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0.2rem auto 0;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.pop-tab-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.6rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: var(--border-thick);
+  box-shadow: 4px 4px 0px var(--shadow-color);
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+
+/* Individual Distinct Neon Borders & Shadows */
+.pop-tab-card.nav-tab-home {
+  border-color: #00E5FF;
+  box-shadow: 4px 4px 0px #00E5FF;
+}
+
+.pop-tab-card.nav-tab-estimator {
+  border-color: #FFD700;
+  box-shadow: 4px 4px 0px #FFD700;
+}
+
+.pop-tab-card.nav-tab-legal {
+  border-color: #FF007F;
+  box-shadow: 4px 4px 0px #FF007F;
+}
+
+/* Hover Kinetic Lift */
+.pop-tab-card:hover {
+  transform: translate(-3px, -3px);
+}
+
+.pop-tab-card.nav-tab-home:hover {
+  background: #00E5FF;
+  color: #000000;
+  box-shadow: 6px 6px 0px var(--border-color);
+}
+
+.pop-tab-card.nav-tab-estimator:hover {
+  background: #FFD700;
+  color: #000000;
+  box-shadow: 6px 6px 0px var(--border-color);
+}
+
+.pop-tab-card.nav-tab-legal:hover {
+  background: #FF007F;
+  color: #FFFFFF;
+  box-shadow: 6px 6px 0px var(--border-color);
+}
+
+/* Active Highlight Fill */
+.pop-tab-card.nav-tab-home.active {
+  background: #00E5FF;
+  color: #000000;
+  border-color: var(--border-color);
+  box-shadow: 5px 5px 0px var(--border-color);
+}
+
+.pop-tab-card.nav-tab-estimator.active {
+  background: #FFD700;
+  color: #000000;
+  border-color: var(--border-color);
+  box-shadow: 5px 5px 0px var(--border-color);
+}
+
+.pop-tab-card.nav-tab-legal.active {
+  background: #FF007F;
+  color: #FFFFFF;
+  border-color: var(--border-color);
+  box-shadow: 5px 5px 0px var(--border-color);
+}
+
+@media (max-width: 768px) {
+  .centered-nav-container {
+    gap: 0.8rem;
+    justify-content: center;
+  }
+  .pop-tab-card {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Buttons with Touch-Friendly 44px+ Tap Targets */
+.btn-brutal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  min-height: 48px; /* Touch-friendly tap target */
+  padding: 0.8rem 1.6rem;
+  border: var(--border-thick);
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--cmyk-yellow);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-pink);
+  transition: all var(--transition-fast);
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.btn-brutal:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-hover-pink);
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+.btn-brutal.cyan {
+  background: var(--cmyk-cyan);
+  box-shadow: var(--shadow-yellow);
+}
+.btn-brutal.cyan:hover {
+  box-shadow: var(--shadow-hover-yellow);
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+.btn-brutal.pink {
+  background: var(--cmyk-pink);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-cyan);
+}
+.btn-brutal.pink:hover {
+  box-shadow: var(--shadow-hover-cyan);
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+/* Giant Edge-to-Edge Hero Typography Component */
+.giant-hero-container {
+  width: 100%;
+  padding: 3.5rem 0 2rem;
+  position: relative;
+  background: var(--bg-main);
+  overflow: hidden;
+  border-bottom: var(--border-thick);
+}
+
+.giant-title-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  perspective: 1600px;
+  transform-style: preserve-3d;
+  padding: 1rem 0;
+}
+
+.giant-title {
+  font-family: 'MangoGrotesque', 'Bebas Neue', 'Syne', 'Impact', sans-serif;
+  font-size: clamp(4.5rem, 18.5vw, 18rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.1rem, 0.8vw, 1rem);
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  color: var(--text-main);
+}
+
+.letter-mask {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  vertical-align: bottom;
+  padding: 0.05em 0.08em;
+}
+
+.letter-inner {
+  display: inline-block;
+  color: #FFFFFF;
+  will-change: transform, opacity, background-position, filter;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  cursor: pointer;
+  background-clip: text;
+  -webkit-background-clip: text;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), -webkit-text-fill-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background-size: 135% 135%;
+  background-position: center;
+  position: relative;
+}
+
+/* Color-Coded In-Text Texture Reveals strictly INSIDE Letter Bounds */
+.letter-inner:hover {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  background-image: var(--bg-texture);
+  filter: var(--texture-filter, contrast(1.4) brightness(1.2));
+}
+
+@media (max-width: 480px) {
+  .giant-title {
+    font-size: clamp(3.8rem, 21.5vw, 7rem);
+    letter-spacing: -0.06em;
+  }
+  .giant-hero-container {
+    padding: 2rem 0 1.5rem;
+  }
+}
+
+/* Sub-Hero Pop Badge & Meta */
+.hero-sub-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px dashed var(--text-muted);
+}
+
+/* Persistent Pop-Art Tab Bar Component */
+.pop-tab-bar-container {
+  background: var(--bg-surface);
+  border-bottom: var(--border-thick);
+  padding: 1rem 0;
+  position: sticky;
+  top: 70px;
+  z-index: 90;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+.pop-tab-bar {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pop-tab-btn {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 48px; /* Touch-friendly tap target */
+  padding: 0.75rem 1.6rem;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: var(--border-thick);
+  box-shadow: 4px 4px 0px var(--shadow-color);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  touch-action: manipulation;
+}
+
+@media (max-width: 576px) {
+  .pop-tab-bar { gap: 0.6rem; }
+  .pop-tab-btn { width: 100%; justify-content: center; }
+}
+
+.pop-tab-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-cyan);
+  background: var(--bg-elevated);
+}
+
+.pop-tab-btn.active {
+  background: var(--cmyk-yellow) !important;
+  color: #000000 !important;
+  border: 3px solid var(--border-color) !important;
+  box-shadow: 6px 6px 0px var(--cmyk-pink) !important;
+  transform: translate(-2px, -2px);
+}
+
+.pop-tab-btn .tab-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+.pop-tab-btn.active .tab-badge {
+  background: var(--cmyk-pink);
+  color: #FFFFFF;
+  border: 1px solid var(--border-color);
+}
+
+/* Tab Content Viewport for GSAP Slide Transitions */
+.tab-views-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  min-height: 520px;
+  background: var(--bg-main);
+  border-bottom: var(--border-thick);
+}
+
+.tab-pane {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  padding: 3rem 0;
+  will-change: transform, opacity;
+}
+
+.tab-pane.active-pane {
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+}
+
+/* Hero Component Styles */
+.hero-section {
+  padding: 5rem 0 3rem;
+  background: var(--bg-main);
+  position: relative;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--cmyk-pink);
+  color: #FFFFFF;
+  padding: 0.4rem 1rem;
+  border: 2px solid var(--border-color);
+  box-shadow: 4px 4px 0px var(--cmyk-cyan);
+  font-weight: 700;
+  font-size: 0.85rem;
+  width: fit-content;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+}
+
+
+/* Gallery Component Styles */
+.art-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+  aspect-ratio: 1 / 1;
+  background: var(--bg-card);
+}
+
+.art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.1);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.art-img-wrapper:hover .art-img {
+  transform: scale(1.05);
+}
+
+.card-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border-color);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.card-tag.cyan { background: var(--cmyk-cyan); color: #000; }
+.card-tag.pink { background: var(--cmyk-pink); color: #FFF; }
+.card-tag.yellow { background: var(--cmyk-yellow); color: #000; }
+
+.art-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.art-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  border-top: 1px dashed var(--text-muted);
+  padding-top: 0.8rem;
+}
+
+/* CMYK Studio Interactive Canvas */
+.studio-box {
+  background: var(--bg-surface);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-cyan);
+  padding: 1.8rem;
+}
+
+.canvas-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border: 2px solid var(--border-color);
+  box-shadow: 4px 4px 0px var(--cmyk-yellow);
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Touch-Friendly Brutalist Slider */
+.brutal-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 16px;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  outline: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.brutal-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: var(--cmyk-pink);
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--border-color);
+}
+
+.brutal-slider::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  background: var(--cmyk-pink);
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--border-color);
+}
+
+/* Touch-Friendly Toggle Buttons */
+.storey-btn, .tier-btn, .channel-opt-btn, .filter-btn, .faq-toggle-btn {
+  min-height: 44px; /* Touch target */
+  touch-action: manipulation;
+}
+
+/* Quote Box */
+.quote-card {
+  background: var(--cmyk-pink);
+  color: #FFFFFF;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-yellow);
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.quote-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.quote-author {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  background: var(--bg-card);
+  color: var(--text-main);
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border: 2px solid var(--border-color);
+}
+
+/* Modal Popup */
+.pop-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  padding: 1.2rem;
+}
+
+.pop-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: var(--bg-surface);
+  border: var(--border-thick);
+  color: var(--text-main);
+  box-shadow: var(--shadow-pink);
+  max-width: 650px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 44px;
+  height: 44px;
+  background: var(--cmyk-yellow);
+  color: #000;
+  border: var(--border-thick);
+  font-weight: 900;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px var(--border-color);
+  touch-action: manipulation;
+}
+
+/* ==========================================================================
+   POP-ART BRUTALIST CAROUSEL STYLES
+   ========================================================================== */
+.carousel-dot {
+  border-radius: 0px !important;
+}
+
+.carousel-dot:hover {
+  transform: scale(1.25);
+}
+
+.wiz-step-btn {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.wiz-step-btn:hover {
+  opacity: 0.85;
+}
+
+.wiz-dot {
+  border: 2px solid var(--border-color);
+  box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+.legal-mod-tab {
+  border: 2px solid var(--border-color);
+  box-shadow: 3px 3px 0px var(--shadow-color);
+  user-select: none;
+}
+
+.legal-mod-tab:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--shadow-color);
+}
+
+.legal-mod-tab.active {
+  box-shadow: 4px 4px 0px var(--border-color) !important;
+}
+
+@media (max-width: 768px) {
+  .home-carousel-slide {
+    padding: 1.5rem !important;
+    min-height: auto !important;
+  }
+
+  .wizard-slide {
+    padding: 1rem !important;
+  }
+
+  .wizard-steps-nav span:not(.wiz-dot) {
+    display: none;
+  }
+
+  .legal-tab-nav {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+

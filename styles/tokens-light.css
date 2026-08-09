@@ -1,0 +1,55 @@
+/* ==========================================================================
+   SCOPE DESIGN SYSTEM - LIGHT POP-ART THEME TOKENS
+   Light canvas background with high contrast pop-art accents
+   ========================================================================== */
+
+:root, html[data-theme="light"], body.light-theme {
+  /* Color Palette - Light Pop-Art Canvas */
+  --bg-main: #F9F8F3;
+  --bg-surface: #FFFFFF;
+  --bg-card: #F2F0E6;
+  --bg-elevated: #E8E5D8;
+  
+  --text-main: #000000;
+  --text-inverse: #FFFFFF;
+  --text-muted: #444444;
+  --text-subtle: #666666;
+  
+  --border-color: #000000;
+  --border-thick: 3px solid #000000;
+  --border-thin: 2px solid #000000;
+  --border-pink: 3px solid var(--cmyk-pink);
+  --border-yellow: 3px solid var(--cmyk-yellow);
+  --border-cyan: 3px solid var(--cmyk-cyan);
+  
+  --shadow-color: #000000;
+  --shadow-pink: 6px 6px 0px var(--cmyk-pink);
+  --shadow-yellow: 6px 6px 0px var(--cmyk-yellow);
+  --shadow-cyan: 6px 6px 0px var(--cmyk-cyan);
+  --shadow-white: 6px 6px 0px #000000;
+  --shadow-green: 6px 6px 0px var(--cmyk-green);
+  --shadow-black: 6px 6px 0px #000000;
+  
+  --shadow-hover-pink: 9px 9px 0px var(--cmyk-pink);
+  --shadow-hover-yellow: 9px 9px 0px var(--cmyk-yellow);
+  --shadow-hover-cyan: 9px 9px 0px var(--cmyk-cyan);
+  
+  --cmyk-yellow: #FFD700;
+  --cmyk-pink: #FF007F;
+  --cmyk-cyan: #00E5FF;
+  --cmyk-green: #00C853;
+  --cmyk-orange: #FF5500;
+  
+  --title-gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
+  --halftone-pattern: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  
+  --font-display: 'Syne', 'Impact', 'Trebuchet MS', 'Arial Black', -apple-system, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', 'SFMono-Regular', Consolas, monospace;
+  --ease-brutal: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --transition-fast: 0.15s var(--ease-brutal);
+}
+
+html[data-theme="light"], html[data-theme="light"] body {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}

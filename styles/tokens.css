@@ -1,0 +1,115 @@
+/* ==========================================================================
+   NOTHING TECH DESIGN SYSTEM - TOKENS
+   Inspired by Nothing Tech (intl.nothing.tech) — Technical Warmth, Monochrome,
+   NDot Dot-Matrix Typography, Translucent Dark Glassmorphism & Nothing Red (#D71921)
+   ========================================================================== */
+
+:root {
+  /* Nothing Monochrome Core Palette */
+  --bg-main: #000000;
+  --bg-surface: #0A0A0A;
+  --bg-card: #121212;
+  --bg-glass: rgba(18, 18, 18, 0.85);
+  --bg-glass-hover: rgba(28, 28, 28, 0.9);
+  --bg-elevated: #1A1A1A;
+  
+  /* Nothing Red Accent & Status Indicators */
+  --nothing-red: #D71921;
+  --nothing-red-glow: rgba(215, 25, 33, 0.35);
+  --nothing-red-bright: #FF2E2E;
+
+  /* Text & Hierarchy */
+  --text-main: #FFFFFF;
+  --text-inverse: #000000;
+  --text-muted: #8E8E93;
+  --text-subtle: #555555;
+
+  /* Borders & Dividers */
+  --border-color: #242424;
+  --border-active: #FFFFFF;
+  --border-red: #D71921;
+  --border-thick: 1px solid var(--border-color);
+  --border-thin: 1px solid rgba(255, 255, 255, 0.12);
+  --border-pink: 1px solid var(--nothing-red);
+  --border-yellow: 1px solid #FFFFFF;
+  --border-cyan: 1px solid #8E8E93;
+  
+  /* Compatibility CMYK mappings to Nothing Aesthetic */
+  --cmyk-yellow: #FFFFFF;
+  --cmyk-pink: #D71921;
+  --cmyk-cyan: #E5E5E5;
+  --cmyk-green: #00FF66;
+  --cmyk-orange: #FF5500;
+
+  /* Shadows & Glow Effects */
+  --shadow-color: #000000;
+  --shadow-pink: 0 10px 30px rgba(215, 25, 33, 0.25);
+  --shadow-yellow: 0 10px 30px rgba(255, 255, 255, 0.15);
+  --shadow-cyan: 0 10px 30px rgba(229, 229, 229, 0.15);
+  --shadow-white: 0 4px 20px rgba(255, 255, 255, 0.08);
+  --shadow-green: 0 4px 20px rgba(0, 255, 102, 0.2);
+  --shadow-black: 0 12px 40px rgba(0, 0, 0, 0.8);
+  
+  --shadow-hover-pink: 0 14px 40px rgba(215, 25, 33, 0.4);
+  --shadow-hover-yellow: 0 14px 40px rgba(255, 255, 255, 0.25);
+  --shadow-hover-cyan: 0 14px 40px rgba(229, 229, 229, 0.25);
+
+  /* Dot Matrix Background Pattern */
+  --halftone-pattern: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  
+  /* Typography */
+  --font-ndot: 'NDot', 'DotGothic16', 'Silkscreen', monospace;
+  --font-display: 'NDot', 'DotGothic16', 'Silkscreen', 'Space Mono', sans-serif;
+  --font-mono: 'Space Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Motion & Curves */
+  --ease-nothing: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s var(--ease-nothing);
+  --transition-smooth: 0.4s var(--ease-nothing);
+
+  /* Radius System */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+}
+
+/* Base Reset & Globals */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Nothing Technical Dot-Matrix Background Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: var(--halftone-pattern);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}

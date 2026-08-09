@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>SCOPE — Original Warhol Dark Pop-Art Factory</title>
+  <meta name="description" content="SCOPE is a high-contrast dark pop-art generative web application inspired by Andy Warhol's Factory aesthetics, CMYK screenprinting, and neo-brutalism.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Mukta:wght@700;800&family=Noto+Sans+Devanagari:wght@700;800;900&family=Silkscreen:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800;900&display=swap">
+
+  <!-- Warhol Pop-Art Stylesheets (Relative Paths for GitHub Pages) -->
+  <link rel="stylesheet" href="./styles/warhol-tokens.css">
+  <link rel="stylesheet" href="./styles/warhol-layout.css">
+  <link rel="stylesheet" href="./styles/warhol-components.css">
+  <style>
+    html, body {
+      -webkit-text-size-adjust: 100%;
+      touch-action: manipulation;
+    }
+  </style>
+</head>
+<body>
+  <!-- App Container for Modular JavaScript Execution -->
+  <div id="app"></div>
+
+  <!-- Entry Script & GSAP Library (Relative Paths for GitHub Pages) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script type="module" src="./warhol-app.js"></script>
+</body>
+</html>

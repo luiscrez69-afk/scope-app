@@ -1,0 +1,189 @@
+/* ==========================================================================
+   SCOPE LAYOUT & GRID UTILITIES (RESPONSIVE & MOBILE AUDITED)
+   ========================================================================== */
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+.scope-container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header & Nav Layout */
+.scope-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-main);
+  border-bottom: var(--border-thick);
+  width: 100%;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  gap: 1rem;
+}
+
+.brand-logo {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  text-transform: uppercase;
+  color: var(--text-main);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.brand-logo .dot {
+  width: 14px;
+  height: 14px;
+  background: var(--cmyk-pink);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cmyk-pink);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid transparent;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+
+.nav-link:hover {
+  background: var(--cmyk-yellow);
+  color: var(--text-inverse);
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow-pink);
+}
+
+/* Kinetic Ticker Marquee */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: var(--cmyk-yellow);
+  color: var(--text-inverse);
+  border-top: var(--border-thick);
+  border-bottom: var(--border-thick);
+  padding: 0.75rem 0;
+  white-space: nowrap;
+}
+
+.ticker {
+  display: inline-block;
+  animation: marquee 22s linear infinite;
+}
+
+.ticker-item {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  text-transform: uppercase;
+  padding: 0 1.5rem;
+  letter-spacing: 1px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Section Containers */
+.section {
+  padding: 4rem 0;
+  border-bottom: var(--border-thick);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.section-title-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.98;
+  letter-spacing: -1.5px;
+  background: var(--title-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--cmyk-pink);
+  color: var(--text-inverse);
+  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--border-color);
+  box-shadow: 3px 3px 0px var(--border-color);
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* Responsive Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .grid-2 { grid-template-columns: 1fr; gap: 1.5rem; }
+  .scope-container { padding: 0 1.2rem; }
+}
+
+@media (max-width: 768px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .nav-links { display: none; } /* Mobile navbar compact view */
+  .section { padding: 3rem 0; }
+  .nav-wrapper { height: 70px; }
+}
+
+@media (max-width: 480px) {
+  .scope-container { padding: 0 0.9rem; }
+  .section { padding: 2.5rem 0; }
+}

@@ -1,0 +1,302 @@
+/* ==========================================================================
+   SCOPE - BASE STYLES & LAYOUT UTILITIES
+   Pop-Art Light Theme & High Contrast Typography
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-cream);
+  color: var(--color-black);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-cream);
+  color: var(--color-black);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Halftone Grid Pattern Overlay for Pop-Art Vibe */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: radial-gradient(var(--color-black) 1px, transparent 0);
+  background-size: 12px 12px;
+}
+
+/* Container & Responsive Utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.85rem;
+  }
+}
+
+/* Touch-Friendly Interactive Targets (Min 44px) */
+button, input, select, textarea, .pop-button, .preset-btn, .scope-tab-btn, .filter-pill, .channel-btn {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--color-black);
+}
+
+h1 {
+  font-size: clamp(3rem, 7vw, 6.5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+h4 {
+  font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+}
+
+p {
+  font-size: 1.05rem;
+  color: var(--color-dark-gray);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Monospace Metadata & Badges */
+.mono-text, .mono-meta {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.mono-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  background: var(--bg-white);
+  border: var(--border-thin);
+  box-shadow: var(--shadow-pop-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+}
+
+.mono-badge.cyan {
+  background: var(--cmyk-cyan-soft);
+  border-color: var(--color-black);
+}
+
+.mono-badge.yellow {
+  background: var(--cmyk-yellow-soft);
+  border-color: var(--color-black);
+}
+
+.mono-badge.pink {
+  background: var(--cmyk-pink-soft);
+  border-color: var(--color-black);
+}
+
+.mono-badge.black {
+  background: var(--color-black);
+  color: var(--bg-cream);
+}
+
+/* Pop-Art Utility Classes */
+.pop-card {
+  background: var(--bg-white);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-pop-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.pop-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-pop-lg);
+}
+
+.pop-button {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 0.85rem 1.75rem;
+  background: var(--cmyk-yellow);
+  color: var(--color-black);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-pop-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  cursor: pointer;
+  user-select: none;
+}
+
+.pop-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-pop-md);
+  background: #FFF000;
+}
+
+.pop-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--color-black);
+}
+
+.pop-button.cyan {
+  background: var(--cmyk-cyan);
+}
+.pop-button.cyan:hover {
+  background: #00D5FF;
+}
+
+.pop-button.pink {
+  background: var(--cmyk-pink);
+  color: var(--bg-white);
+}
+.pop-button.pink:hover {
+  background: var(--cmyk-magenta);
+}
+
+.pop-button.black {
+  background: var(--color-black);
+  color: var(--bg-cream);
+}
+.pop-button.black:hover {
+  background: var(--color-dark-gray);
+}
+
+.pop-button.outline {
+  background: var(--bg-white);
+  color: var(--color-black);
+}
+
+/* Section Header styling */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  border-bottom: var(--border-thick);
+  padding-bottom: 1.5rem;
+  position: relative;
+}
+
+.section-header .section-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Marquee Ticker */
+.marquee-bar {
+  background: var(--cmyk-yellow);
+  border-top: var(--border-thick);
+  border-bottom: var(--border-thick);
+  padding: 0.75rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.marquee-content {
+  display: inline-flex;
+  animation: marquee 24s linear infinite;
+  gap: 2rem;
+}
+
+.marquee-item {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.marquee-star {
+  color: var(--cmyk-pink);
+  font-size: 1.5rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-cream-alt);
+  border-left: var(--border-thin);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-black);
+  border: 2px solid var(--bg-cream-alt);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cmyk-pink);
+}
