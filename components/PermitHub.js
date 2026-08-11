@@ -661,10 +661,17 @@ export function initPermitHubEvents() {
     });
   });
 
-  // Hover Popovers for Document Samples
+  // Hover & Click Popovers for Document Samples
   const triggers = document.querySelectorAll('.doc-sample-trigger');
   triggers.forEach(trig => {
     const popover = trig.querySelector('.doc-sample-popover');
+    trig.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (popover) {
+        const isHidden = getComputedStyle(popover).display === 'none';
+        popover.style.display = isHidden ? 'block' : 'none';
+      }
+    });
     if (popover) {
       trig.addEventListener('mouseenter', () => popover.style.display = 'block');
       trig.addEventListener('mouseleave', () => popover.style.display = 'none');
