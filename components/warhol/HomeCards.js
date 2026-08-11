@@ -15,13 +15,9 @@ export function createHomeCards() {
             ★ KATHMANDU VALLEY BUILDING PORTAL
           </div>
 
-          <h1 style="font-family: 'ND Dot', 'DotGothic16', monospace; font-size: clamp(2.8rem, 6.5vw, 4.5rem); font-weight: 700; color: var(--text-main); line-height: 0.9; margin: 0.4rem 0 0.8rem; text-transform: uppercase;">
+          <h1 style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(3.2rem, 7vw, 5rem); font-weight: 900; color: var(--text-main); line-height: 0.9; margin: 0.4rem 0 0.8rem; text-transform: uppercase;">
             SCOPE <span style="color: var(--cmyk-yellow)">SERVICES</span>
           </h1>
-
-          <p style="font-family: var(--font-mono); color: var(--text-muted); font-size: 0.9rem; max-width: 660px; margin: 0 auto; line-height: 1.6;">
-            The home you dream covered with all the information you need — authoritative construction cost estimator and municipal permit compliance portal for residential building projects across Kathmandu, Lalitpur & Bhaktapur.
-          </p>
         </div>
 
         <!-- Perfectly Centered Dual Entry Cards Grid -->

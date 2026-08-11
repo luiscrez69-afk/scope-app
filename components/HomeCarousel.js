@@ -14,13 +14,9 @@ export function createHomeCarousel() {
             <span style="color: var(--nothing-red)">●</span> KATHMANDU VALLEY PORTAL // SHOWCASE
           </div>
 
-          <h2 style="font-family: var(--font-ndot); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; color: var(--text-main); line-height: 1; margin: 0.4rem 0 1rem; text-transform: uppercase; letter-spacing: 1px;">
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--text-main); line-height: 1; margin: 0.4rem 0 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
             FEATURED <span style="color: var(--nothing-red)">SERVICES</span>
           </h2>
-
-          <p style="font-family: var(--font-sans); color: var(--text-muted); font-size: 0.95rem; max-width: 680px; margin: 0 auto; line-height: 1.6;">
-            The home you dream covered with all the information you need — slide through our authoritative construction cost calculator and municipal permit compliance hub across Kathmandu, Lalitpur & Bhaktapur.
-          </p>
         </div>
 
         <!-- Nothing Hardware Carousel Box -->
