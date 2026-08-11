@@ -239,10 +239,10 @@ export function createPermitHub() {
             <div id="pipeline-progress-fill" style="width: 25%; height: 100%; background: #00FF66; transition: width 0.4s ease;"></div>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; align-items: stretch; position: relative;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: stretch; position: relative;">
             
             <!-- STAGE 01 -->
-            <div class="pipeline-stage-card active-stage" data-stage="1" style="background: #0A0A0A; border: 3px solid #FFF; box-shadow: 6px 6px 0px #00E5FF; padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+            <div class="pipeline-stage-card active-stage" data-stage="1" style="background: #0A0A0A; border: 3px solid #FFF; box-shadow: 6px 6px 0px #00E5FF; padding: 1.2rem 1rem; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
                   <span style="color: #00E5FF; font-weight: 900;">STAGE 01</span>
@@ -259,10 +259,10 @@ export function createPermitHub() {
                     </div>
                   </span>
                 </div>
-                <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: 1.35rem; font-weight: 900; color: #FFF; margin-bottom: 0.5rem; min-height: 2.8rem; display: flex; align-items: center; line-height: 1.1;">
+                <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 900; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   ARCHITECTURAL DRAFTING
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.2rem;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.8rem;">
                   Architect & Structural Engineer complete working drawings per KMC guidelines.
                 </div>
               </div>
@@ -280,7 +280,7 @@ export function createPermitHub() {
             </div>
 
             <!-- STAGE 02 -->
-            <div class="pipeline-stage-card" data-stage="2" style="background: #0A0A0A; border: 3px solid #FFF; box-shadow: 6px 6px 0px var(--cmyk-yellow); padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+            <div class="pipeline-stage-card" data-stage="2" style="background: #0A0A0A; border: 3px solid #FFF; box-shadow: 6px 6px 0px var(--cmyk-yellow); padding: 1.2rem 1rem; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
                   <span style="color: var(--cmyk-yellow); font-weight: 900;">STAGE 02</span>
@@ -296,10 +296,10 @@ export function createPermitHub() {
                     </div>
                   </span>
                 </div>
-                <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: 1.35rem; font-weight: 900; color: #FFF; margin-bottom: 0.5rem; min-height: 2.8rem; display: flex; align-items: center; line-height: 1.1;">
+                <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 900; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   WARD OFFICE VERIFICATION
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.2rem;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.8rem;">
                   7-day public notice issued & boundary field verification by Ward Technical Team.
                 </div>
               </div>
@@ -317,7 +317,7 @@ export function createPermitHub() {
             </div>
 
             <!-- STAGE 03 -->
-            <div class="pipeline-stage-card" data-stage="3" style="background: #0A0A0A; border: 3px solid #FFF; box-shadow: 6px 6px 0px var(--cmyk-pink); padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+            <div class="pipeline-stage-card" data-stage="3" style="background: #0A0A0A; border: 3px solid #FFF; box-shadow: 6px 6px 0px var(--cmyk-pink); padding: 1.2rem 1rem; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
                   <span style="color: var(--cmyk-pink); font-weight: 900;">STAGE 03</span>
@@ -333,10 +333,10 @@ export function createPermitHub() {
                     </div>
                   </span>
                 </div>
-                <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: 1.35rem; font-weight: 900; color: #FFF; margin-bottom: 0.5rem; min-height: 2.8rem; display: flex; align-items: center; line-height: 1.1;">
+                <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 900; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   ASTHAYI SWIKRITI (TEMP PERMIT)
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.2rem;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.8rem;">
                   Temporary construction permit granted for foundation & plinth level execution.
                 </div>
               </div>
@@ -354,7 +354,7 @@ export function createPermitHub() {
             </div>
 
             <!-- STAGE 04 -->
-            <div class="pipeline-stage-card" data-stage="4" style="background: #0A0A0A; border: 3px solid #FFF; box-shadow: 6px 6px 0px #00FF66; padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+            <div class="pipeline-stage-card" data-stage="4" style="background: #0A0A0A; border: 3px solid #FFF; box-shadow: 6px 6px 0px #00FF66; padding: 1.2rem 1rem; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
                   <span style="color: #00FF66; font-weight: 900;">STAGE 04</span>
@@ -370,10 +370,10 @@ export function createPermitHub() {
                     </div>
                   </span>
                 </div>
-                <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: 1.35rem; font-weight: 900; color: #FFF; margin-bottom: 0.5rem; min-height: 2.8rem; display: flex; align-items: center; line-height: 1.1;">
+                <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 900; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   NIRMAṆA SAMPANNA (FINAL CERT)
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.2rem;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.8rem;">
                   Final completion inspection, utility connection clearance & permanent certificate.
                 </div>
               </div>
