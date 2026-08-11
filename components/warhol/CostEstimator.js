@@ -2,7 +2,7 @@
  * CostEstimator Component - SCOPE Web App (Warhol Pop-Art Edition)
  * Kathmandu Valley Construction Cost Calculator with Interactive 6-Category Building Carousel Selector,
  * Accurate Engineering Discipline Cost Ratios, Volume Scale Economy Tiers, Resort Master Planning Module,
- * EXPANDED DUAL-VIEW VECTOR DIAGRAM MATRIX (2D Top Site Plan + 3D Axonometric Isometric Structural Cutaway),
+ * VERTICALLY STACKED DUAL-VIEW VECTOR DIAGRAM MATRIX (View 1 Top, View 2 Bottom with Gap),
  * and Expandable BOQ Receipt Discipline Breakdown.
  */
 
@@ -302,10 +302,10 @@ export function createCostEstimator() {
           </div>
 
           <!-- CAROUSEL SLIDE VIEWPORT -->
-          <div class="wizard-carousel-viewport" style="overflow: hidden; min-height: 540px; position: relative;">
+          <div class="wizard-carousel-viewport" style="overflow: hidden; min-height: 760px; position: relative;">
             <div class="wizard-carousel-track" style="display: flex; transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); width: 500%;">
               
-              <!-- STEP 1: LAND AREA SLIDER & DUAL-VIEW ARCHITECTURAL LAND PLOT DIAGRAM (2D TOP PLAN + 3D ISOMETRIC MASSING) -->
+              <!-- STEP 1: LAND AREA SLIDER & VERTICALLY STACKED DUAL-VIEW VECTOR LAND MATRIX -->
               <div class="wizard-slide" style="width: 20%; padding: 1rem; box-sizing: border-box; flex-shrink: 0;">
                 <h3 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; color: var(--cmyk-yellow); text-transform: uppercase; margin-bottom: 0.8rem;">
                   1. SELECT PLOT & BUILT-UP AREA
@@ -336,21 +336,21 @@ export function createCostEstimator() {
                   <span id="scale-tier-discount" style="background: #00FF66; color: #000; font-weight: 900; padding: 0.2rem 0.6rem; border-radius: 3px; font-size: 0.75rem;">STANDARD BASE RATE</span>
                 </div>
 
-                <!-- DUAL-VIEW NEOBRUTALIST LAND MATRIX (2D SITE PLAN + 3D ISOMETRIC MASSING) -->
+                <!-- VERTICALLY STACKED DUAL-VIEW LAND MATRIX (VIEW 1 TOP, VIEW 2 BOTTOM) -->
                 <div class="land-plot-graphic-container" style="background: #0A0A0A; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-yellow); padding: 1.2rem; position: relative;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <span style="color: var(--cmyk-yellow); font-weight: 900;">📐 DUAL-VIEW LAND MATRIX // 2D TOP SITE PLAN + 3D ISOMETRIC MASSING</span>
+                  <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <span style="color: var(--cmyk-yellow); font-weight: 900;">📐 DUAL-VIEW LAND MATRIX // 2D TOP SITE PLAN & 3D ISOMETRIC MASSING</span>
                     <span style="background: var(--cmyk-pink); color: #FFF; font-weight: 900; padding: 0.15rem 0.5rem; border: 1px solid #FFF; font-size: 0.65rem;">70% COVERAGE RATIO</span>
                   </div>
 
-                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; width: 100%;">
-                    <!-- 2D TOP PLAN SUB-CARD -->
-                    <div style="background: #000; border: 1px solid #333; padding: 0.8rem; position: relative;">
-                      <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cmyk-cyan); font-weight: 900; margin-bottom: 0.4rem;">
-                        [VIEW 01] 2D TOP SITE PLAN & SETBACK
+                  <div style="display: flex; flex-direction: column; gap: 1.2rem; width: 100%;">
+                    <!-- [VIEW 01 TOP CARD] 2D TOP SITE PLAN & SETBACK -->
+                    <div style="background: #000; border: 1px solid #333; padding: 1rem; position: relative;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cmyk-cyan); font-weight: 900; margin-bottom: 0.6rem;">
+                        [VIEW 01] 2D TOP SITE PLAN & SETBACK CLEARANCE
                       </div>
-                      <div style="width: 100%; height: 230px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <svg id="plot-svg-canvas" viewBox="0 0 280 230" style="width: 100%; height: 100%;">
+                      <div style="width: 100%; height: 210px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg id="plot-svg-canvas" viewBox="0 0 280 210" style="width: 100%; height: 100%;">
                           <defs>
                             <pattern id="hatch-pattern" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
                               <line x1="0" y1="0" x2="0" y2="10" stroke="#FF007F" stroke-width="2" />
@@ -362,31 +362,31 @@ export function createCostEstimator() {
                             <line x1="0" y1="110" x2="280" y2="110" />
                             <line x1="0" y1="150" x2="280" y2="150" />
                             <line x1="0" y1="190" x2="280" y2="190" />
-                            <line x1="40" y1="0" x2="40" y2="230" />
-                            <line x1="80" y1="0" x2="80" y2="230" />
-                            <line x1="120" y1="0" x2="120" y2="230" />
-                            <line x1="160" y1="0" x2="160" y2="230" />
-                            <line x1="200" y1="0" x2="200" y2="230" />
-                            <line x1="240" y1="0" x2="240" y2="230" />
+                            <line x1="40" y1="0" x2="40" y2="210" />
+                            <line x1="80" y1="0" x2="80" y2="210" />
+                            <line x1="120" y1="0" x2="120" y2="210" />
+                            <line x1="160" y1="0" x2="160" y2="210" />
+                            <line x1="200" y1="0" x2="200" y2="210" />
+                            <line x1="240" y1="0" x2="240" y2="210" />
                           </g>
-                          <rect id="svg-plot-rect" x="30" y="20" width="220" height="190" fill="none" stroke="#FFD700" stroke-width="3" />
-                          <rect id="svg-setback-rect" x="42" y="32" width="196" height="166" fill="none" stroke="#00E5FF" stroke-width="2" stroke-dasharray="5,4" />
-                          <rect id="svg-build-rect" x="52" y="42" width="176" height="146" fill="url(#hatch-pattern)" fill-opacity="0.35" stroke="#FF007F" stroke-width="2.5" />
+                          <rect id="svg-plot-rect" x="30" y="20" width="220" height="170" fill="none" stroke="#FFD700" stroke-width="3" />
+                          <rect id="svg-setback-rect" x="42" y="30" width="196" height="150" fill="none" stroke="#00E5FF" stroke-width="2" stroke-dasharray="5,4" />
+                          <rect id="svg-build-rect" x="52" y="38" width="176" height="134" fill="url(#hatch-pattern)" fill-opacity="0.35" stroke="#FF007F" stroke-width="2.5" />
                           <text id="svg-plot-dim-w" x="140" y="14" fill="#FFD700" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">37.0 FT (WIDTH)</text>
-                          <text id="svg-plot-dim-h" x="255" y="115" fill="#FFD700" font-family="monospace" font-size="10" font-weight="bold" text-anchor="start">37.0 FT (DEPTH)</text>
-                          <text id="svg-build-footprint-txt" x="140" y="110" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">BUILDABLE FOOTPRINT (70%)</text>
-                          <text id="svg-plot-sqft-txt" x="140" y="128" fill="#00E5FF" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">958 SQ. FT. GROUND COVERAGE</text>
+                          <text id="svg-plot-dim-h" x="255" y="105" fill="#FFD700" font-family="monospace" font-size="10" font-weight="bold" text-anchor="start">37.0 FT (DEPTH)</text>
+                          <text id="svg-build-footprint-txt" x="140" y="100" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">BUILDABLE FOOTPRINT (70%)</text>
+                          <text id="svg-plot-sqft-txt" x="140" y="118" fill="#00E5FF" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">958 SQ. FT. GROUND COVERAGE</text>
                         </svg>
                       </div>
                     </div>
 
-                    <!-- 3D AXONOMETRIC ISOMETRIC SUB-CARD -->
-                    <div style="background: #000; border: 1px solid #333; padding: 0.8rem; position: relative;">
-                      <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cmyk-yellow); font-weight: 900; margin-bottom: 0.4rem;">
+                    <!-- [VIEW 02 BOTTOM CARD] 3D AXONOMETRIC ISOMETRIC MASSING -->
+                    <div style="background: #000; border: 1px solid #333; padding: 1rem; position: relative;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cmyk-yellow); font-weight: 900; margin-bottom: 0.6rem;">
                         [VIEW 02] 3D ISOMETRIC MASSING & VOLUME EXTRUSION
                       </div>
-                      <div style="width: 100%; height: 230px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <svg id="iso-plot-svg-canvas" viewBox="0 0 280 230" style="width: 100%; height: 100%;">
+                      <div style="width: 100%; height: 210px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg id="iso-plot-svg-canvas" viewBox="0 0 280 210" style="width: 100%; height: 100%;">
                           <g id="iso-ground-plane">
                             <path d="M 140 20 L 250 80 L 140 140 L 30 80 Z" fill="#111115" stroke="#333" stroke-width="1.5" />
                             <path d="M 140 35 L 235 85 L 140 135 L 45 85 Z" fill="none" stroke="#FFD700" stroke-width="2" stroke-dasharray="4,4" />
@@ -394,22 +394,18 @@ export function createCostEstimator() {
 
                           <g id="iso-building-block">
                             <!-- 3D Isometric Extruded Block -->
-                            <!-- Shadow -->
                             <path id="iso-shadow" d="M 140 135 L 235 185 L 140 220 L 45 170 Z" fill="#000" opacity="0.6" />
-                            <!-- Left Face -->
                             <path id="iso-wall-left" d="M 70 95 L 140 135 L 140 65 L 70 25 Z" fill="#00E5FF" opacity="0.85" stroke="#FFF" stroke-width="1.5" />
-                            <!-- Right Face -->
                             <path id="iso-wall-right" d="M 140 135 L 210 95 L 210 25 L 140 65 Z" fill="#FF007F" opacity="0.85" stroke="#FFF" stroke-width="1.5" />
-                            <!-- Roof Face -->
                             <path id="iso-roof-top" d="M 70 25 L 140 65 L 210 25 L 140 -15 Z" fill="#FFD700" stroke="#FFF" stroke-width="2" />
                           </g>
-                          <text x="140" y="210" fill="#00FF66" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">3D ISOMETRIC SITE MASSING</text>
+                          <text x="140" y="195" fill="#00FF66" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">3D ISOMETRIC SITE MASSING</text>
                         </svg>
                       </div>
                     </div>
                   </div>
 
-                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-top: 0.8rem; border-top: 1px dashed #333; padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-top: 1rem; border-top: 1px dashed #333; padding-top: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
                     <div>PLOT AREA: <span id="plot-spec-total" style="color: var(--cmyk-yellow); font-weight: 700;">1,369 SQ. FT.</span></div>
                     <div>SETBACK BUFFER: <span style="color: var(--cmyk-cyan); font-weight: 700;">5.0 FT (1.5M)</span></div>
                     <div>GROUND COVERAGE (70%): <span id="plot-spec-built" style="color: var(--cmyk-pink); font-weight: 700;">958.3 SQ. FT.</span></div>
@@ -418,7 +414,7 @@ export function createCostEstimator() {
 
               </div>
 
-              <!-- STEP 2: STOREYS SELECTOR & DUAL-VIEW ELEVATION MATRIX (2D SECTION + 3D ISOMETRIC SKELETON) -->
+              <!-- STEP 2: STOREYS SELECTOR & VERTICALLY STACKED DUAL-VIEW ELEVATION MATRIX -->
               <div class="wizard-slide" style="width: 20%; padding: 1rem; box-sizing: border-box; flex-shrink: 0;">
                 <h3 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; color: var(--cmyk-cyan); text-transform: uppercase; margin-bottom: 0.8rem;">
                   2. NUMBER OF STOREYS
@@ -450,121 +446,116 @@ export function createCostEstimator() {
                   </button>
                 </div>
 
-                <!-- DUAL-VIEW NEOBRUTALIST ELEVATION MATRIX -->
+                <!-- VERTICALLY STACKED DUAL-VIEW ELEVATION MATRIX -->
                 <div class="elevation-graphic-container" style="background: #0A0A0A; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-pink); padding: 1.2rem; position: relative;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <span style="color: var(--cmyk-pink); font-weight: 900;">🏛️ DUAL-VIEW STRUCTURAL MATRIX // 2D ELEVATION + 3D RCC SKELETON</span>
+                  <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <span style="color: var(--cmyk-pink); font-weight: 900;">🏛️ DUAL-VIEW STRUCTURAL MATRIX // 2D ELEVATION & 3D RCC SKELETON</span>
                     <span style="background: var(--cmyk-cyan); color: #000; font-weight: 900; padding: 0.15rem 0.5rem; border: 1px solid #FFF; font-size: 0.65rem;">STRUCTURAL SCALE</span>
                   </div>
 
-                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; width: 100%;">
-                    <!-- 2D ELEVATION CROSS-SECTION SUB-CARD -->
-                    <div style="background: #000; border: 1px solid #333; padding: 0.8rem; position: relative;">
-                      <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cmyk-cyan); font-weight: 900; margin-bottom: 0.4rem;">
+                  <div style="display: flex; flex-direction: column; gap: 1.2rem; width: 100%;">
+                    <!-- [VIEW 01 TOP CARD] 2D ELEVATION CROSS-SECTION -->
+                    <div style="background: #000; border: 1px solid #333; padding: 1rem; position: relative;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cmyk-cyan); font-weight: 900; margin-bottom: 0.6rem;">
                         [VIEW 01] 2D ELEVATION & PLINTH DATUM
                       </div>
-                      <div style="width: 100%; height: 230px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <svg id="elevation-svg-canvas" viewBox="0 0 280 230" style="width: 100%; height: 100%;">
-                          <line x1="10" y1="205" x2="270" y2="205" stroke="#FFF" stroke-width="3" />
-                          <text x="15" y="220" fill="#888" font-family="monospace" font-size="8" font-weight="bold">GROUND DATUM ±0.00 M</text>
-                          <text x="170" y="220" fill="#FFD700" font-family="monospace" font-size="8" font-weight="bold">PLINTH +2'0"</text>
+                      <div style="width: 100%; height: 210px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg id="elevation-svg-canvas" viewBox="0 0 280 210" style="width: 100%; height: 100%;">
+                          <line x1="10" y1="185" x2="270" y2="185" stroke="#FFF" stroke-width="3" />
+                          <text x="15" y="200" fill="#888" font-family="monospace" font-size="8" font-weight="bold">GROUND DATUM ±0.00 M</text>
+                          <text x="170" y="200" fill="#FFD700" font-family="monospace" font-size="8" font-weight="bold">PLINTH +2'0"</text>
 
                           <g stroke="#00E5FF" stroke-width="1.5">
-                            <line id="elev-dim-line" x1="28" y1="205" x2="28" y2="65" />
-                            <line x1="23" y1="205" x2="33" y2="205" />
-                            <line id="elev-dim-top-cap" x1="23" y1="65" x2="33" y2="65" />
+                            <line id="elev-dim-line" x1="28" y1="185" x2="28" y2="55" />
+                            <line x1="23" y1="185" x2="33" y2="185" />
+                            <line id="elev-dim-top-cap" x1="23" y1="55" x2="33" y2="55" />
                           </g>
-                          <text id="elev-height-txt" x="23" y="135" fill="#00E5FF" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle" transform="rotate(-90 23 135)">28.5 FT HEIGHT</text>
+                          <text id="elev-height-txt" x="23" y="120" fill="#00E5FF" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle" transform="rotate(-90 23 120)">28.5 FT HEIGHT</text>
 
                           <g id="floor-l1" opacity="1">
-                            <rect x="50" y="155" width="140" height="50" fill="none" stroke="#FFD700" stroke-width="2" />
-                            <line x1="50" y1="155" x2="190" y2="155" stroke="#FFF" stroke-width="3" />
-                            <rect x="55" y="155" width="10" height="50" fill="#FFD700" />
-                            <rect x="115" y="155" width="10" height="50" fill="#FFD700" />
-                            <rect x="175" y="155" width="10" height="50" fill="#FFD700" />
-                            <text x="198" y="182" fill="#FFD700" font-family="monospace" font-size="8.5" font-weight="bold">L01: GROUND</text>
+                            <rect x="50" y="138" width="140" height="47" fill="none" stroke="#FFD700" stroke-width="2" />
+                            <line x1="50" y1="138" x2="190" y2="138" stroke="#FFF" stroke-width="3" />
+                            <rect x="55" y="138" width="10" height="47" fill="#FFD700" />
+                            <rect x="115" y="138" width="10" height="47" fill="#FFD700" />
+                            <rect x="175" y="138" width="10" height="47" fill="#FFD700" />
+                            <text x="198" y="165" fill="#FFD700" font-family="monospace" font-size="8.5" font-weight="bold">L01: GROUND</text>
                           </g>
 
                           <g id="floor-l2" opacity="1">
-                            <rect x="50" y="105" width="140" height="50" fill="none" stroke="#00E5FF" stroke-width="2" />
-                            <line x1="50" y1="105" x2="190" y2="105" stroke="#FFF" stroke-width="3" />
-                            <rect x="55" y="105" width="10" height="50" fill="#00E5FF" />
-                            <rect x="115" y="105" width="10" height="50" fill="#00E5FF" />
-                            <rect x="175" y="105" width="10" height="50" fill="#00E5FF" />
-                            <text x="198" y="132" fill="#00E5FF" font-family="monospace" font-size="8.5" font-weight="bold">L02: UPPER</text>
+                            <rect x="50" y="91" width="140" height="47" fill="none" stroke="#00E5FF" stroke-width="2" />
+                            <line x1="50" y1="91" x2="190" y2="91" stroke="#FFF" stroke-width="3" />
+                            <rect x="55" y="91" width="10" height="47" fill="#00E5FF" />
+                            <rect x="115" y="91" width="10" height="47" fill="#00E5FF" />
+                            <rect x="175" y="91" width="10" height="47" fill="#00E5FF" />
+                            <text x="198" y="118" fill="#00E5FF" font-family="monospace" font-size="8.5" font-weight="bold">L02: UPPER</text>
                           </g>
 
                           <g id="floor-l2-5" opacity="1">
-                            <rect x="50" y="70" width="75" height="35" fill="none" stroke="#FF007F" stroke-width="2" />
-                            <line x1="50" y1="70" x2="125" y2="70" stroke="#FFF" stroke-width="2.5" />
-                            <line x1="125" y1="95" x2="190" y2="95" stroke="#FF007F" stroke-width="2" stroke-dasharray="3,3" />
-                            <rect x="55" y="70" width="8" height="35" fill="#FF007F" />
-                            <rect x="112" y="70" width="8" height="35" fill="#FF007F" />
-                            <text x="198" y="90" fill="#FF007F" font-family="monospace" font-size="8.5" font-weight="bold">L0.5: TERRACE</text>
+                            <rect x="50" y="60" width="75" height="31" fill="none" stroke="#FF007F" stroke-width="2" />
+                            <line x1="50" y1="60" x2="125" y2="60" stroke="#FFF" stroke-width="2.5" />
+                            <line x1="125" y1="82" x2="190" y2="82" stroke="#FF007F" stroke-width="2" stroke-dasharray="3,3" />
+                            <rect x="55" y="60" width="8" height="31" fill="#FF007F" />
+                            <rect x="112" y="60" width="8" height="31" fill="#FF007F" />
+                            <text x="198" y="78" fill="#FF007F" font-family="monospace" font-size="8.5" font-weight="bold">L0.5: TERRACE</text>
                           </g>
 
                           <g id="floor-l3" opacity="0">
-                            <rect x="50" y="55" width="140" height="50" fill="none" stroke="#00FF66" stroke-width="2" />
-                            <line x1="50" y1="55" x2="190" y2="55" stroke="#FFF" stroke-width="3" />
-                            <rect x="55" y="55" width="10" height="50" fill="#00FF66" />
-                            <rect x="115" y="55" width="10" height="50" fill="#00FF66" />
-                            <rect x="175" y="55" width="10" height="50" fill="#00FF66" />
-                            <text x="198" y="82" fill="#00FF66" font-family="monospace" font-size="8.5" font-weight="bold">L03: TOP</text>
+                            <rect x="50" y="44" width="140" height="47" fill="none" stroke="#00FF66" stroke-width="2" />
+                            <line x1="50" y1="44" x2="190" y2="44" stroke="#FFF" stroke-width="3" />
+                            <rect x="55" y="44" width="10" height="47" fill="#00FF66" />
+                            <rect x="115" y="44" width="10" height="47" fill="#00FF66" />
+                            <rect x="175" y="44" width="10" height="47" fill="#00FF66" />
+                            <text x="198" y="71" fill="#00FF66" font-family="monospace" font-size="8.5" font-weight="bold">L03: TOP</text>
                           </g>
                         </svg>
                       </div>
                     </div>
 
-                    <!-- 3D AXONOMETRIC RCC SKELETON FRAME SUB-CARD -->
-                    <div style="background: #000; border: 1px solid #333; padding: 0.8rem; position: relative;">
-                      <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cmyk-pink); font-weight: 900; margin-bottom: 0.4rem;">
+                    <!-- [VIEW 02 BOTTOM CARD] 3D AXONOMETRIC RCC SKELETON FRAME -->
+                    <div style="background: #000; border: 1px solid #333; padding: 1rem; position: relative;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cmyk-pink); font-weight: 900; margin-bottom: 0.6rem;">
                         [VIEW 02] 3D ISOMETRIC RCC SKELETON FRAME
                       </div>
-                      <div style="width: 100%; height: 230px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <svg id="iso-elev-svg-canvas" viewBox="0 0 280 230" style="width: 100%; height: 100%;">
+                      <div style="width: 100%; height: 210px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg id="iso-elev-svg-canvas" viewBox="0 0 280 210" style="width: 100%; height: 100%;">
                           <g id="iso-frame-ground">
-                            <path d="M 140 175 L 240 215 L 140 230 L 40 215 Z" fill="#111" stroke="#444" stroke-width="1.5" />
+                            <path d="M 140 160 L 240 195 L 140 205 L 40 195 Z" fill="#111" stroke="#444" stroke-width="1.5" />
                           </g>
-                          <!-- Stacked 3D RCC Floor Frames -->
                           <g id="iso-frame-l1">
-                            <!-- Columns -->
-                            <line x1="70" y1="185" x2="70" y2="135" stroke="#FFD700" stroke-width="3" />
-                            <line x1="140" y1="210" x2="140" y2="160" stroke="#FFD700" stroke-width="3" />
-                            <line x1="210" y1="185" x2="210" y2="135" stroke="#FFD700" stroke-width="3" />
-                            <line x1="140" y1="160" x2="140" y2="110" stroke="#FFD700" stroke-width="3" />
-                            <!-- Floor Slab 1 -->
-                            <path d="M 70 135 L 140 160 L 210 135 L 140 110 Z" fill="#FFD700" fill-opacity="0.3" stroke="#FFF" stroke-width="2" />
+                            <line x1="70" y1="170" x2="70" y2="120" stroke="#FFD700" stroke-width="3" />
+                            <line x1="140" y1="195" x2="140" y2="145" stroke="#FFD700" stroke-width="3" />
+                            <line x1="210" y1="170" x2="210" y2="120" stroke="#FFD700" stroke-width="3" />
+                            <line x1="140" y1="145" x2="140" y2="95" stroke="#FFD700" stroke-width="3" />
+                            <path d="M 70 120 L 140 145 L 210 120 L 140 95 Z" fill="#FFD700" fill-opacity="0.3" stroke="#FFF" stroke-width="2" />
                           </g>
 
                           <g id="iso-frame-l2">
-                            <!-- Columns -->
-                            <line x1="70" y1="135" x2="70" y2="85" stroke="#00E5FF" stroke-width="3" />
-                            <line x1="140" y1="160" x2="140" y2="110" stroke="#00E5FF" stroke-width="3" />
-                            <line x1="210" y1="135" x2="210" y2="85" stroke="#00E5FF" stroke-width="3" />
-                            <line x1="140" y1="110" x2="140" y2="60" stroke="#00E5FF" stroke-width="3" />
-                            <!-- Floor Slab 2 -->
-                            <path d="M 70 85 L 140 110 L 210 85 L 140 60 Z" fill="#00E5FF" fill-opacity="0.3" stroke="#FFF" stroke-width="2" />
+                            <line x1="70" y1="120" x2="70" y2="70" stroke="#00E5FF" stroke-width="3" />
+                            <line x1="140" y1="145" x2="140" y2="95" stroke="#00E5FF" stroke-width="3" />
+                            <line x1="210" y1="120" x2="210" y2="70" stroke="#00E5FF" stroke-width="3" />
+                            <line x1="140" y1="95" x2="140" y2="45" stroke="#00E5FF" stroke-width="3" />
+                            <path d="M 70 70 L 140 95 L 210 70 L 140 45 Z" fill="#00E5FF" fill-opacity="0.3" stroke="#FFF" stroke-width="2" />
                           </g>
 
                           <g id="iso-frame-l2-5">
-                            <line x1="70" y1="85" x2="70" y2="50" stroke="#FF007F" stroke-width="2.5" />
-                            <line x1="140" y1="110" x2="140" y2="75" stroke="#FF007F" stroke-width="2.5" />
-                            <path d="M 70 50 L 140 75 L 140 50 L 70 25 Z" fill="#FF007F" fill-opacity="0.4" stroke="#FFF" stroke-width="1.5" />
+                            <line x1="70" y1="70" x2="70" y2="40" stroke="#FF007F" stroke-width="2.5" />
+                            <line x1="140" y1="95" x2="140" y2="65" stroke="#FF007F" stroke-width="2.5" />
+                            <path d="M 70 40 L 140 65 L 140 40 L 70 15 Z" fill="#FF007F" fill-opacity="0.4" stroke="#FFF" stroke-width="1.5" />
                           </g>
 
                           <g id="iso-frame-l3" opacity="0">
-                            <line x1="70" y1="85" x2="70" y2="35" stroke="#00FF66" stroke-width="3" />
-                            <line x1="140" y1="110" x2="140" y2="60" stroke="#00FF66" stroke-width="3" />
-                            <line x1="210" y1="85" x2="210" y2="35" stroke="#00FF66" stroke-width="3" />
-                            <path d="M 70 35 L 140 60 L 210 35 L 140 10 Z" fill="#00FF66" fill-opacity="0.3" stroke="#FFF" stroke-width="2" />
+                            <line x1="70" y1="70" x2="70" y2="25" stroke="#00FF66" stroke-width="3" />
+                            <line x1="140" y1="95" x2="140" y2="50" stroke="#00FF66" stroke-width="3" />
+                            <line x1="210" y1="70" x2="210" y2="25" stroke="#00FF66" stroke-width="3" />
+                            <path d="M 70 25 L 140 50 L 210 25 L 140 0 Z" fill="#00FF66" fill-opacity="0.3" stroke="#FFF" stroke-width="2" />
                           </g>
-                          <text x="140" y="222" fill="#00E5FF" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">3D RCC PILLAR & BEAM SKELETON</text>
+                          <text x="140" y="200" fill="#00E5FF" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">3D RCC PILLAR & BEAM SKELETON</text>
                         </svg>
                       </div>
                     </div>
                   </div>
 
-                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-top: 0.8rem; border-top: 1px dashed #333; padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-top: 1rem; border-top: 1px dashed #333; padding-top: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
                     <div>STRUCTURE: <span id="elev-spec-type" style="color: var(--cmyk-yellow); font-weight: 700;">2.5 STOREYS (KTM STANDARD)</span></div>
                     <div>FRAME: <span style="color: var(--cmyk-cyan); font-weight: 700;">RCC PILLAR & BEAM</span></div>
                     <div>HEIGHT: <span id="elev-spec-height" style="color: var(--cmyk-pink); font-weight: 700;">28.5 FT (8.68M)</span></div>
@@ -573,7 +564,7 @@ export function createCostEstimator() {
 
               </div>
 
-              <!-- STEP 3: FINISH QUALITY TIERS WITH DUAL-VIEW MATERIAL SPECIFICATION MATRIX -->
+              <!-- STEP 3: FINISH QUALITY TIERS WITH VERTICALLY STACKED DUAL-VIEW MATERIAL SPEC MATRIX -->
               <div class="wizard-slide" style="width: 20%; padding: 1rem; box-sizing: border-box; flex-shrink: 0;">
                 <h3 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; color: var(--cmyk-pink); text-transform: uppercase; margin-bottom: 0.8rem;">
                   3. FINISH QUALITY TIER
@@ -608,21 +599,21 @@ export function createCostEstimator() {
                   </button>
                 </div>
 
-                <!-- DUAL-VIEW MATERIAL SPECIFICATION MATRIX CONTAINER -->
+                <!-- VERTICALLY STACKED DUAL-VIEW MATERIAL SPECIFICATION MATRIX CONTAINER -->
                 <div id="material-spec-container" class="material-spec-container" style="background: #0A0A0A; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-yellow); padding: 1.2rem; position: relative;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <span id="mat-spec-tier-badge" style="color: var(--cmyk-yellow); font-weight: 900;">📐 DUAL-VIEW MATERIAL SPECIFICATION // 2D CUTAWAY + 3D EXPLODED LAYER DIAGRAM</span>
+                  <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <span id="mat-spec-tier-badge" style="color: var(--cmyk-yellow); font-weight: 900;">📐 DUAL-VIEW MATERIAL SPECIFICATION // 2D CUTAWAY & 3D EXPLODED LAYERS</span>
                     <span style="background: var(--cmyk-pink); color: #FFF; font-weight: 900; padding: 0.15rem 0.5rem; border: 1px solid #FFF; font-size: 0.65rem;">ASSEMBLY MATRIX</span>
                   </div>
 
-                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; width: 100%;">
-                    <!-- 2D MATERIAL CUTAWAY SUB-CARD -->
-                    <div style="background: #000; border: 1px solid #333; padding: 0.8rem; position: relative;">
-                      <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cmyk-yellow); font-weight: 900; margin-bottom: 0.4rem;">
+                  <div style="display: flex; flex-direction: column; gap: 1.2rem; width: 100%;">
+                    <!-- [VIEW 01 TOP CARD] 2D MATERIAL CUTAWAY -->
+                    <div style="background: #000; border: 1px solid #333; padding: 1rem; position: relative;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cmyk-yellow); font-weight: 900; margin-bottom: 0.6rem;">
                         [VIEW 01] 2D ARCHITECTURAL MATERIAL CUTAWAY
                       </div>
-                      <div style="width: 100%; height: 230px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <svg id="mat-assembly-svg" viewBox="0 0 280 230" style="width: 100%; height: 100%;">
+                      <div style="width: 100%; height: 210px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg id="mat-assembly-svg" viewBox="0 0 280 210" style="width: 100%; height: 100%;">
                           <defs>
                             <pattern id="pat-std-tile" width="24" height="24" patternUnits="userSpaceOnUse">
                               <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#FFD700" stroke-width="1.5" />
@@ -630,68 +621,68 @@ export function createCostEstimator() {
                           </defs>
 
                           <g id="cutaway-group">
-                            <rect x="15" y="165" width="180" height="40" fill="#18181A" stroke="#FFF" stroke-width="2" />
-                            <text x="20" y="190" fill="#888" font-family="monospace" font-size="8" font-weight="bold">RCC SLAB 150MM</text>
-                            <rect id="cutaway-floor-layer" x="15" y="145" width="180" height="20" fill="url(#pat-std-tile)" stroke="#FFD700" stroke-width="1.5" />
-                            <rect x="145" y="20" width="40" height="125" fill="#111" stroke="#FFF" stroke-width="2" />
-                            <rect id="cutaway-wall-layer" x="185" y="20" width="12" height="125" fill="#FFD700" opacity="0.85" />
-                            <rect id="cutaway-window-frame" x="80" y="45" width="50" height="70" fill="none" stroke="#00E5FF" stroke-width="2" />
+                            <rect x="15" y="150" width="180" height="40" fill="#18181A" stroke="#FFF" stroke-width="2" />
+                            <text x="20" y="175" fill="#888" font-family="monospace" font-size="8" font-weight="bold">RCC SLAB 150MM</text>
+                            <rect id="cutaway-floor-layer" x="15" y="130" width="180" height="20" fill="url(#pat-std-tile)" stroke="#FFD700" stroke-width="1.5" />
+                            <rect x="145" y="15" width="40" height="115" fill="#111" stroke="#FFF" stroke-width="2" />
+                            <rect id="cutaway-wall-layer" x="185" y="15" width="12" height="115" fill="#FFD700" opacity="0.85" />
+                            <rect id="cutaway-window-frame" x="80" y="38" width="50" height="65" fill="none" stroke="#00E5FF" stroke-width="2" />
                           </g>
 
-                          <line x1="205" y1="10" x2="205" y2="215" stroke="#333" stroke-width="1.5" stroke-dasharray="4,4" />
+                          <line x1="205" y1="10" x2="205" y2="195" stroke="#333" stroke-width="1.5" stroke-dasharray="4,4" />
 
-                          <g id="swatch-matrix-group" transform="translate(210, 15)">
+                          <g id="swatch-matrix-group" transform="translate(210, 10)">
                             <g id="swatch-tile-1" transform="translate(0, 0)">
-                              <rect x="0" y="0" width="60" height="45" fill="#000" stroke="#FFF" stroke-width="1.2" />
-                              <rect id="swatch-bg-1" x="3" y="3" width="54" height="28" fill="url(#pat-std-tile)" />
-                              <text id="swatch-lbl-1" x="30" y="40" fill="#FFD700" font-family="monospace" font-size="6" font-weight="bold" text-anchor="middle">TILE</text>
+                              <rect x="0" y="0" width="60" height="40" fill="#000" stroke="#FFF" stroke-width="1.2" />
+                              <rect id="swatch-bg-1" x="3" y="3" width="54" height="24" fill="url(#pat-std-tile)" />
+                              <text id="swatch-lbl-1" x="30" y="36" fill="#FFD700" font-family="monospace" font-size="6" font-weight="bold" text-anchor="middle">TILE</text>
                             </g>
-                            <g id="swatch-tile-2" transform="translate(0, 50)">
-                              <rect x="0" y="0" width="60" height="45" fill="#000" stroke="#FFF" stroke-width="1.2" />
-                              <text id="swatch-lbl-2" x="30" y="30" fill="#FF007F" font-family="monospace" font-size="6" font-weight="bold" text-anchor="middle">UPVC</text>
+                            <g id="swatch-tile-2" transform="translate(0, 45)">
+                              <rect x="0" y="0" width="60" height="40" fill="#000" stroke="#FFF" stroke-width="1.2" />
+                              <text id="swatch-lbl-2" x="30" y="26" fill="#FF007F" font-family="monospace" font-size="6" font-weight="bold" text-anchor="middle">UPVC</text>
                             </g>
-                            <g id="swatch-tile-3" transform="translate(0, 100)">
-                              <rect x="0" y="0" width="60" height="45" fill="#000" stroke="#FFF" stroke-width="1.2" />
-                              <text id="swatch-lbl-3" x="30" y="30" fill="#00E5FF" font-family="monospace" font-size="6" font-weight="bold" text-anchor="middle">CP</text>
+                            <g id="swatch-tile-3" transform="translate(0, 90)">
+                              <rect x="0" y="0" width="60" height="40" fill="#000" stroke="#FFF" stroke-width="1.2" />
+                              <text id="swatch-lbl-3" x="30" y="26" fill="#00E5FF" font-family="monospace" font-size="6" font-weight="bold" text-anchor="middle">CP</text>
                             </g>
-                            <g id="swatch-tile-4" transform="translate(0, 150)">
-                              <rect x="0" y="0" width="60" height="45" fill="#000" stroke="#FFF" stroke-width="1.2" />
-                              <text id="swatch-lbl-4" x="30" y="30" fill="#00FF66" font-family="monospace" font-size="6" font-weight="bold" text-anchor="middle">PAINT</text>
+                            <g id="swatch-tile-4" transform="translate(0, 135)">
+                              <rect x="0" y="0" width="60" height="40" fill="#000" stroke="#FFF" stroke-width="1.2" />
+                              <text id="swatch-lbl-4" x="30" y="26" fill="#00FF66" font-family="monospace" font-size="6" font-weight="bold" text-anchor="middle">PAINT</text>
                             </g>
                           </g>
                         </svg>
                       </div>
                     </div>
 
-                    <!-- 3D AXONOMETRIC EXPLODED MATERIAL LAYER SUB-CARD -->
-                    <div style="background: #000; border: 1px solid #333; padding: 0.8rem; position: relative;">
-                      <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cmyk-pink); font-weight: 900; margin-bottom: 0.4rem;">
+                    <!-- [VIEW 02 BOTTOM CARD] 3D AXONOMETRIC EXPLODED MATERIAL LAYER -->
+                    <div style="background: #000; border: 1px solid #333; padding: 1rem; position: relative;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cmyk-pink); font-weight: 900; margin-bottom: 0.6rem;">
                         [VIEW 02] 3D ISOMETRIC EXPLODED MATERIAL SPEC LAYERS
                       </div>
-                      <div style="width: 100%; height: 230px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <svg id="iso-mat-svg-canvas" viewBox="0 0 280 230" style="width: 100%; height: 100%;">
+                      <div style="width: 100%; height: 210px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg id="iso-mat-svg-canvas" viewBox="0 0 280 210" style="width: 100%; height: 100%;">
                           <!-- Layer 1: Base Slab -->
-                          <path d="M 60 175 L 160 210 L 220 180 L 120 145 Z" fill="#18181A" stroke="#FFF" stroke-width="2" />
-                          <text x="140" y="200" fill="#888" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">01: CONCRETE SLAB BASE</text>
+                          <path d="M 60 160 L 160 195 L 220 165 L 120 130 Z" fill="#18181A" stroke="#FFF" stroke-width="2" />
+                          <text x="140" y="185" fill="#888" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">01: CONCRETE SLAB BASE</text>
 
                           <!-- Layer 2: Mortar Bed -->
-                          <path d="M 60 135 L 160 170 L 220 140 L 120 105 Z" fill="#333" stroke="#00E5FF" stroke-width="1.5" stroke-dasharray="3,3" />
-                          <text x="140" y="160" fill="#00E5FF" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">02: ADHESIVE MORTAR BED</text>
+                          <path d="M 60 120 L 160 155 L 220 125 L 120 90 Z" fill="#333" stroke="#00E5FF" stroke-width="1.5" stroke-dasharray="3,3" />
+                          <text x="140" y="145" fill="#00E5FF" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">02: ADHESIVE MORTAR BED</text>
 
                           <!-- Layer 3: Top Finish Surface -->
-                          <path id="iso-mat-top-tile" d="M 60 95 L 160 130 L 220 100 L 120 65 Z" fill="url(#pat-std-tile)" stroke="#FFD700" stroke-width="2" />
-                          <text x="140" y="120" fill="#FFD700" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">03: FINISH SURFACE</text>
+                          <path id="iso-mat-top-tile" d="M 60 80 L 160 115 L 220 85 L 120 50 Z" fill="url(#pat-std-tile)" stroke="#FFD700" stroke-width="2" />
+                          <text x="140" y="105" fill="#FFD700" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">03: FINISH SURFACE</text>
 
                           <!-- Floating Callout Line -->
-                          <line x1="220" y1="100" x2="255" y2="70" stroke="#FF007F" stroke-width="1.5" />
-                          <circle cx="255" cy="70" r="3" fill="#FF007F" />
-                          <text x="255" y="60" fill="#FF007F" font-family="monospace" font-size="7" font-weight="bold" text-anchor="end">A-GRADE FINISH</text>
+                          <line x1="220" y1="85" x2="255" y2="55" stroke="#FF007F" stroke-width="1.5" />
+                          <circle cx="255" cy="55" r="3" fill="#FF007F" />
+                          <text x="255" y="45" fill="#FF007F" font-family="monospace" font-size="7" font-weight="bold" text-anchor="end">A-GRADE FINISH</text>
                         </svg>
                       </div>
                     </div>
                   </div>
 
-                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-top: 0.8rem; border-top: 1px dashed #333; padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-top: 1rem; border-top: 1px dashed #333; padding-top: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
                     <div>ASSEMBLY TIER: <span id="mat-spec-grade" style="color: var(--cmyk-yellow); font-weight: 700;">STANDARD A-GRADE</span></div>
                     <div>RATE: <span id="mat-spec-rate" style="color: var(--cmyk-pink); font-weight: 700;">NPR 4,800 / SQ. FT.</span></div>
                   </div>
@@ -699,7 +690,7 @@ export function createCostEstimator() {
 
               </div>
 
-              <!-- STEP 4: MUNICIPAL PERMITS & DUAL-VIEW PERMIT VERIFICATION MATRIX -->
+              <!-- STEP 4: MUNICIPAL PERMITS & VERTICALLY STACKED DUAL-VIEW PERMIT MATRIX -->
               <div class="wizard-slide" style="width: 20%; padding: 1rem; box-sizing: border-box; flex-shrink: 0;">
                 <h3 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; color: var(--cmyk-green); text-transform: uppercase; margin-bottom: 1rem;">
                   4. MUNICIPAL PERMITS & SPECIAL MODULES
@@ -759,57 +750,57 @@ export function createCostEstimator() {
                   </div>
                 </div>
 
-                <!-- DUAL-VIEW MUNICIPAL PERMIT & GEOTECH BOARD -->
+                <!-- VERTICALLY STACKED DUAL-VIEW PERMIT & GEOTECH BOARD -->
                 <div id="permit-stamp-container" style="background: #0A0A0A; border: 2px solid #FFF; box-shadow: 4px 4px 0px #00FF66; padding: 1.2rem; position: relative;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <span style="color: #00FF66; font-weight: 900;">📜 DUAL-VIEW PERMIT CLEARANCE // 2D GOVERNMENT BLUEPRINT + 3D GEOTECH CORE</span>
+                  <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <span style="color: #00FF66; font-weight: 900;">📜 DUAL-VIEW PERMIT CLEARANCE // 2D BLUEPRINT & 3D GEOTECH CORE</span>
                     <span style="background: #00FF66; color: #000; font-weight: 900; padding: 0.15rem 0.5rem; border: 1px solid #FFF; font-size: 0.65rem;">NBC 105:2020 COMPLIANT</span>
                   </div>
 
-                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; width: 100%;">
-                    <!-- 2D BLUEPRINT CARD SUB-CARD -->
-                    <div style="background: #000; border: 1px solid #333; padding: 0.8rem; position: relative;">
-                      <div style="font-family: var(--font-mono); font-size: 0.7rem; color: #00FF66; font-weight: 900; margin-bottom: 0.4rem;">
+                  <div style="display: flex; flex-direction: column; gap: 1.2rem; width: 100%;">
+                    <!-- [VIEW 01 TOP CARD] 2D MUNICIPAL BLUEPRINT REGISTRATION -->
+                    <div style="background: #000; border: 1px solid #333; padding: 1rem; position: relative;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #00FF66; font-weight: 900; margin-bottom: 0.6rem;">
                         [VIEW 01] 2D MUNICIPAL BLUEPRINT REGISTRATION
                       </div>
-                      <div style="width: 100%; height: 230px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <svg id="permit-stamp-svg" viewBox="0 0 260 230" style="width: 100%; height: 100%;">
-                          <rect x="15" y="15" width="230" height="200" fill="#0A0A0F" stroke="#00E5FF" stroke-width="2" />
-                          <text x="25" y="40" fill="#00E5FF" font-family="monospace" font-size="11" font-weight="bold">KMC MUNICIPAL BLUEPRINT</text>
-                          <rect x="25" y="55" width="210" height="145" fill="none" stroke="#FFF" stroke-width="1.5" stroke-dasharray="4,4" />
-                          <circle cx="130" cy="125" r="42" fill="none" stroke="#FFD700" stroke-width="2.5" />
-                          <text x="130" y="120" fill="#FFD700" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">OFFICIAL SEAL</text>
-                          <text x="130" y="136" fill="#00FF66" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">APPROVED</text>
+                      <div style="width: 100%; height: 210px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg id="permit-stamp-svg" viewBox="0 0 280 210" style="width: 100%; height: 100%;">
+                          <rect x="25" y="15" width="230" height="180" fill="#0A0A0F" stroke="#00E5FF" stroke-width="2" />
+                          <text x="35" y="38" fill="#00E5FF" font-family="monospace" font-size="10" font-weight="bold">KMC MUNICIPAL BLUEPRINT</text>
+                          <rect x="35" y="50" width="210" height="130" fill="none" stroke="#FFF" stroke-width="1.5" stroke-dasharray="4,4" />
+                          <circle cx="140" cy="115" r="38" fill="none" stroke="#FFD700" stroke-width="2.5" />
+                          <text x="140" y="110" fill="#FFD700" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">OFFICIAL SEAL</text>
+                          <text x="140" y="126" fill="#00FF66" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">APPROVED</text>
                         </svg>
                       </div>
                     </div>
 
-                    <!-- 3D ISOMETRIC SOIL BOREHOLE COLUMN SUB-CARD -->
-                    <div style="background: #000; border: 1px solid #333; padding: 0.8rem; position: relative;">
-                      <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cmyk-cyan); font-weight: 900; margin-bottom: 0.4rem;">
+                    <!-- [VIEW 02 BOTTOM CARD] 3D ISOMETRIC SOIL BOREHOLE COLUMN -->
+                    <div style="background: #000; border: 1px solid #333; padding: 1rem; position: relative;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cmyk-cyan); font-weight: 900; margin-bottom: 0.6rem;">
                         [VIEW 02] 3D ISOMETRIC SOIL BEARING BOREHOLE COLUMN
                       </div>
-                      <div style="width: 100%; height: 230px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <svg id="iso-geotech-svg" viewBox="0 0 260 230" style="width: 100%; height: 100%;">
+                      <div style="width: 100%; height: 210px; position: relative; background: #050505; border: 1px dashed #222; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg id="iso-geotech-svg" viewBox="0 0 280 210" style="width: 100%; height: 100%;">
                           <!-- 3D Borehole Cylinder Column -->
                           <g id="iso-soil-column">
                             <!-- Topsoil Layer 1 -->
-                            <path d="M 90 30 C 90 20 170 20 170 30 L 170 70 C 170 80 90 80 90 70 Z" fill="#3E2723" stroke="#FFF" stroke-width="1.5" />
-                            <text x="130" y="55" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">0-2M: TOPSOIL</text>
+                            <path d="M 100 25 C 100 15 180 15 180 25 L 180 60 C 180 70 100 70 100 60 Z" fill="#3E2723" stroke="#FFF" stroke-width="1.5" />
+                            <text x="140" y="48" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">0-2M: TOPSOIL</text>
 
                             <!-- KTM Black Cotton Clay Layer 2 -->
-                            <path d="M 90 70 C 90 80 170 80 170 70 L 170 120 C 170 130 90 130 90 120 Z" fill="#212121" stroke="#00E5FF" stroke-width="1.5" />
-                            <text x="130" y="102" fill="#00E5FF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">2-5M: SILTY CLAY</text>
+                            <path d="M 100 60 C 100 70 180 70 180 60 L 180 110 C 180 120 100 120 100 110 Z" fill="#212121" stroke="#00E5FF" stroke-width="1.5" />
+                            <text x="140" y="92" fill="#00E5FF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">2-5M: SILTY CLAY</text>
 
                             <!-- Dense Gravel Bed Layer 3 -->
-                            <path d="M 90 120 C 90 130 170 130 170 120 L 170 180 C 170 190 90 190 90 180 Z" fill="#FF9900" fill-opacity="0.3" stroke="#FFD700" stroke-width="2" />
-                            <text x="130" y="155" fill="#FFD700" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">5-10M: GRAVEL BED</text>
+                            <path d="M 100 110 C 100 120 180 120 180 110 L 180 165 C 180 175 100 175 100 165 Z" fill="#FF9900" fill-opacity="0.3" stroke="#FFD700" stroke-width="2" />
+                            <text x="140" y="142" fill="#FFD700" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">5-10M: GRAVEL BED</text>
 
                             <!-- SPT Bearing Gauge -->
-                            <line x1="170" y1="150" x2="220" y2="150" stroke="#00FF66" stroke-width="2" />
-                            <circle cx="220" cy="150" r="14" fill="#00FF66" />
-                            <text x="220" y="153" fill="#000" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">150</text>
-                            <text x="220" y="176" fill="#00FF66" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">KN/M²</text>
+                            <line x1="180" y1="135" x2="230" y2="135" stroke="#00FF66" stroke-width="2" />
+                            <circle cx="230" cy="135" r="14" fill="#00FF66" />
+                            <text x="230" y="138" fill="#000" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">150</text>
+                            <text x="230" y="160" fill="#00FF66" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">KN/M²</text>
                           </g>
                         </svg>
                       </div>
@@ -1122,7 +1113,7 @@ export function initCostEstimatorEvents() {
 
     if (container) container.style.boxShadow = `4px 4px 0px ${data.shadowColor}`;
     if (badge) {
-      badge.textContent = `📐 DUAL-VIEW MATERIAL SPECIFICATION // 2D CUTAWAY + 3D EXPLODED LAYER DIAGRAM (${tierKey.toUpperCase()})`;
+      badge.textContent = `📐 DUAL-VIEW MATERIAL SPECIFICATION // 2D CUTAWAY & 3D EXPLODED LAYERS (${tierKey.toUpperCase()})`;
       badge.style.color = data.shadowColor;
     }
     if (grade) {
@@ -1310,13 +1301,13 @@ export function initCostEstimatorEvents() {
     const minWidth = 140;
     const maxWidth = 230;
     const minHeight = 110;
-    const maxHeight = 180;
+    const maxHeight = 160;
 
     const scaleRatio = Math.min(1, (aana - 2) / (25 - 2));
     const rectW = minWidth + (maxWidth - minWidth) * scaleRatio;
     const rectH = minHeight + (maxHeight - minHeight) * scaleRatio;
     const rectX = 140 - rectW / 2;
-    const rectY = 115 - rectH / 2;
+    const rectY = 105 - rectH / 2;
 
     const setX = rectX + 12;
     const setY = rectY + 10;
@@ -1344,7 +1335,6 @@ export function initCostEstimatorEvents() {
     const isoLeft = document.getElementById('iso-wall-left');
     const isoRight = document.getElementById('iso-wall-right');
     const isoRoof = document.getElementById('iso-roof-top');
-    const isoShadow = document.getElementById('iso-shadow');
 
     const isoW = 40 + scaleRatio * 60;
     const isoH = 30 + scaleRatio * 50;
@@ -1412,7 +1402,7 @@ export function initCostEstimatorEvents() {
     const specHeight = document.getElementById('elev-spec-height');
 
     let totalHeightFt = 10.0;
-    let topY = 155;
+    let topY = 138;
 
     let l1Op = 1, l2Op = 0, l25Op = 0, l3Op = 0;
     let typeLabel = `${storey} STOREYS (${activeCategory.title})`;
@@ -1420,19 +1410,19 @@ export function initCostEstimatorEvents() {
     if (storey === 1) {
       l1Op = 1; l2Op = 0; l25Op = 0; l3Op = 0;
       totalHeightFt = 10.0;
-      topY = 155;
+      topY = 138;
     } else if (storey === 2) {
       l1Op = 1; l2Op = 1; l25Op = 0; l3Op = 0;
       totalHeightFt = 20.0;
-      topY = 105;
+      topY = 91;
     } else if (storey === 2.5) {
       l1Op = 1; l2Op = 1; l25Op = 1; l3Op = 0;
       totalHeightFt = 28.5;
-      topY = 70;
+      topY = 60;
     } else if (storey === 3) {
       l1Op = 1; l2Op = 1; l25Op = 0; l3Op = 1;
       totalHeightFt = 30.0;
-      topY = 55;
+      topY = 44;
     }
 
     const meters = (totalHeightFt * 0.3048).toFixed(2);
