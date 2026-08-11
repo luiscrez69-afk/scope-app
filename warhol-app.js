@@ -100,10 +100,15 @@ function renderCurrentRoute() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Router Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   renderCurrentRoute();
   window.addEventListener('hashchange', renderCurrentRoute);
   window.addEventListener('popstate', renderCurrentRoute);
   console.log('⚡ [WARHOL SCOPE] Original Warhol Router Active');
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}

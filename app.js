@@ -110,10 +110,15 @@ function renderCurrentRoute() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Router Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   renderCurrentRoute();
   window.addEventListener('hashchange', renderCurrentRoute);
   window.addEventListener('popstate', renderCurrentRoute);
-  console.log('⚡ [SCOPE] Carousel-Enhanced Router Active: Hero + Home Showcase Carousel (/), 5-Step Estimator Carousel (/cost-estimator), 4-Module Legal Hub Carousel (/legal-hub)');
-});
+  console.log('⚡ [SCOPE] Router Active');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
