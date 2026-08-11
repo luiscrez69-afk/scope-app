@@ -246,6 +246,18 @@ export function createPermitHub() {
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
                   <span style="color: var(--nothing-red); font-weight: 700;">STAGE 01</span>
+                  <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
+                    SAMPLE📄
+                    <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
+                      <strong>DRAFT DRAWING REQUIREMENT:</strong>
+                      <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+                        <li>Site Plan 1:200</li>
+                        <li>Floor Plans 1:100</li>
+                        <li>4 Elevation Views</li>
+                        <li>Drainage Layout</li>
+                      </ul>
+                    </div>
+                  </span>
                 </div>
                 <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   ARCHITECTURAL DRAFTING
@@ -274,6 +286,17 @@ export function createPermitHub() {
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
                   <span style="color: #FFF; font-weight: 700;">STAGE 02</span>
+                  <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
+                    SAMPLE📄
+                    <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
+                      <strong>WARD VERIFICATION:</strong>
+                      <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+                        <li>Ward Clearance Seal</li>
+                        <li>7-Day Public Notice</li>
+                        <li>Boundary Field Report</li>
+                      </ul>
+                    </div>
+                  </span>
                 </div>
                 <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   WARD OFFICE VERIFICATION
@@ -302,6 +325,17 @@ export function createPermitHub() {
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
                   <span style="color: var(--nothing-red); font-weight: 700;">STAGE 03</span>
+                  <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
+                    SAMPLE📄
+                    <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
+                      <strong>TEMPORARY PERMIT:</strong>
+                      <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+                        <li>Asthayi Swikriti Seal</li>
+                        <li>Plinth Level Check</li>
+                        <li>Plinth Inspection Pass</li>
+                      </ul>
+                    </div>
+                  </span>
                 </div>
                 <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   ASTHAYI SWIKRITI (TEMP PERMIT)
@@ -330,6 +364,17 @@ export function createPermitHub() {
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
                   <span style="color: #FFF; font-weight: 700;">STAGE 04</span>
+                  <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
+                    SAMPLE📄
+                    <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
+                      <strong>FINAL CERTIFICATE:</strong>
+                      <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+                        <li>Nirmana Sampanna Seal</li>
+                        <li>NEA Power Connection</li>
+                        <li>KUKL Water Meter Pass</li>
+                      </ul>
+                    </div>
+                  </span>
                 </div>
                 <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   NIRMAṆA SAMPANNA (FINAL CERT)
@@ -614,6 +659,25 @@ export function initPermitHubEvents() {
       }
       updatePipelineProgress();
     });
+  });
+
+  // Hover & Click Popovers for Document Samples
+  const triggers = document.querySelectorAll('.doc-sample-trigger');
+  triggers.forEach(trig => {
+    const popover = trig.querySelector('.doc-sample-popover');
+    trig.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (popover) {
+        const isHidden = getComputedStyle(popover).display === 'none';
+        popover.style.display = isHidden ? 'block' : 'none';
+      }
+    });
+    if (popover) {
+      trig.addEventListener('mouseenter', () => popover.style.display = 'block');
+      trig.addEventListener('mouseleave', () => popover.style.display = 'none');
+    }
+  });
+
   // Initial Engine Calculation
   calculateBylawsEngine();
 }
