@@ -29,7 +29,7 @@ export function createPermitHub() {
             <div>
               <span class="badge brutal-badge yellow">RULE CHECKER</span>
               <h3 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; color: #FFF; margin-top: 0.4rem; text-transform: uppercase;">
-                1. KMC ROAD WIDTH & SETBACK CALCULATOR
+                1. BYLAWS CALCULATOR
               </h3>
             </div>
             <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cmyk-cyan);">
