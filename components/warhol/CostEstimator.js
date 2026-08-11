@@ -155,6 +155,60 @@ export const BUILDING_CATEGORIES = [
   }
 ];
 
+const VECTOR_MATERIAL_DATA = {
+  basic: {
+    tierBadge: "📐 ARCHITECTURAL MATERIAL ASSEMBLY // BASIC TIER",
+    shadowColor: "var(--cmyk-cyan)",
+    grade: "BASIC B-GRADE / RENTAL FOCUS",
+    floorPattern: "url(#pat-basic-tile)",
+    floorStroke: "#00E5FF",
+    wallFill: "#00E5FF",
+    winFrameStroke: "#00E5FF",
+    swatchLbl1: "CERAMIC // 300x300",
+    swatchLbl1Color: "#00E5FF",
+    swatchLbl2: "ALUMINUM // FLUSH",
+    swatchLbl2Color: "#00E5FF",
+    swatchLbl3: "STANDARD // PVC",
+    swatchLbl3Color: "#00E5FF",
+    swatchLbl4: "WEATHERCOAT // DISTEMPER",
+    swatchLbl4Color: "#00E5FF"
+  },
+  standard: {
+    tierBadge: "📐 ARCHITECTURAL MATERIAL ASSEMBLY // STANDARD TIER",
+    shadowColor: "var(--cmyk-yellow)",
+    grade: "STANDARD A-GRADE RESIDENTIAL",
+    floorPattern: "url(#pat-std-tile)",
+    floorStroke: "#FFD700",
+    wallFill: "#FFD700",
+    winFrameStroke: "#FFD700",
+    swatchLbl1: "VITRIFIED // 600x600",
+    swatchLbl1Color: "#FFD700",
+    swatchLbl2: "UPVC // SAL WOOD",
+    swatchLbl2Color: "#FFD700",
+    swatchLbl3: "CONCEALED // CP",
+    swatchLbl3Color: "#FFD700",
+    swatchLbl4: "APEX // ACRYLIC",
+    swatchLbl4Color: "#FFD700"
+  },
+  premium: {
+    tierBadge: "📐 ARCHITECTURAL MATERIAL ASSEMBLY // PREMIUM LUXURY TIER",
+    shadowColor: "var(--cmyk-pink)",
+    grade: "PREMIUM LUXURY VILLA GRADE",
+    floorPattern: "url(#pat-hpl-cladding)",
+    floorStroke: "#FF007F",
+    wallFill: "#FF007F",
+    winFrameStroke: "#FF007F",
+    swatchLbl1: "ITALIAN MARBLE // SLAB",
+    swatchLbl1Color: "#FF007F",
+    swatchLbl2: "THERMAL UPVC // TEAK",
+    swatchLbl2Color: "#FF007F",
+    swatchLbl3: "KOHLER // RAINSHOWER",
+    swatchLbl3Color: "#FF007F",
+    swatchLbl4: "HPL PANEL // CLADDING",
+    swatchLbl4Color: "#FF007F"
+  }
+};
+
 export function createCostEstimator() {
   return `
     <div id="estimate" class="tab-pane active-pane">
@@ -437,28 +491,28 @@ export function createCostEstimator() {
                 </p>
 
                 <div style="display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 1.5rem;">
-                  <button class="tier-btn btn-brutal white" data-tier="basic" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center;">
+                  <button class="tier-btn btn-brutal white" data-tier="basic" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center; background: #000; color: #FFF; border: 2px solid #FFF;">
                     <div>
                       <div style="font-weight: 900; font-size: 1.05rem;">🔨 BASIC TIER</div>
-                      <div style="font-size: 0.8rem; color: #666; margin-top: 0.2rem;">Standard brick, PVC fittings, ceramic tiles</div>
+                      <div style="font-size: 0.8rem; color: #888; margin-top: 0.2rem;">Standard brick, PVC fittings, ceramic tiles</div>
                     </div>
-                    <span id="rate-lbl-basic" style="font-family: var(--font-mono); font-size: 1rem; font-weight: 900; color: var(--cmyk-orange); white-space: nowrap;">NPR 3,800 / SQ. FT.</span>
+                    <span id="rate-lbl-basic" style="font-family: var(--font-mono); font-size: 1rem; font-weight: 900; color: var(--cmyk-cyan); white-space: nowrap;">NPR 3,800 / SQ. FT.</span>
                   </button>
 
-                  <button class="tier-btn btn-brutal yellow active" data-tier="standard" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center;">
+                  <button class="tier-btn btn-brutal yellow active" data-tier="standard" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center; background: var(--cmyk-yellow); color: #000; border: 2px solid #FFF;">
                     <div>
                       <div style="font-weight: 900; font-size: 1.05rem;">🏢 STANDARD TIER (RECOMMENDED)</div>
-                      <div style="font-size: 0.8rem; color: #000; margin-top: 0.2rem;">AAC/Red brick, vitrified tiles, CP fittings, aluminum joinery</div>
+                      <div style="font-size: 0.8rem; color: #222; margin-top: 0.2rem;">AAC/Red brick, vitrified tiles, CP fittings, aluminum joinery</div>
                     </div>
                     <span id="rate-lbl-standard" style="font-family: var(--font-mono); font-size: 1rem; font-weight: 900; color: #000; white-space: nowrap;">NPR 4,800 / SQ. FT.</span>
                   </button>
 
-                  <button class="tier-btn btn-brutal pink" data-tier="premium" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center;">
+                  <button class="tier-btn btn-brutal pink" data-tier="premium" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center; background: #000; color: #FFF; border: 2px solid #FFF;">
                     <div>
                       <div style="font-weight: 900; font-size: 1.05rem;">✨ PREMIUM LUXURY TIER</div>
-                      <div style="font-size: 0.8rem; color: #FFF; margin-top: 0.2rem;">Italian marble, Kohler sanitary, teak wood, structural steel accents</div>
+                      <div style="font-size: 0.8rem; color: #888; margin-top: 0.2rem;">Italian marble, Kohler sanitary, teak wood, structural steel accents</div>
                     </div>
-                    <span id="rate-lbl-premium" style="font-family: var(--font-mono); font-size: 1rem; font-weight: 900; color: #FFF; white-space: nowrap;">NPR 6,800 / SQ. FT.</span>
+                    <span id="rate-lbl-premium" style="font-family: var(--font-mono); font-size: 1rem; font-weight: 900; color: var(--cmyk-pink); white-space: nowrap;">NPR 6,800 / SQ. FT.</span>
                   </button>
                 </div>
 
@@ -890,6 +944,58 @@ export function initCostEstimatorEvents() {
     ropaniSlider.addEventListener('input', calculateCosts);
   }
 
+  function updateMaterialSpecGraphic(tierKey) {
+    const data = VECTOR_MATERIAL_DATA[tierKey] || VECTOR_MATERIAL_DATA.standard;
+    const container = document.getElementById('material-spec-container');
+    const badge = document.getElementById('mat-spec-tier-badge');
+    const grade = document.getElementById('mat-spec-grade');
+    const rate = document.getElementById('mat-spec-rate');
+
+    const cutFloor = document.getElementById('cutaway-floor-layer');
+    const cutWall = document.getElementById('cutaway-wall-layer');
+    const cutWin = document.getElementById('cutaway-window-frame');
+
+    const lbl1 = document.getElementById('swatch-lbl-1');
+    const lbl2 = document.getElementById('swatch-lbl-2');
+    const lbl3 = document.getElementById('swatch-lbl-3');
+    const lbl4 = document.getElementById('swatch-lbl-4');
+
+    const bg1 = document.getElementById('swatch-bg-1');
+
+    if (container) container.style.boxShadow = `4px 4px 0px ${data.shadowColor}`;
+    if (badge) {
+      badge.textContent = data.tierBadge;
+      badge.style.color = data.shadowColor;
+    }
+    if (grade) {
+      grade.textContent = data.grade;
+      grade.style.color = data.shadowColor;
+    }
+    
+    const baseRates = activeCategory.defaultRates;
+    const currentRate = baseRates[tierKey] || baseRates.standard;
+    if (rate) rate.textContent = `NPR ${currentRate.toLocaleString()} / SQ. FT.`;
+
+    if (cutFloor) {
+      cutFloor.setAttribute('fill', data.floorPattern);
+      cutFloor.setAttribute('stroke', data.floorStroke);
+    }
+    if (cutWall) cutWall.setAttribute('fill', data.wallFill);
+    if (cutWin) cutWin.setAttribute('stroke', data.winFrameStroke);
+
+    if (bg1) bg1.setAttribute('fill', data.floorPattern);
+
+    if (lbl1) { lbl1.textContent = data.swatchLbl1; lbl1.setAttribute('fill', data.swatchLbl1Color); }
+    if (lbl2) { lbl2.textContent = data.swatchLbl2; lbl2.setAttribute('fill', data.swatchLbl2Color); }
+    if (lbl3) { lbl3.textContent = data.swatchLbl3; lbl3.setAttribute('fill', data.swatchLbl3Color); }
+    if (lbl4) { lbl4.textContent = data.swatchLbl4; lbl4.setAttribute('fill', data.swatchLbl4Color); }
+
+    const svgCanvas = document.getElementById('mat-assembly-svg');
+    if (window.gsap && svgCanvas) {
+      window.gsap.fromTo(svgCanvas, { opacity: 0.4, scale: 0.98 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
+    }
+  }
+
   function calculateCosts() {
     if (!slider) return;
 
@@ -905,14 +1011,12 @@ export function initCostEstimatorEvents() {
     // Determine scale tier discount
     let appliedDiscountPct = 0;
     let activeScaleTierName = activeCategory.scaleTiers[0].name;
-    let activeScaleTierLabel = activeCategory.scaleTiers[0].label;
 
     for (let tier of activeCategory.scaleTiers) {
       if (totalBuiltUpSqft > (tier.limitSqft === Infinity ? 0 : 0)) {
         if (totalBuiltUpSqft > tier.limitSqft) continue;
         appliedDiscountPct = tier.discountPct;
         activeScaleTierName = tier.name;
-        activeScaleTierLabel = tier.label;
         break;
       }
     }
@@ -921,7 +1025,6 @@ export function initCostEstimatorEvents() {
       const lastTier = activeCategory.scaleTiers[activeCategory.scaleTiers.length - 1];
       appliedDiscountPct = lastTier.discountPct;
       activeScaleTierName = lastTier.name;
-      activeScaleTierLabel = lastTier.label;
     }
 
     // Apply volume economy discount
@@ -1034,6 +1137,7 @@ export function initCostEstimatorEvents() {
     // SVG Graphics
     updatePlotGraphic(aana);
     updateElevationGraphic(activeStorey);
+    updateMaterialSpecGraphic(activeTierKey);
   }
 
   function updatePlotGraphic(aana) {
@@ -1224,8 +1328,14 @@ export function initCostEstimatorEvents() {
 
   storeyBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      storeyBtns.forEach(b => b.classList.remove('active'));
+      storeyBtns.forEach(b => {
+        b.classList.remove('active');
+        b.style.background = '#000';
+        b.style.color = '#FFF';
+      });
       btn.classList.add('active');
+      btn.style.background = 'var(--cmyk-yellow)';
+      btn.style.color = '#000';
       activeStorey = parseFloat(btn.getAttribute('data-storey'));
       calculateCosts();
     });
@@ -1233,9 +1343,34 @@ export function initCostEstimatorEvents() {
 
   tierBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      tierBtns.forEach(b => b.classList.remove('active'));
+      tierBtns.forEach(b => {
+        b.classList.remove('active');
+        b.style.background = '#000';
+        b.style.color = '#FFF';
+        const sub = b.querySelector('div > div:nth-child(2)');
+        if (sub) sub.style.color = '#888';
+      });
+
       btn.classList.add('active');
       activeTierKey = btn.getAttribute('data-tier');
+
+      if (activeTierKey === 'basic') {
+        btn.style.background = 'var(--cmyk-cyan)';
+        btn.style.color = '#000';
+        const sub = btn.querySelector('div > div:nth-child(2)');
+        if (sub) sub.style.color = '#000';
+      } else if (activeTierKey === 'standard') {
+        btn.style.background = 'var(--cmyk-yellow)';
+        btn.style.color = '#000';
+        const sub = btn.querySelector('div > div:nth-child(2)');
+        if (sub) sub.style.color = '#000';
+      } else if (activeTierKey === 'premium') {
+        btn.style.background = 'var(--cmyk-pink)';
+        btn.style.color = '#FFF';
+        const sub = btn.querySelector('div > div:nth-child(2)');
+        if (sub) sub.style.color = '#FFF';
+      }
+
       calculateCosts();
     });
   });
