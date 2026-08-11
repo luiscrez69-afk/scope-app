@@ -239,34 +239,36 @@ export function createPermitHub() {
             <div id="pipeline-progress-fill" style="width: 25%; height: 100%; background: var(--nothing-red); transition: width 0.4s ease;"></div>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; position: relative;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; align-items: stretch; position: relative;">
             
             <!-- STAGE 01 -->
-            <div class="pipeline-stage-card active-stage" data-stage="1" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease;">
-              <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
-                <span style="color: var(--nothing-red); font-weight: 700;">STAGE 01</span>
-                <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
-                  SAMPLE📄
-                  <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
-                    <strong>DRAFT DRAWING REQUIREMENT:</strong>
-                    <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
-                      <li>Site Plan 1:200</li>
-                      <li>Floor Plans 1:100</li>
-                      <li>4 Elevation Views</li>
-                      <li>Drainage Layout</li>
-                    </ul>
-                  </div>
-                </span>
-              </div>
-              <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: #FFF; margin-bottom: 0.4rem;">
-                ARCHITECTURAL DRAFTING
-              </div>
-              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
-                Architect & Structural Engineer complete working drawings per KMC guidelines.
+            <div class="pipeline-stage-card active-stage" data-stage="1" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
+                  <span style="color: var(--nothing-red); font-weight: 700;">STAGE 01</span>
+                  <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
+                    SAMPLE📄
+                    <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
+                      <strong>DRAFT DRAWING REQUIREMENT:</strong>
+                      <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+                        <li>Site Plan 1:200</li>
+                        <li>Floor Plans 1:100</li>
+                        <li>4 Elevation Views</li>
+                        <li>Drainage Layout</li>
+                      </ul>
+                    </div>
+                  </span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: #FFF; margin-bottom: 0.5rem; min-height: 2.8rem; display: flex; align-items: center; line-height: 1.2;">
+                  ARCHITECTURAL DRAFTING
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.2rem;">
+                  Architect & Structural Engineer complete working drawings per KMC guidelines.
+                </div>
               </div>
 
               <!-- SVG STAMP BADGE -->
-              <div style="height: 60px; display: flex; align-items: center; justify-content: center; position: relative;">
+              <div style="height: 55px; margin-top: auto; display: flex; align-items: center; justify-content: center; position: relative;">
                 <svg viewBox="0 0 160 50" style="width: 100%; height: 100%;">
                   <g id="stamp-stage-1" opacity="1">
                     <rect x="5" y="5" width="150" height="40" fill="none" stroke="#FF2800" stroke-width="2" stroke-dasharray="4,2" />
@@ -278,30 +280,32 @@ export function createPermitHub() {
             </div>
 
             <!-- STAGE 02 -->
-            <div class="pipeline-stage-card" data-stage="2" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease;">
-              <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
-                <span style="color: #FFF; font-weight: 700;">STAGE 02</span>
-                <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
-                  SAMPLE📄
-                  <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
-                    <strong>WARD VERIFICATION:</strong>
-                    <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
-                      <li>Ward Clearance Seal</li>
-                      <li>7-Day Public Notice</li>
-                      <li>Boundary Field Report</li>
-                    </ul>
-                  </div>
-                </span>
-              </div>
-              <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: #FFF; margin-bottom: 0.4rem;">
-                WARD OFFICE VERIFICATION
-              </div>
-              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
-                7-day public notice issued & boundary field verification by Ward Technical Team.
+            <div class="pipeline-stage-card" data-stage="2" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
+                  <span style="color: #FFF; font-weight: 700;">STAGE 02</span>
+                  <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
+                    SAMPLE📄
+                    <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
+                      <strong>WARD VERIFICATION:</strong>
+                      <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+                        <li>Ward Clearance Seal</li>
+                        <li>7-Day Public Notice</li>
+                        <li>Boundary Field Report</li>
+                      </ul>
+                    </div>
+                  </span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: #FFF; margin-bottom: 0.5rem; min-height: 2.8rem; display: flex; align-items: center; line-height: 1.2;">
+                  WARD OFFICE VERIFICATION
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.2rem;">
+                  7-day public notice issued & boundary field verification by Ward Technical Team.
+                </div>
               </div>
 
               <!-- SVG STAMP BADGE -->
-              <div style="height: 60px; display: flex; align-items: center; justify-content: center; position: relative;">
+              <div style="height: 55px; margin-top: auto; display: flex; align-items: center; justify-content: center; position: relative;">
                 <svg viewBox="0 0 160 50" style="width: 100%; height: 100%;">
                   <g id="stamp-stage-2" opacity="0">
                     <rect x="5" y="5" width="150" height="40" fill="none" stroke="#FFF" stroke-width="2" />
@@ -313,30 +317,32 @@ export function createPermitHub() {
             </div>
 
             <!-- STAGE 03 -->
-            <div class="pipeline-stage-card" data-stage="3" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease;">
-              <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
-                <span style="color: var(--nothing-red); font-weight: 700;">STAGE 03</span>
-                <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
-                  SAMPLE📄
-                  <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
-                    <strong>TEMPORARY PERMIT:</strong>
-                    <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
-                      <li>Asthayi Swikriti Seal</li>
-                      <li>Plinth Level Check</li>
-                      <li>Plinth Inspection Pass</li>
-                    </ul>
-                  </div>
-                </span>
-              </div>
-              <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: #FFF; margin-bottom: 0.4rem;">
-                ASTHAYI SWIKRITI (TEMP PERMIT)
-              </div>
-              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
-                Temporary construction permit granted for foundation & plinth level execution.
+            <div class="pipeline-stage-card" data-stage="3" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
+                  <span style="color: var(--nothing-red); font-weight: 700;">STAGE 03</span>
+                  <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
+                    SAMPLE📄
+                    <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
+                      <strong>TEMPORARY PERMIT:</strong>
+                      <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+                        <li>Asthayi Swikriti Seal</li>
+                        <li>Plinth Level Check</li>
+                        <li>Plinth Inspection Pass</li>
+                      </ul>
+                    </div>
+                  </span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: #FFF; margin-bottom: 0.5rem; min-height: 2.8rem; display: flex; align-items: center; line-height: 1.2;">
+                  ASTHAYI SWIKRITI (TEMP PERMIT)
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.2rem;">
+                  Temporary construction permit granted for foundation & plinth level execution.
+                </div>
               </div>
 
               <!-- SVG STAMP BADGE -->
-              <div style="height: 60px; display: flex; align-items: center; justify-content: center; position: relative;">
+              <div style="height: 55px; margin-top: auto; display: flex; align-items: center; justify-content: center; position: relative;">
                 <svg viewBox="0 0 160 50" style="width: 100%; height: 100%;">
                   <g id="stamp-stage-3" opacity="0">
                     <rect x="5" y="5" width="150" height="40" fill="none" stroke="#FF2800" stroke-width="2" />
@@ -348,30 +354,32 @@ export function createPermitHub() {
             </div>
 
             <!-- STAGE 04 -->
-            <div class="pipeline-stage-card" data-stage="4" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease;">
-              <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
-                <span style="color: #FFF; font-weight: 700;">STAGE 04</span>
-                <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
-                  SAMPLE📄
-                  <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
-                    <strong>FINAL CERTIFICATE:</strong>
-                    <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
-                      <li>Nirmana Sampanna Seal</li>
-                      <li>NEA Power Connection</li>
-                      <li>KUKL Water Meter Pass</li>
-                    </ul>
-                  </div>
-                </span>
-              </div>
-              <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: #FFF; margin-bottom: 0.4rem;">
-                NIRMAṆA SAMPANNA (FINAL CERT)
-              </div>
-              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
-                Final completion inspection, utility connection clearance & permanent certificate.
+            <div class="pipeline-stage-card" data-stage="4" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; cursor: pointer; transition: transform 0.2s ease; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem;">
+                  <span style="color: #FFF; font-weight: 700;">STAGE 04</span>
+                  <span class="doc-sample-trigger" style="position: relative; color: var(--nothing-red); cursor: pointer; text-decoration: underline;">
+                    SAMPLE📄
+                    <div class="doc-sample-popover" style="display: none; position: absolute; top: 120%; right: 0; background: #000; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; width: 200px; z-index: 50; font-size: 0.7rem; color: #FFF;">
+                      <strong>FINAL CERTIFICATE:</strong>
+                      <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+                        <li>Nirmana Sampanna Seal</li>
+                        <li>NEA Power Connection</li>
+                        <li>KUKL Water Meter Pass</li>
+                      </ul>
+                    </div>
+                  </span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: #FFF; margin-bottom: 0.5rem; min-height: 2.8rem; display: flex; align-items: center; line-height: 1.2;">
+                  NIRMAṆA SAMPANNA (FINAL CERT)
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.2rem;">
+                  Final completion inspection, utility connection clearance & permanent certificate.
+                </div>
               </div>
 
               <!-- SVG STAMP BADGE -->
-              <div style="height: 60px; display: flex; align-items: center; justify-content: center; position: relative;">
+              <div style="height: 55px; margin-top: auto; display: flex; align-items: center; justify-content: center; position: relative;">
                 <svg viewBox="0 0 160 50" style="width: 100%; height: 100%;">
                   <g id="stamp-stage-4" opacity="0">
                     <rect x="5" y="5" width="150" height="40" fill="none" stroke="#FFF" stroke-width="2.5" />
