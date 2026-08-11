@@ -68,7 +68,7 @@ export function createHomeCards() {
 
                 <!-- Issue Statement Quote Text -->
                 <blockquote style="margin: 0 0 1.6rem 0; font-family: 'MangoGrotesque', var(--font-display), sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: #FFF; line-height: 1.15; letter-spacing: 0.3px;">
-                  "Based on trends, rural municipalities are forecasted to reach only 50% compliance next year unless engineer availability improves - since compliance strongly correlates with access to certified engineers."
+                  "Based on trends, rural municipalities are forecasted to reach only 50% compliance next year unless engineer availability improves."
                 </blockquote>
 
                 <!-- Metric Progress Indicator -->
