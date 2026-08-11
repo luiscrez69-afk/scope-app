@@ -31,8 +31,8 @@ export function createPermitHub() {
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 1rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1rem;">
             <div>
               <span class="badge brutal-badge yellow" style="background: var(--nothing-red); color: #FFF;">MUNICIPAL RULE CHECKER</span>
-              <h3 style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: #FFF; margin-top: 0.4rem; letter-spacing: 1px;">
-                1. Bylaws Calculator
+              <h3 style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: #FFF; margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 1px;">
+                1. BYLAWS CALCULATOR
               </h3>
             </div>
             <div id="bylaws-status-stamp" style="background: var(--nothing-red); color: #FFF; font-family: var(--font-mono); font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem;">
