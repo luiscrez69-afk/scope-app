@@ -1,20 +1,159 @@
 /**
  * CostEstimator Component - SCOPE Web App (Nothing Tech Inspired)
- * Kathmandu Valley Construction Cost Calculator with Guided 5-Step Carousel Wizard, Finishing Tier Visual Previews,
- * Dynamic Neobrutalist Architectural Land Plot Graphic SVG, Architectural Structural Elevation Graphic SVG,
- * Pure Visual SVG Material Assembly Cutaway & Swatch Matrix Graphic Diagram,
- * Dynamic SVG Municipal Permit & Geotechnical Soil Stamp Graphic Board,
- * and Cost Allocation Stacked Bar & Raw Material Quantity Counter Board
+ * Kathmandu Valley Construction Cost Calculator with Interactive 6-Category Building Carousel Selector,
+ * Accurate Engineering Discipline Cost Ratios, Volume Scale Economy Tiers, Resort Master Planning Module,
+ * Dynamic SVG Graphic Synchronization (Plot, Elevation, Material Swatches),
+ * and Expandable BOQ Receipt Discipline Breakdown.
  */
 
 const AANA_TO_SQFT = 342.25;
 const GROUND_COVERAGE_RATIO = 0.70; // 70% municipality ground coverage ratio
+const ROPANI_TO_SQFT = 5476; // 1 Ropani = 5,476 sq. ft.
 
-export const FINISH_TIERS = {
-  basic: { name: "BASIC", rate: 3800, label: "NPR 3,800/sq.ft", desc: "Local brick, standard tiles, PVC & local fittings", img: "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=400&q=80" },
-  standard: { name: "STANDARD", rate: 4800, label: "NPR 4,800/sq.ft", desc: "AAC/Red brick, quality porcelain, CP fittings, aluminum doors", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" },
-  premium: { name: "PREMIUM", rate: 6800, label: "NPR 6,800/sq.ft", desc: "Italian marble, Kohler sanitary, teak wood, structural steel", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" }
-};
+export const BUILDING_CATEGORIES = [
+  {
+    id: "residential",
+    title: "RESIDENTIAL & MIXED-USE HOUSING",
+    icon: "🏡",
+    badge: "HOUSING & DUPLEX",
+    desc: "Single-family residences, duplex villas, and mixed-use private housing.",
+    defaultRates: { basic: 3800, standard: 4800, premium: 6800 },
+    scaleTiers: [
+      { name: "Standard Tier", limitSqft: 3500, discountPct: 0, label: "Up to 3,500 sq. ft. (Standard Rate)" },
+      { name: "Large Scale Volume Discount", limitSqft: Infinity, discountPct: 6, label: "> 3,500 sq. ft. (6% Volume Savings)" }
+    ],
+    disciplines: [
+      { name: "Architectural Design & Detailing", pct: 50, color: "var(--nothing-red)" },
+      { name: "Structural Engineering", pct: 20, color: "#FFF" },
+      { name: "Sanitation & Plumbing", pct: 10, color: "#AAA" },
+      { name: "Electrical & Lighting", pct: 10, color: "#888" },
+      { name: "BoQ, Specifications & Contract Docs", pct: 10, color: "#666" }
+    ],
+    svgType: "residential"
+  },
+  {
+    id: "commercial",
+    title: "COMMERCIAL & OFFICE BUILDINGS",
+    icon: "🏢",
+    badge: "OFFICES & RETAIL TOWER",
+    desc: "Commercial complexes, IT parks, retail centers, and office towers.",
+    defaultRates: { basic: 4200, standard: 5400, premium: 7500 },
+    scaleTiers: [
+      { name: "Tier 1: Standard Commercial", limitSqft: 10000, discountPct: 0, label: "Up to 10,000 sq. ft." },
+      { name: "Tier 2: Mid-Rise Volume Scale", limitSqft: 50000, discountPct: 5, label: "10k - 50k sq. ft. (5% Volume Economy)" },
+      { name: "Tier 3: High-Rise Volume Scale", limitSqft: Infinity, discountPct: 10, label: "> 50k sq. ft. (10% High-Rise Economy)" }
+    ],
+    disciplines: [
+      { name: "Architectural Design & Detailing", pct: 55, color: "var(--nothing-red)" },
+      { name: "Structural Engineering", pct: 20, color: "#FFF" },
+      { name: "Sanitation & Plumbing", pct: 7.5, color: "#AAA" },
+      { name: "Electrical & Power Systems", pct: 7.5, color: "#888" },
+      { name: "HVAC & Air Conditioning Systems", pct: 5.0, color: "#666" },
+      { name: "BoQ, Specifications & Contract Docs", pct: 5.0, color: "#444" }
+    ],
+    svgType: "commercial"
+  },
+  {
+    id: "hospitals",
+    title: "HOSPITALS & HEALTH INSTITUTIONS",
+    icon: "🏥",
+    badge: "MEDICAL & HEALTHCARE",
+    desc: "Hospitals, diagnostic centers, clinics, and medical research facilities.",
+    defaultRates: { basic: 5200, standard: 6800, premium: 9200 },
+    scaleTiers: [
+      { name: "Tier 1: Community Hospital", limitSqft: 40000, discountPct: 0, label: "Up to 40,000 sq. ft." },
+      { name: "Tier 2: Regional Medical Center", limitSqft: 100000, discountPct: 6, label: "40k - 100k sq. ft. (6% Medical Economy)" },
+      { name: "Tier 3: Tertiary Care Hospital", limitSqft: Infinity, discountPct: 12, label: "> 100k sq. ft. (12% Scale Efficiency)" }
+    ],
+    disciplines: [
+      { name: "Architectural Design & Medical Layouts", pct: 55, color: "var(--nothing-red)" },
+      { name: "Structural Engineering", pct: 20, color: "#FFF" },
+      { name: "Sanitation, Medical Plumbing & Gas", pct: 7.5, color: "#AAA" },
+      { name: "Electrical & Emergency Power", pct: 7.5, color: "#888" },
+      { name: "HVAC & Cleanroom Ventilation", pct: 5.0, color: "#666" },
+      { name: "BoQ, Specifications & Contract Docs", pct: 5.0, color: "#444" }
+    ],
+    svgType: "hospitals"
+  },
+  {
+    id: "resorts",
+    title: "RESORTS & HOTEL BUILDINGS",
+    icon: "🏖️",
+    badge: "HOSPITALITY & MASTER PLAN",
+    desc: "Luxury resorts, boutique hotels, eco-lodges, and master-planned retreats.",
+    hasMasterPlanModule: true,
+    defaultRates: { basic: 5500, standard: 7200, premium: 9800 },
+    scaleTiers: [
+      { name: "Tier 1: Boutique Resort", limitSqft: 40000, discountPct: 0, label: "Up to 40,000 sq. ft." },
+      { name: "Tier 2: Premium Hotel Complex", limitSqft: 100000, discountPct: 5, label: "40k - 100k sq. ft. (5% Economy)" },
+      { name: "Tier 3: Mega Resort Destination", limitSqft: Infinity, discountPct: 10, label: "> 100k sq. ft. (10% Scale Economy)" }
+    ],
+    masterPlanTiers: [
+      { name: "Compact Master Plan", limitRopani: 20, feePerRopani: 150000, label: "Up to 20 Ropanis (NPR 1.5 Lakhs / Ropani)" },
+      { name: "Mid-Scale Master Plan", limitRopani: 50, feePerRopani: 120000, label: "20–50 Ropanis (NPR 1.2 Lakhs / Ropani)" },
+      { name: "Large Destination Plan", limitRopani: Infinity, feePerRopani: 95000, label: "Above 50 Ropanis (NPR 95k / Ropani)" }
+    ],
+    masterPlanBreakdown: [
+      { name: "Conceptual Architecture & Zoning", pct: 60, color: "var(--nothing-red)" },
+      { name: "Site Building Services", pct: 20, color: "#FFF" },
+      { name: "Landscape Details & Amenities", pct: 10, color: "#AAA" },
+      { name: "Site Infrastructure & Utilities", pct: 10, color: "#888" }
+    ],
+    disciplines: [
+      { name: "Architectural & Hospitality Planning", pct: 55, color: "var(--nothing-red)" },
+      { name: "Structural Engineering", pct: 20, color: "#FFF" },
+      { name: "Sanitation & Plumbing", pct: 7.5, color: "#AAA" },
+      { name: "Electrical & Accent Lighting", pct: 7.5, color: "#888" },
+      { name: "HVAC Systems", pct: 5.0, color: "#666" },
+      { name: "BoQ & Contract Docs", pct: 5.0, color: "#444" }
+    ],
+    svgType: "resorts"
+  },
+  {
+    id: "apartments",
+    title: "APARTMENT BUILDINGS",
+    icon: "🏙️",
+    badge: "HIGH-RISE RESIDENTIAL",
+    desc: "Multi-family apartment towers, condominiums, and housing societies.",
+    defaultRates: { basic: 4000, standard: 5000, premium: 7000 },
+    scaleTiers: [
+      { name: "Tier 1: Low-Rise Apartments", limitSqft: 10000, discountPct: 0, label: "Up to 10,000 sq. ft." },
+      { name: "Tier 2: Mid-Rise Apartments", limitSqft: 50000, discountPct: 5, label: "10k - 50k sq. ft. (5% Volume Economy)" },
+      { name: "Tier 3: High-Rise Condo Tower", limitSqft: Infinity, discountPct: 10, label: "> 50k sq. ft. (10% High-Rise Economy)" }
+    ],
+    disciplines: [
+      { name: "Architectural Design & Unit Layouts", pct: 55, color: "var(--nothing-red)" },
+      { name: "Structural Engineering", pct: 20, color: "#FFF" },
+      { name: "Sanitation & Plumbing", pct: 7.5, color: "#AAA" },
+      { name: "Electrical & Utility Services", pct: 7.5, color: "#888" },
+      { name: "HVAC Systems", pct: 5.0, color: "#666" },
+      { name: "BoQ & Contract Docs", pct: 5.0, color: "#444" }
+    ],
+    svgType: "apartments"
+  },
+  {
+    id: "academic",
+    title: "ACADEMIC INSTITUTIONS & MULTI-PURPOSE HALLS",
+    icon: "🎓",
+    badge: "EDUCATION & AUDITORIUM",
+    desc: "Schools, university campuses, auditoriums, and community halls.",
+    defaultRates: { basic: 3900, standard: 4900, premium: 6900 },
+    scaleTiers: [
+      { name: "Tier 1: School / Small Hall", limitSqft: 10000, discountPct: 0, label: "Up to 10,000 sq. ft." },
+      { name: "Tier 2: College Campus / Hall", limitSqft: 50000, discountPct: 5, label: "10k - 50k sq. ft. (5% Campus Economy)" },
+      { name: "Tier 3: University / Mega Complex", limitSqft: Infinity, discountPct: 10, label: "> 50k sq. ft. (10% Scale Efficiency)" }
+    ],
+    disciplines: [
+      { name: "Architectural Design & Spatial Planning", pct: 55, color: "var(--nothing-red)" },
+      { name: "Structural Engineering", pct: 20, color: "#FFF" },
+      { name: "Sanitation & Public Washroom Services", pct: 7.5, color: "#AAA" },
+      { name: "Electrical & Auditorium Acoustics/Lighting", pct: 7.5, color: "#888" },
+      { name: "HVAC Systems", pct: 5.0, color: "#666" },
+      { name: "BoQ & Contract Docs", pct: 5.0, color: "#444" }
+    ],
+    svgType: "academic"
+  }
+];
 
 export function createCostEstimator() {
   return `
@@ -22,15 +161,49 @@ export function createCostEstimator() {
       <div class="scope-container">
         
         <!-- Header Banner -->
-        <div class="section-title-wrap" style="margin-bottom: 2.5rem;">
+        <div class="section-title-wrap" style="margin-bottom: 1.8rem;">
           <div>
-            <span class="section-tag">● KATHMANDU VALLEY // 5-STEP GUIDED CONSOLE</span>
-            <h2 class="section-title" style="margin-top: 0.6rem;">
-              CONSTRUCTION COST CALCULATOR
+            <span class="section-tag">● KATHMANDU VALLEY // ARCHITECTURAL ESTIMATOR</span>
+            <h2 class="section-title" style="margin-top: 0.5rem;">
+              CONSTRUCTION COST ESTIMATOR
             </h2>
           </div>
           <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); font-weight: 700; letter-spacing: 1px;">
-            [ 1 AANA = 342.25 SQ. FT. // 70% GROUND COVERAGE ]
+            [ 6 BUILDING CATEGORIES // VOLUME ECONOMY OF SCALE ]
+          </div>
+        </div>
+
+        <!-- 1. INTERACTIVE 6-CATEGORY BUILDING CAROUSEL SELECTOR -->
+        <div class="building-category-carousel-wrap" style="background: var(--bg-card); border: var(--border-thick); border-radius: var(--radius-card); padding: 1.5rem; margin-bottom: 2rem; position: relative;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;">
+            <div>
+              <span class="badge brutal-badge yellow" style="background: var(--nothing-red); color: #FFF;">BUILDING CLASSIFICATION</span>
+              <h3 style="font-family: var(--font-mono); font-size: 1.3rem; font-weight: 700; color: #FFF; margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 1px;">
+                SELECT BUILDING CATEGORY (6 TYPOLOGIES)
+              </h3>
+            </div>
+
+            <!-- Carousel Nav Arrows -->
+            <div style="display: flex; gap: 0.6rem; align-items: center;">
+              <button id="cat-carousel-prev" class="btn-brutal white" style="padding: 0.4rem 0.8rem; font-size: 1.1rem; min-height: 40px; border-radius: 4px;">◀</button>
+              <button id="cat-carousel-next" class="btn-brutal yellow" style="padding: 0.4rem 0.8rem; font-size: 1.1rem; min-height: 40px; border-radius: 4px; background: var(--nothing-red); color: #FFF;">▶</button>
+            </div>
+          </div>
+
+          <!-- Carousel Cards Track -->
+          <div id="cat-carousel-track-container" style="overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; padding-bottom: 0.5rem;">
+            <div style="display: flex; gap: 1rem; width: max-content;">
+              ${BUILDING_CATEGORIES.map((cat, idx) => `
+                <div class="building-cat-card ${idx === 0 ? 'active' : ''}" data-cat-id="${cat.id}" style="background: ${idx === 0 ? 'var(--nothing-red)' : 'var(--bg-surface)'}; color: #FFF; border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem 1.2rem; min-width: 220px; max-width: 260px; cursor: pointer; transition: all 0.2s ease; user-select: none;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                    <span style="font-size: 1.6rem;">${cat.icon}</span>
+                    <span class="badge" style="font-family: var(--font-mono); font-size: 0.6rem; background: #000; color: #FFF; padding: 0.1rem 0.4rem; border-radius: 4px;">${cat.badge}</span>
+                  </div>
+                  <div style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; line-height: 1.1; margin-bottom: 0.3rem;">${cat.title}</div>
+                  <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted);">${cat.desc}</div>
+                </div>
+              `).join('')}
+            </div>
           </div>
         </div>
 
@@ -40,35 +213,35 @@ export function createCostEstimator() {
           <!-- Top Wizard Progress Bar -->
           <div style="margin-bottom: 2rem;">
             <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.8rem;">
-              <span id="wizard-step-badge" style="color: var(--nothing-red);">STEP 01 OF 05 // LAND AREA</span>
-              <span id="wizard-percent-badge" style="color: var(--text-muted);">20% COMPLETE</span>
+              <span id="wizard-step-badge" style="color: var(--nothing-red);">STEP 01 OF 05 // LAND & BUILT-UP AREA</span>
+              <span id="wizard-percent-badge" style="color: #FFF;">20% COMPLETE</span>
             </div>
 
-            <!-- Dot Matrix Progress Bar -->
+            <!-- Progress Bar -->
             <div style="width: 100%; height: 8px; background: var(--bg-surface); border-radius: 4px; overflow: hidden;">
               <div id="wizard-progress-fill" style="width: 20%; height: 100%; background: var(--nothing-red); transition: width 0.4s ease;"></div>
             </div>
 
             <!-- Step Dots Navigation Bar -->
-            <div class="wizard-steps-nav" style="display: flex; justify-content: space-between; margin-top: 1.2rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+            <div class="wizard-steps-nav" style="display: flex; justify-content: space-between; margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;">
               <button class="wiz-step-btn active" data-step="1" style="background: none; border: none; cursor: pointer; color: #FFF; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem;">
-                <span class="wiz-dot" style="width: 24px; height: 24px; border-radius: 50%; background: var(--nothing-red); color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 900;">1</span>
-                <span>LAND AREA</span>
+                <span class="wiz-dot" style="width: 24px; height: 24px; border-radius: 50%; background: var(--nothing-red); color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 700;">1</span>
+                <span>AREA & SCALE</span>
               </button>
               <button class="wiz-step-btn" data-step="2" style="background: none; border: none; cursor: pointer; color: #666; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem;">
-                <span class="wiz-dot" style="width: 24px; height: 24px; border-radius: 50%; background: #222; color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 900;">2</span>
+                <span class="wiz-dot" style="width: 24px; height: 24px; border-radius: 50%; background: #333; color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 700;">2</span>
                 <span>STOREYS</span>
               </button>
               <button class="wiz-step-btn" data-step="3" style="background: none; border: none; cursor: pointer; color: #666; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem;">
-                <span class="wiz-dot" style="width: 24px; height: 24px; border-radius: 50%; background: #222; color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 900;">3</span>
+                <span class="wiz-dot" style="width: 24px; height: 24px; border-radius: 50%; background: #333; color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 700;">3</span>
                 <span>FINISH TIER</span>
               </button>
               <button class="wiz-step-btn" data-step="4" style="background: none; border: none; cursor: pointer; color: #666; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem;">
-                <span class="wiz-dot" style="width: 24px; height: 24px; border-radius: 50%; background: #222; color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 900;">4</span>
-                <span>PERMITS</span>
+                <span class="wiz-dot" style="width: 24px; height: 24px; border-radius: 50%; background: #333; color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 700;">4</span>
+                <span>PERMITS & MODULES</span>
               </button>
               <button class="wiz-step-btn" data-step="5" style="background: none; border: none; cursor: pointer; color: #666; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem;">
-                <span class="wiz-dot" style="width: 24px; height: 24px; border-radius: 50%; background: #222; color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 900;">5</span>
+                <span class="wiz-dot" style="width: 24px; height: 24px; border-radius: 50%; background: #333; color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 700;">5</span>
                 <span>BOQ SUMMARY</span>
               </button>
             </div>
@@ -78,43 +251,51 @@ export function createCostEstimator() {
           <div class="wizard-carousel-viewport" style="overflow: hidden; min-height: 440px; position: relative;">
             <div class="wizard-carousel-track" style="display: flex; transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); width: 500%;">
               
-              <!-- STEP 1: LAND AREA SLIDER & DYNAMIC ARCHITECTURAL LAND PLOT GRAPHIC -->
+              <!-- STEP 1 -->
               <div class="wizard-slide" style="width: 20%; padding: 1.5rem; box-sizing: border-box; flex-shrink: 0;">
                 <h3 style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--nothing-red); text-transform: uppercase; margin-bottom: 0.8rem; letter-spacing: 1px;">
-                  1. SELECT LAND AREA IN AANA
+                  1. SELECT PLOT & BUILT-UP AREA
                 </h3>
                 <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-                  Use the slider below to set your plot size in Kathmandu Aana units (1 Aana = 342.25 sq. ft.).
+                  Set plot size in Aana or direct built-up area for the active building category (<span id="cat-title-step1" style="color: #FFF; font-weight: 700;">RESIDENTIAL & MIXED-USE HOUSING</span>).
                 </p>
 
-                <div class="control-group" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-card); padding: 1.8rem; margin-bottom: 1.5rem;">
-                  <div class="control-label" style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                    <span style="color: var(--text-muted); font-weight: 700; font-size: 1rem;">PLOT SIZE:</span>
+                <div class="control-group" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.8rem; margin-bottom: 1.5rem;">
+                  <div class="control-label" style="display: flex; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <span style="color: var(--nothing-red); font-weight: 700; font-size: 1.1rem;">PLOT AREA (AANA):</span>
                     <span id="ktm-aana-val" style="color: #FFF; font-weight: 700; font-size: 1.3rem; font-family: var(--font-mono);">4.0 AANA (1,369 SQ. FT.)</span>
                   </div>
-                  <input type="range" id="ktm-aana-slider" class="brutal-slider" min="2" max="10" step="0.5" value="4" style="width: 100%; height: 12px; cursor: pointer; accent-color: var(--nothing-red);" />
+                  <input type="range" id="ktm-aana-slider" class="brutal-slider" min="2" max="25" step="0.5" value="4" style="width: 100%; height: 16px; cursor: pointer; accent-color: var(--nothing-red);" />
                   <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.8rem; color: #888; margin-top: 0.8rem;">
-                    <span>2.0 Aana (Min)</span>
-                    <span>5.0 Aana</span>
-                    <span>10.0 Aana (Max)</span>
+                    <span>2.0 Aana (Small)</span>
+                    <span>10.0 Aana</span>
+                    <span>25.0 Aana (Large Complex)</span>
                   </div>
                 </div>
 
+                <!-- VOLUME SCALE TIER BADGE -->
+                <div id="volume-tier-indicator-box" style="background: var(--bg-surface); border: 1px solid var(--nothing-red); border-radius: 6px; padding: 0.9rem 1.2rem; font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                  <div>
+                    <span style="color: var(--text-muted);">VOLUME SCALE TIER:</span>
+                    <span id="scale-tier-name" style="color: #FFF; font-weight: 700; margin-left: 0.4rem;">Standard Tier (Up to 3,500 sq. ft.)</span>
+                  </div>
+                  <span id="scale-tier-discount" style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">STANDARD BASE RATE</span>
+                </div>
+
                 <!-- DYNAMIC NEOBRUTALIST ARCHITECTURAL LAND PLOT GRAPHIC SVG -->
-                <div class="land-plot-graphic-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-card); padding: 1.2rem; position: relative;">
+                <div class="land-plot-graphic-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; position: relative;">
                   <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
                     <span style="color: var(--nothing-red); font-weight: 700;">📐 INTERACTIVE LAND BOUNDARY & BUILDABLE FOOTPRINT</span>
-                    <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">VISUAL SCALE // 1 AANA = 342.25 SQ FT</span>
+                    <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">TYPOLOGY MATRIX // 70% COVERAGE RATIO</span>
                   </div>
 
-                  <div style="width: 100%; height: 210px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                  <div style="width: 100%; height: 210px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
                     <svg id="plot-svg-canvas" viewBox="0 0 400 200" style="width: 100%; height: 100%;">
                       <defs>
-                        <pattern id="hatch-pattern-nothing" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+                        <pattern id="hatch-pattern-n" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
                           <line x1="0" y1="0" x2="0" y2="10" stroke="#FF2800" stroke-width="2" />
                         </pattern>
                       </defs>
-
                       <g stroke="#1A1A1E" stroke-width="1">
                         <line x1="0" y1="40" x2="400" y2="40" />
                         <line x1="0" y1="80" x2="400" y2="80" />
@@ -125,120 +306,119 @@ export function createCostEstimator() {
                         <line x1="240" y1="0" x2="240" y2="200" />
                         <line x1="320" y1="0" x2="320" y2="200" />
                       </g>
-
-                      <rect id="svg-plot-rect" x="80" y="20" width="240" height="160" fill="none" stroke="#FFFFFF" stroke-width="3" />
-                      <rect id="svg-setback-rect" x="96" y="32" width="208" height="136" fill="none" stroke="#FF2800" stroke-width="2" stroke-dasharray="5,4" />
-                      <rect id="svg-build-rect" x="106" y="40" width="188" height="120" fill="url(#hatch-pattern-nothing)" fill-opacity="0.3" stroke="#FF2800" stroke-width="2" />
-                      <text id="svg-plot-dim-w" x="200" y="14" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">37.0 FT (WIDTH)</text>
-                      <text id="svg-plot-dim-h" x="345" y="105" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="start">37.0 FT (DEPTH)</text>
+                      <rect id="svg-plot-rect" x="80" y="20" width="240" height="160" fill="none" stroke="#FF2800" stroke-width="3" />
+                      <rect id="svg-setback-rect" x="96" y="32" width="208" height="136" fill="none" stroke="#FFF" stroke-width="2" stroke-dasharray="5,4" />
+                      <rect id="svg-build-rect" x="106" y="40" width="188" height="120" fill="url(#hatch-pattern-n)" fill-opacity="0.3" stroke="#FF2800" stroke-width="2" />
+                      <text id="svg-plot-dim-w" x="200" y="14" fill="#FF2800" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">37.0 FT (WIDTH)</text>
+                      <text id="svg-plot-dim-h" x="345" y="105" fill="#FF2800" font-family="monospace" font-size="11" font-weight="bold" text-anchor="start">37.0 FT (DEPTH)</text>
                       <text id="svg-build-footprint-txt" x="200" y="96" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">BUILDABLE FOOTPRINT (70%)</text>
-                      <text id="svg-plot-sqft-txt" x="200" y="116" fill="#FF2800" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">958 SQ. FT. GROUND COVERAGE</text>
+                      <text id="svg-plot-sqft-txt" x="200" y="116" fill="#FFF" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">958 SQ. FT. GROUND COVERAGE</text>
                     </svg>
                   </div>
 
-                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-top: 0.8rem; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: 0.8rem; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
                     <div>PLOT AREA: <span id="plot-spec-total" style="color: #FFF; font-weight: 700;">1,369 SQ. FT.</span></div>
                     <div>SETBACK BUFFER: <span style="color: var(--nothing-red); font-weight: 700;">5.0 FT (1.5M)</span></div>
-                    <div>MAX GROUND COVERAGE (70%): <span id="plot-spec-built" style="color: #FFF; font-weight: 700;">958.3 SQ. FT.</span></div>
+                    <div>GROUND COVERAGE (70%): <span id="plot-spec-built" style="color: #FFF; font-weight: 700;">958.3 SQ. FT.</span></div>
                   </div>
                 </div>
 
               </div>
 
-              <!-- STEP 2: STOREYS SELECTOR & DYNAMIC ARCHITECTURAL ELEVATION GRAPHIC -->
+              <!-- STEP 2 -->
               <div class="wizard-slide" style="width: 20%; padding: 1.5rem; box-sizing: border-box; flex-shrink: 0;">
-                <h3 style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: #FFF; text-transform: uppercase; margin-bottom: 0.8rem; letter-spacing: 1px;">
+                <h3 style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--nothing-red); text-transform: uppercase; margin-bottom: 0.8rem; letter-spacing: 1px;">
                   2. NUMBER OF STOREYS
                 </h3>
                 <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-                  Select the total storeys for the proposed building structure (70% municipal ground coverage applied).
+                  Select total floor levels for <span id="cat-title-step2" style="color: #FFF; font-weight: 700;">RESIDENTIAL & MIXED-USE HOUSING</span>.
                 </p>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
-                  <button class="storey-btn btn-brutal white" data-storey="1" style="padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; border-radius: var(--radius-card);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
+                  <button class="storey-btn btn-brutal white" data-storey="1" style="padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; border-radius: 6px;">
                     <span style="font-size: 2rem;">🏡</span>
                     <span style="font-weight: 700; font-size: 1.1rem;">1 STOREY</span>
-                    <span style="font-size: 0.75rem; color: #888;">Single Floor Bungalow</span>
+                    <span style="font-size: 0.75rem; color: #555;">Low-Rise Structure</span>
                   </button>
-                  <button class="storey-btn btn-brutal cyan" data-storey="2" style="padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; border-radius: var(--radius-card);">
+                  <button class="storey-btn btn-brutal cyan" data-storey="2" style="padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; border-radius: 6px;">
                     <span style="font-size: 2rem;">🏠</span>
                     <span style="font-weight: 700; font-size: 1.1rem;">2 STOREYS</span>
-                    <span style="font-size: 0.75rem; color: #888;">Double Storey Residence</span>
+                    <span style="font-size: 0.75rem; color: #FFF;">Standard 2-Level Block</span>
                   </button>
-                  <button class="storey-btn btn-brutal yellow active" data-storey="2.5" style="padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; border-radius: var(--radius-card);">
+                  <button class="storey-btn btn-brutal yellow active" data-storey="2.5" style="padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; border-radius: 6px; background: var(--nothing-red); color: #FFF;">
                     <span style="font-size: 2rem;">🏢</span>
                     <span style="font-weight: 700; font-size: 1.1rem;">2.5 STOREYS</span>
-                    <span style="font-size: 0.75rem; color: var(--nothing-red);">Standard KTM Residence</span>
+                    <span style="font-size: 0.75rem; color: #FFF;">Standard KTM Standard</span>
                   </button>
-                  <button class="storey-btn btn-brutal pink" data-storey="3" style="padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; border-radius: var(--radius-card);">
+                  <button class="storey-btn btn-brutal pink" data-storey="3" style="padding: 1.5rem 1rem; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; border-radius: 6px;">
                     <span style="font-size: 2rem;">🏬</span>
                     <span style="font-weight: 700; font-size: 1.1rem;">3 STOREYS</span>
-                    <span style="font-size: 0.75rem; color: #888;">Full 3-Storey Villa</span>
+                    <span style="font-size: 0.75rem; color: #FFF;">Full 3-Level Block</span>
                   </button>
                 </div>
 
-                <!-- DYNAMIC NEOBRUTALIST ARCHITECTURAL ELEVATION GRAPHIC SVG -->
-                <div class="elevation-graphic-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-card); padding: 1.2rem; position: relative;">
+                <!-- DYNAMIC ELEVATION GRAPHIC SVG -->
+                <div class="elevation-graphic-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; position: relative;">
                   <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
                     <span style="color: var(--nothing-red); font-weight: 700;">🏛️ STRUCTURAL ELEVATION CROSS-SECTION</span>
-                    <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">STRUCTURAL CROSS-SECTION // ELEVATION SCALE</span>
+                    <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">ELEVATION MATRIX</span>
                   </div>
 
-                  <div style="width: 100%; height: 210px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                  <div style="width: 100%; height: 210px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
                     <svg id="elevation-svg-canvas" viewBox="0 0 400 210" style="width: 100%; height: 100%;">
                       <line x1="20" y1="185" x2="380" y2="185" stroke="#FFF" stroke-width="3" />
                       <text x="25" y="198" fill="#888" font-family="monospace" font-size="9" font-weight="bold">GROUND DATUM ±0.00 M</text>
                       <text x="250" y="198" fill="#FF2800" font-family="monospace" font-size="9" font-weight="bold">PLINTH LEVEL +2'0"</text>
 
-                      <g stroke="#FFF" stroke-width="1.5">
+                      <g stroke="#FF2800" stroke-width="1.5">
                         <line id="elev-dim-line" x1="45" y1="185" x2="45" y2="65" />
                         <line x1="40" y1="185" x2="50" y2="185" />
                         <line id="elev-dim-top-cap" x1="40" y1="65" x2="50" y2="65" />
                       </g>
-                      <text id="elev-height-txt" x="40" y="125" fill="#FFF" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end" transform="rotate(-90 40 125)">28.5 FT TOTAL HEIGHT</text>
+                      <text id="elev-height-txt" x="40" y="125" fill="#FF2800" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end" transform="rotate(-90 40 125)">28.5 FT TOTAL HEIGHT</text>
 
                       <g id="floor-l1" opacity="1">
-                        <rect x="75" y="140" width="160" height="45" fill="none" stroke="#FFF" stroke-width="2" />
+                        <rect x="75" y="140" width="160" height="45" fill="none" stroke="#FF2800" stroke-width="2" />
                         <line x1="75" y1="140" x2="235" y2="140" stroke="#FFF" stroke-width="3" />
-                        <rect x="80" y="140" width="12" height="45" fill="#FFF" />
-                        <rect x="150" y="140" width="12" height="45" fill="#FFF" />
-                        <rect x="218" y="140" width="12" height="45" fill="#FFF" />
-                        <rect x="105" y="152" width="32" height="22" fill="none" stroke="#FF2800" stroke-width="1.5" />
-                        <text x="245" y="165" fill="#FFF" font-family="monospace" font-size="10" font-weight="bold">L01: GROUND PLINTH (10.0 FT)</text>
+                        <rect x="80" y="140" width="12" height="45" fill="#FF2800" />
+                        <rect x="150" y="140" width="12" height="45" fill="#FF2800" />
+                        <rect x="218" y="140" width="12" height="45" fill="#FF2800" />
+                        <rect x="105" y="152" width="32" height="22" fill="none" stroke="#FFF" stroke-width="1.5" />
+                        <text x="245" y="165" fill="#FF2800" font-family="monospace" font-size="10" font-weight="bold">L01: GROUND PLINTH (10.0 FT)</text>
                       </g>
 
                       <g id="floor-l2" opacity="1">
-                        <rect x="75" y="95" width="160" height="45" fill="none" stroke="#FF2800" stroke-width="2" />
+                        <rect x="75" y="95" width="160" height="45" fill="none" stroke="#FFF" stroke-width="2" />
                         <line x1="75" y1="95" x2="235" y2="95" stroke="#FFF" stroke-width="3" />
-                        <rect x="80" y="95" width="12" height="45" fill="#FF2800" />
-                        <rect x="150" y="95" width="12" height="45" fill="#FF2800" />
-                        <rect x="218" y="95" width="12" height="45" fill="#FF2800" />
-                        <rect x="105" y="107" width="32" height="22" fill="none" stroke="#FFF" stroke-width="1.5" />
-                        <rect x="175" y="107" width="32" height="22" fill="none" stroke="#FFF" stroke-width="1.5" />
-                        <text x="245" y="120" fill="#FF2800" font-family="monospace" font-size="10" font-weight="bold">L02: UPPER RESIDENCE (10.0 FT)</text>
+                        <rect x="80" y="95" width="12" height="45" fill="#FFF" />
+                        <rect x="150" y="95" width="12" height="45" fill="#FFF" />
+                        <rect x="218" y="95" width="12" height="45" fill="#FFF" />
+                        <rect x="105" y="107" width="32" height="22" fill="none" stroke="#FF2800" stroke-width="1.5" />
+                        <rect x="175" y="107" width="32" height="22" fill="none" stroke="#FF2800" stroke-width="1.5" />
+                        <text x="245" y="120" fill="#FFF" font-family="monospace" font-size="10" font-weight="bold">L02: UPPER FLOOR (10.0 FT)</text>
                       </g>
 
                       <g id="floor-l2-5" opacity="1">
-                        <rect x="75" y="65" width="85" height="30" fill="none" stroke="#FFF" stroke-width="2" />
+                        <rect x="75" y="65" width="85" height="30" fill="none" stroke="#FF2800" stroke-width="2" />
                         <line x1="75" y1="65" x2="160" y2="65" stroke="#FFF" stroke-width="2.5" />
                         <line x1="160" y1="85" x2="235" y2="85" stroke="#FF2800" stroke-width="2" stroke-dasharray="3,3" />
-                        <rect x="80" y="65" width="10" height="30" fill="#FFF" />
-                        <rect x="145" y="65" width="10" height="30" fill="#FFF" />
-                        <text x="245" y="80" fill="#FFF" font-family="monospace" font-size="10" font-weight="bold">L0.5: TERRACE CABIN (8.5 FT)</text>
+                        <rect x="80" y="65" width="10" height="30" fill="#FF2800" />
+                        <rect x="145" y="65" width="10" height="30" fill="#FF2800" />
+                        <text x="245" y="80" fill="#FF2800" font-family="monospace" font-size="10" font-weight="bold">L0.5: TERRACE CABIN (8.5 FT)</text>
                       </g>
 
                       <g id="floor-l3" opacity="0">
-                        <rect x="75" y="50" width="160" height="45" fill="none" stroke="#FF2800" stroke-width="2" />
+                        <rect x="75" y="50" width="160" height="45" fill="none" stroke="#FFF" stroke-width="2" />
                         <line x1="75" y1="50" x2="235" y2="50" stroke="#FFF" stroke-width="3" />
-                        <rect x="80" y="50" width="12" height="45" fill="#FF2800" />
-                        <rect x="150" y="50" width="12" height="45" fill="#FF2800" />
-                        <rect x="218" y="50" width="12" height="45" fill="#FF2800" />
-                        <text x="245" y="65" fill="#FF2800" font-family="monospace" font-size="10" font-weight="bold">L03: TOP VILLA FLOOR (10.0 FT)</text>
+                        <rect x="80" y="50" width="12" height="45" fill="#FFF" />
+                        <rect x="150" y="50" width="12" height="45" fill="#FFF" />
+                        <rect x="218" y="50" width="12" height="45" fill="#FFF" />
+                        <text x="245" y="65" fill="#FFF" font-family="monospace" font-size="10" font-weight="bold">L03: TOP LEVEL FLOOR (10.0 FT)</text>
                       </g>
                     </svg>
                   </div>
 
-                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-top: 0.8rem; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: 0.8rem; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
                     <div>STRUCTURE: <span id="elev-spec-type" style="color: #FFF; font-weight: 700;">2.5 STOREYS (KTM STANDARD)</span></div>
                     <div>FRAME: <span style="color: var(--nothing-red); font-weight: 700;">RCC PILLAR & BEAM</span></div>
                     <div>HEIGHT: <span id="elev-spec-height" style="color: #FFF; font-weight: 700;">28.5 FT (8.68M)</span></div>
@@ -247,436 +427,285 @@ export function createCostEstimator() {
 
               </div>
 
-              <!-- STEP 3: FINISH QUALITY TIERS WITH PURE VECTOR SVG MATERIAL ASSEMBLY GRAPHIC -->
+              <!-- STEP 3 -->
               <div class="wizard-slide" style="width: 20%; padding: 1.5rem; box-sizing: border-box; flex-shrink: 0;">
-                <h3 style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: #FFF; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px;">
+                <h3 style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--nothing-red); text-transform: uppercase; margin-bottom: 0.8rem; letter-spacing: 1px;">
                   3. FINISH QUALITY TIER
                 </h3>
                 <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-                  Select material tier standard per sq. ft. Zero text clutter—pure architectural vector swatches below.
+                  Select material finishing standard per sq. ft. Rate adjusts based on category baseline.
                 </p>
 
                 <div style="display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 1.5rem;">
-                  <button class="tier-btn btn-brutal white" data-tier="basic" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center; border-radius: var(--radius-card);">
-                    <div style="display: flex; align-items: center; gap: 1.2rem;">
-                      <div style="width: 76px; height: 54px; border: 2px solid #FFF; border-radius: 4px; overflow: hidden; flex-shrink: 0; position: relative;">
-                        <img src="${FINISH_TIERS.basic.img}" alt="Basic Kathmandu Finish" style="width: 100%; height: 100%; object-fit: cover;">
-                        <span style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.85); color: #FFF; font-family: var(--font-mono); font-size: 0.55rem; text-align: center; font-weight: 900; padding: 1px 0;">BASIC</span>
-                      </div>
-                      <div>
-                        <div style="font-weight: 700; font-size: 1.05rem;">🔨 BASIC TIER</div>
-                        <div style="font-size: 0.8rem; color: #888; margin-top: 0.2rem;">Local brick, standard porcelain tiles, PVC & local fittings</div>
-                      </div>
+                  <button class="tier-btn btn-brutal white" data-tier="basic" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center; border-radius: 6px;">
+                    <div>
+                      <div style="font-weight: 700; font-size: 1.05rem;">🔨 BASIC TIER</div>
+                      <div style="font-size: 0.8rem; color: #666; margin-top: 0.2rem;">Standard brick, PVC fittings, ceramic tiles</div>
                     </div>
-                    <span style="font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: #FFF; white-space: nowrap;">NPR 3,800 / SQ. FT.</span>
+                    <span id="rate-lbl-basic" style="font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: var(--nothing-red); white-space: nowrap;">NPR 3,800 / SQ. FT.</span>
                   </button>
 
-                  <button class="tier-btn btn-brutal yellow active" data-tier="standard" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center; border-radius: var(--radius-card);">
-                    <div style="display: flex; align-items: center; gap: 1.2rem;">
-                      <div style="width: 76px; height: 54px; border: 2px solid var(--nothing-red); border-radius: 4px; overflow: hidden; flex-shrink: 0; position: relative;">
-                        <img src="${FINISH_TIERS.standard.img}" alt="Standard Kathmandu Finish" style="width: 100%; height: 100%; object-fit: cover;">
-                        <span style="position: absolute; bottom: 0; left: 0; right: 0; background: var(--nothing-red); color: #FFF; font-family: var(--font-mono); font-size: 0.55rem; text-align: center; font-weight: 900; padding: 1px 0;">RECOMMENDED</span>
-                      </div>
-                      <div>
-                        <div style="font-weight: 700; font-size: 1.05rem; color: var(--nothing-red);">🏢 STANDARD TIER (RECOMMENDED)</div>
-                        <div style="font-size: 0.8rem; color: #AAA; margin-top: 0.2rem;">AAC/Red brick, quality tiles, CP fittings, aluminum doors & windows</div>
-                      </div>
+                  <button class="tier-btn btn-brutal yellow active" data-tier="standard" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center; border-radius: 6px; background: var(--nothing-red); color: #FFF;">
+                    <div>
+                      <div style="font-weight: 700; font-size: 1.05rem;">🏢 STANDARD TIER (RECOMMENDED)</div>
+                      <div style="font-size: 0.8rem; color: #FFF; margin-top: 0.2rem;">AAC/Red brick, vitrified tiles, CP fittings, aluminum joinery</div>
                     </div>
-                    <span style="font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: var(--nothing-red); white-space: nowrap;">NPR 4,800 / SQ. FT.</span>
+                    <span id="rate-lbl-standard" style="font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: #FFF; white-space: nowrap;">NPR 4,800 / SQ. FT.</span>
                   </button>
 
-                  <button class="tier-btn btn-brutal pink" data-tier="premium" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center; border-radius: var(--radius-card);">
-                    <div style="display: flex; align-items: center; gap: 1.2rem;">
-                      <div style="width: 76px; height: 54px; border: 2px solid #FFF; border-radius: 4px; overflow: hidden; flex-shrink: 0; position: relative;">
-                        <img src="${FINISH_TIERS.premium.img}" alt="Premium Luxury Finish" style="width: 100%; height: 100%; object-fit: cover;">
-                        <span style="position: absolute; bottom: 0; left: 0; right: 0; background: #FFF; color: #000; font-family: var(--font-mono); font-size: 0.55rem; text-align: center; font-weight: 900; padding: 1px 0;">LUXURY</span>
-                      </div>
-                      <div>
-                        <div style="font-weight: 700; font-size: 1.05rem;">✨ PREMIUM LUXURY TIER</div>
-                        <div style="font-size: 0.8rem; color: #888; margin-top: 0.2rem;">Italian marble, Kohler sanitary, teak wood doors, structural steel retrofitting</div>
-                      </div>
+                  <button class="tier-btn btn-brutal pink" data-tier="premium" style="justify-content: space-between; width: 100%; text-align: left; padding: 1.2rem 1.4rem; gap: 1rem; align-items: center; border-radius: 6px;">
+                    <div>
+                      <div style="font-weight: 700; font-size: 1.05rem;">✨ PREMIUM LUXURY TIER</div>
+                      <div style="font-size: 0.8rem; color: #FFF; margin-top: 0.2rem;">Italian marble, Kohler sanitary, teak wood, structural steel accents</div>
                     </div>
-                    <span style="font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: #FFF; white-space: nowrap;">NPR 6,800 / SQ. FT.</span>
+                    <span id="rate-lbl-premium" style="font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: #FFF; white-space: nowrap;">NPR 6,800 / SQ. FT.</span>
                   </button>
                 </div>
 
-                <!-- DYNAMIC PURE VECTOR SVG MATERIAL ASSEMBLY CUTAWAY & SWATCH GRAPHIC CONTAINER -->
-                <div id="material-spec-container" class="material-spec-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-card); padding: 1.2rem; position: relative; transition: border-color 0.3s ease;">
+                <!-- DYNAMIC MATERIAL ASSEMBLY SVG CONTAINER -->
+                <div id="material-spec-container" class="material-spec-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; position: relative;">
                   <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
                     <span id="mat-spec-tier-badge" style="color: var(--nothing-red); font-weight: 700;">📐 ARCHITECTURAL MATERIAL ASSEMBLY & VECTOR SWATCH DIAGRAM</span>
-                    <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">VECTOR ASSEMBLY // ZERO TEXT MATRIX</span>
+                    <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">VECTOR MATRIX</span>
                   </div>
 
-                  <div style="width: 100%; height: 230px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <svg id="mat-assembly-svg" viewBox="0 0 500 230" style="width: 100%; height: 100%;">
+                  <div style="width: 100%; height: 210px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <svg id="mat-assembly-svg" viewBox="0 0 500 210" style="width: 100%; height: 100%;">
                       <defs>
-                        <pattern id="pat-basic-tile-n" width="16" height="16" patternUnits="userSpaceOnUse">
-                          <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#555" stroke-width="1" />
-                        </pattern>
                         <pattern id="pat-std-tile-n" width="28" height="28" patternUnits="userSpaceOnUse">
                           <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#FF2800" stroke-width="1.2" />
-                        </pattern>
-                        <pattern id="pat-hpl-cladding-n" width="12" height="20" patternUnits="userSpaceOnUse">
-                          <rect width="12" height="20" fill="none" stroke="#FFFFFF" stroke-width="1" />
-                          <line x1="0" y1="10" x2="12" y2="10" stroke="#FFFFFF" stroke-width="1" />
                         </pattern>
                       </defs>
 
                       <g id="cutaway-group">
-                        <rect x="20" y="155" width="200" height="35" fill="#18181A" stroke="#FFF" stroke-width="2" />
-                        <text x="25" y="177" fill="#666" font-family="monospace" font-size="9" font-weight="bold">RCC STRUCTURAL SLAB 150MM</text>
-                        <rect id="cutaway-floor-layer" x="20" y="140" width="200" height="15" fill="url(#pat-std-tile-n)" stroke="#FF2800" stroke-width="1.5" />
-                        <rect x="170" y="25" width="50" height="115" fill="#111" stroke="#FFF" stroke-width="2" />
-                        <rect id="cutaway-wall-layer" x="215" y="25" width="12" height="115" fill="#FF2800" opacity="0.8" />
-                        <rect id="cutaway-window-frame" x="125" y="50" width="45" height="60" fill="none" stroke="#FFF" stroke-width="2" />
-                        <line id="cutaway-glass-1" x1="140" y1="50" x2="140" y2="110" stroke="#FFF" stroke-width="2" />
-                        <line id="cutaway-glass-2" x1="155" y1="50" x2="155" y2="110" stroke="#FFF" stroke-width="1.5" stroke-dasharray="2,2" />
-                        <path d="M 70 130 L 100 130 L 110 145" fill="none" stroke="#FF2800" stroke-width="1.5" />
-                        <text id="lbl-callout-floor" x="30" y="126" fill="#FF2800" font-family="monospace" font-size="9" font-weight="bold">---> FLOOR FINISH</text>
-                        <path d="M 100 75 L 125 75" fill="none" stroke="#FFF" stroke-width="1.5" />
-                        <text id="lbl-callout-win" x="35" y="78" fill="#FFF" font-family="monospace" font-size="9" font-weight="bold">---> PROFILE</text>
+                        <rect x="20" y="145" width="200" height="35" fill="#18181A" stroke="#FFF" stroke-width="2" />
+                        <text x="25" y="167" fill="#666" font-family="monospace" font-size="9" font-weight="bold">RCC STRUCTURAL SLAB 150MM</text>
+                        <rect id="cutaway-floor-layer" x="20" y="130" width="200" height="15" fill="url(#pat-std-tile-n)" stroke="#FF2800" stroke-width="1.5" />
+                        <rect x="170" y="25" width="50" height="105" fill="#111" stroke="#FFF" stroke-width="2" />
+                        <rect id="cutaway-wall-layer" x="215" y="25" width="12" height="105" fill="#FF2800" opacity="0.8" />
+                        <rect id="cutaway-window-frame" x="125" y="45" width="45" height="60" fill="none" stroke="#FFF" stroke-width="2" />
                       </g>
 
-                      <line x1="245" y1="15" x2="245" y2="215" stroke="#333" stroke-width="1.5" stroke-dasharray="4,4" />
+                      <line x1="245" y1="15" x2="245" y2="195" stroke="#333" stroke-width="1.5" stroke-dasharray="4,4" />
 
                       <g id="swatch-matrix-group">
                         <g id="swatch-tile-1" transform="translate(260, 20)">
-                          <rect x="0" y="0" width="100" height="90" fill="#000" stroke="#FFF" stroke-width="1.5" />
-                          <rect id="swatch-bg-1" x="5" y="5" width="90" height="60" fill="url(#pat-std-tile-n)" />
-                          <rect x="0" y="65" width="100" height="25" fill="#18181A" stroke="#FFF" stroke-width="1" />
-                          <text id="swatch-lbl-1" x="50" y="81" fill="#FF2800" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">VITRIFIED // 600x600</text>
-                          <text x="5" y="15" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold">[01] FLOOR</text>
+                          <rect x="0" y="0" width="100" height="80" fill="#000" stroke="#FFF" stroke-width="1.5" />
+                          <rect id="swatch-bg-1" x="5" y="5" width="90" height="50" fill="url(#pat-std-tile-n)" />
+                          <text id="swatch-lbl-1" x="50" y="71" fill="#FF2800" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">VITRIFIED // 600x600</text>
                         </g>
 
                         <g id="swatch-tile-2" transform="translate(375, 20)">
-                          <rect x="0" y="0" width="100" height="90" fill="#000" stroke="#FFF" stroke-width="1.5" />
-                          <g id="swatch-joinery-graphic" stroke="#FF2800" stroke-width="1.5" fill="none">
-                            <rect x="15" y="12" width="70" height="46" />
-                            <line x1="50" y1="12" x2="50" y2="58" />
-                            <circle cx="43" cy="35" r="2" fill="#FF2800" />
-                          </g>
-                          <rect x="0" y="65" width="100" height="25" fill="#18181A" stroke="#FFF" stroke-width="1" />
-                          <text id="swatch-lbl-2" x="50" y="81" fill="#FF2800" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">UPVC // SAL WOOD</text>
-                          <text x="5" y="15" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold">[02] JOINERY</text>
+                          <rect x="0" y="0" width="100" height="80" fill="#000" stroke="#FFF" stroke-width="1.5" />
+                          <text id="swatch-lbl-2" x="50" y="71" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">UPVC // ALUMINUM</text>
                         </g>
 
-                        <g id="swatch-tile-3" transform="translate(260, 120)">
-                          <rect x="0" y="0" width="100" height="90" fill="#000" stroke="#FFF" stroke-width="1.5" />
-                          <g id="swatch-sanitary-graphic" stroke="#FFF" stroke-width="1.5" fill="none">
-                            <path d="M 25 20 C 25 45, 75 45, 75 20 Z" />
-                            <rect x="35" y="15" width="30" height="8" />
-                            <circle cx="50" cy="32" r="3" fill="#FFF" />
-                          </g>
-                          <rect x="0" y="65" width="100" height="25" fill="#18181A" stroke="#FFF" stroke-width="1" />
-                          <text id="swatch-lbl-3" x="50" y="81" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">CONCEALED // CP</text>
-                          <text x="5" y="15" fill="#FF2800" font-family="monospace" font-size="8" font-weight="bold">[03] SANITARY</text>
+                        <g id="swatch-tile-3" transform="translate(260, 110)">
+                          <rect x="0" y="0" width="100" height="80" fill="#000" stroke="#FFF" stroke-width="1.5" />
+                          <text id="swatch-lbl-3" x="50" y="71" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">CONCEALED // CP</text>
                         </g>
 
-                        <g id="swatch-tile-4" transform="translate(375, 120)">
-                          <rect x="0" y="0" width="100" height="90" fill="#000" stroke="#FFF" stroke-width="1.5" />
-                          <rect id="swatch-bg-4" x="5" y="5" width="90" height="60" fill="none" stroke="#FF2800" stroke-width="1" stroke-dasharray="3,3" />
-                          <rect x="0" y="65" width="100" height="25" fill="#18181A" stroke="#FFF" stroke-width="1" />
-                          <text id="swatch-lbl-4" x="50" y="81" fill="#FF2800" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">APEX // ACRYLIC</text>
-                          <text x="5" y="15" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold">[04] FACADE</text>
+                        <g id="swatch-tile-4" transform="translate(375, 110)">
+                          <rect x="0" y="0" width="100" height="80" fill="#000" stroke="#FFF" stroke-width="1.5" />
+                          <text id="swatch-lbl-4" x="50" y="71" fill="#FF2800" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">APEX // ACRYLIC</text>
                         </g>
                       </g>
                     </svg>
                   </div>
 
-                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-top: 0.8rem; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <div>ASSEMBLY TIER: <span id="mat-spec-grade" style="color: #FFF; font-weight: 700;">STANDARD A-GRADE RESIDENTIAL</span></div>
-                    <div>VECTOR CUTAWAY: <span style="color: var(--nothing-red); font-weight: 700;">LIVE STRUCTURAL JUNCTION</span></div>
-                    <div>RATE: <span id="mat-spec-rate" style="color: #FFF; font-weight: 700;">NPR 4,800 / SQ. FT.</span></div>
+                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: 0.8rem; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <div>ASSEMBLY TIER: <span id="mat-spec-grade" style="color: #FFF; font-weight: 700;">STANDARD A-GRADE</span></div>
+                    <div>RATE: <span id="mat-spec-rate" style="color: var(--nothing-red); font-weight: 700;">NPR 4,800 / SQ. FT.</span></div>
                   </div>
                 </div>
 
               </div>
 
-              <!-- STEP 4: MUNICIPAL PERMIT & GEOTECHNICAL SOIL STAMP GRAPHIC BOARD -->
+              <!-- STEP 4 -->
               <div class="wizard-slide" style="width: 20%; padding: 1.5rem; box-sizing: border-box; flex-shrink: 0;">
-                <h3 style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: #FFF; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px;">
-                  4. MUNICIPALITY PERMITS & ADD-ONS
+                <h3 style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--nothing-red); text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px;">
+                  4. MUNICIPAL PERMITS & SPECIAL MODULES
                 </h3>
                 <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-                  Select official government fees and mandatory structural engineering tests required for building permit approval.
+                  Select official government permit clearances and category-specific planning modules.
                 </p>
 
-                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-card); padding: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 1.5rem;">
-                  <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-family: var(--font-mono); font-size: 0.95rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem;">
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 1.5rem;">
+                  <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-family: var(--font-mono); font-size: 0.95rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; padding: 1.2rem;">
                     <div>
                       <span style="font-weight: 700; color: #FFF;">📜 Naksha Pass / Municipality Approval Fee</span>
-                      <div style="font-size: 0.8rem; color: #888; margin-top: 0.2rem;">KMC / Lalitpur municipal blueprint registration fee</div>
+                      <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">KMC / Lalitpur municipal blueprint registration fee</div>
                     </div>
                     <div style="display: flex; align-items: center; gap: 0.8rem;">
                       <span style="color: var(--nothing-red); font-weight: 700; font-size: 1rem;">+NPR 60,000</span>
-                      <input type="checkbox" id="chk-naksha" checked style="width: 20px; height: 20px; accent-color: var(--nothing-red);" />
+                      <input type="checkbox" id="chk-naksha" checked style="width: 22px; height: 22px; accent-color: var(--nothing-red);" />
                     </div>
                   </label>
 
-                  <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-family: var(--font-mono); font-size: 0.95rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem;">
+                  <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-family: var(--font-mono); font-size: 0.95rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; padding: 1.2rem;">
                     <div>
                       <span style="font-weight: 700; color: #FFF;">🧪 Geotechnical Soil Test & Structural Report</span>
-                      <div style="font-size: 0.8rem; color: #888; margin-top: 0.2rem;">Mandatory borehole bearing test (NBC 105:2020 standard)</div>
+                      <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Mandatory borehole bearing test (NBC 105:2020 standard)</div>
                     </div>
                     <div style="display: flex; align-items: center; gap: 0.8rem;">
                       <span style="color: #FFF; font-weight: 700; font-size: 1rem;">+NPR 45,000</span>
-                      <input type="checkbox" id="chk-soil" checked style="width: 20px; height: 20px; accent-color: var(--nothing-red);" />
+                      <input type="checkbox" id="chk-soil" checked style="width: 22px; height: 22px; accent-color: var(--nothing-red);" />
                     </div>
                   </label>
+
+                  <!-- OPTIONAL RESORT MASTER PLANNING MODULE -->
+                  <div id="resort-masterplan-box" style="display: none; background: var(--bg-card); border: 1px solid var(--nothing-red); border-radius: 4px; padding: 1.2rem; margin-top: 0.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                      <span style="font-family: var(--font-mono); color: var(--nothing-red); font-weight: 700; font-size: 0.95rem;">🏖️ RESORT MASTER PLANNING MODULE</span>
+                      <input type="checkbox" id="chk-masterplan" style="width: 22px; height: 22px; accent-color: var(--nothing-red);" />
+                    </div>
+
+                    <div id="masterplan-controls" style="display: none; border-top: 1px dashed var(--border-color); padding-top: 0.8rem; margin-top: 0.8rem;">
+                      <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 0.5rem;">
+                        <span style="color: var(--text-muted);">TOTAL LAND AREA (ROPANIS):</span>
+                        <span id="ropani-val-lbl" style="color: #FFF; font-weight: 700;">10 ROPANIS</span>
+                      </div>
+                      <input type="range" id="ropani-slider" class="brutal-slider" min="2" max="100" step="1" value="10" style="width: 100%; height: 14px; accent-color: var(--nothing-red);" />
+                      <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #888; margin-top: 0.4rem;">
+                        <span>2 Ropanis</span>
+                        <span>50 Ropanis</span>
+                        <span>100 Ropanis</span>
+                      </div>
+
+                      <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; margin-top: 0.8rem; font-family: var(--font-mono); font-size: 0.8rem;">
+                        <div style="color: #FFF; font-weight: 700; margin-bottom: 0.4rem;">MASTER PLAN FEE BREAKDOWN:</div>
+                        <div id="masterplan-fee-lbl" style="color: var(--nothing-red); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem;">NPR 15.0 Lakhs (NPR 150,000 / Ropani)</div>
+                        <div style="color: var(--text-muted); font-size: 0.75rem;">Includes Conceptual Architecture (60%), Site Services (20%), Landscape (10%), Site Infrastructure (10%).</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <!-- DYNAMIC NEOBRUTALIST MUNICIPAL PERMIT & VERIFICATION STAMP GRAPHIC SVG BOARD -->
-                <div id="permit-stamp-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-card); padding: 1.2rem; position: relative;">
+                <!-- DYNAMIC MUNICIPAL PERMIT GRAPHIC BOARD -->
+                <div id="permit-stamp-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; position: relative;">
                   <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <span style="color: var(--nothing-red); font-weight: 700;">📜 DIGITAL PERMIT BLUEPRINT & APPROVAL SEAL BOARD</span>
-                    <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">MUNICIPAL CLEARANCE MATRIX // KATHMANDU METRO REGULATION</span>
+                    <span style="color: var(--nothing-red); font-weight: 700;">📜 MUNICIPAL PERMIT & ENGINEERING VERIFICATION BOARD</span>
+                    <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">NBC 105:2020 COMPLIANT</span>
                   </div>
 
-                  <div style="width: 100%; height: 230px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <svg id="permit-stamp-svg" viewBox="0 0 500 230" style="width: 100%; height: 100%;">
-                      <defs>
-                        <pattern id="excluded-hatch-n" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-                          <line x1="0" y1="0" x2="0" y2="10" stroke="#444" stroke-width="1.5" />
-                        </pattern>
-                        <pattern id="soil-bedrock-pattern-n" width="12" height="12" patternUnits="userSpaceOnUse">
-                          <circle cx="2" cy="2" r="1.5" fill="#888" />
-                          <circle cx="8" cy="8" r="1" fill="#555" />
-                        </pattern>
-                      </defs>
-
-                      <g id="state-excluded" opacity="0">
-                        <rect x="20" y="20" width="460" height="190" fill="url(#excluded-hatch-n)" fill-opacity="0.3" stroke="#444" stroke-width="1.5" stroke-dasharray="4,4" />
-                        <rect x="60" y="85" width="380" height="50" fill="#111" stroke="#FFF" stroke-width="2" />
-                        <text x="250" y="115" fill="#FFF" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">PERMIT & SOIL FEES EXCLUDED - CALCULATING BASIC STRUCTURE ONLY</text>
+                  <div style="width: 100%; height: 180px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <svg id="permit-stamp-svg" viewBox="0 0 500 180" style="width: 100%; height: 100%;">
+                      <g transform="translate(30, 30)">
+                        <rect x="0" y="0" width="200" height="120" fill="#0A0A0F" stroke="#FFF" stroke-width="1.5" />
+                        <text x="10" y="25" fill="#FFF" font-family="monospace" font-size="9" font-weight="bold">KMC MUNICIPAL BLUEPRINT</text>
+                        <rect x="15" y="40" width="170" height="55" fill="none" stroke="#FF2800" stroke-width="1" stroke-dasharray="3,3" />
+                        <text x="100" y="72" fill="#FF2800" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">STAMPED & VERIFIED</text>
                       </g>
-
-                      <g id="state-included" opacity="1">
-                        <!-- LEFT BOARD: Mini CAD Blueprint & Rubber Stamp -->
-                        <g id="group-naksha-stamp" opacity="1">
-                          <rect x="20" y="20" width="220" height="190" fill="#0A0A0F" stroke="#FFF" stroke-width="1.5" />
-                          <text x="30" y="38" fill="#FFF" font-family="monospace" font-size="9" font-weight="bold">[CAD BLUEPRINT TRACE]</text>
-
-                          <g stroke="#FFF" stroke-width="1" fill="none" opacity="0.6">
-                            <rect x="35" y="48" width="100" height="70" />
-                            <line x1="35" y1="83" x2="135" y2="83" />
-                            <line x1="85" y1="48" x2="85" y2="118" />
-                            <circle cx="160" cy="70" r="15" />
-                          </g>
-
-                          <g transform="translate(30, 130)">
-                            <text x="0" y="0" fill="#888" font-family="monospace" font-size="8" font-weight="bold">APPROVAL PIPELINE:</text>
-                            
-                            <rect id="led-stage-1" x="0" y="8" width="55" height="16" fill="#FF2800" stroke="#FFF" stroke-width="1" />
-                            <text x="27" y="19" fill="#FFF" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">WARD</text>
-
-                            <rect id="led-stage-2" x="60" y="8" width="55" height="16" fill="#FF2800" stroke="#FFF" stroke-width="1" />
-                            <text x="87" y="19" fill="#FFF" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">REGISTRATION</text>
-
-                            <rect id="led-stage-3" x="120" y="8" width="55" height="16" fill="#FF2800" stroke="#FFF" stroke-width="1" />
-                            <text x="147" y="19" fill="#FFF" font-family="monospace" font-size="7" font-weight="bold" text-anchor="middle">IJAJAT</text>
-                          </g>
-
-                          <g transform="translate(30, 172)">
-                            <text x="0" y="0" fill="#AAA" font-family="monospace" font-size="8" font-weight="bold">FEE ALLOCATION (NPR 60K):</text>
-                            <rect x="0" y="6" width="40" height="10" fill="#FFF" />
-                            <rect x="40" y="6" width="100" height="10" fill="#FF2800" />
-                            <rect x="140" y="6" width="60" height="10" fill="#888" />
-                          </g>
-
-                          <g transform="translate(45, 65) rotate(-8)">
-                            <rect x="0" y="0" width="170" height="32" fill="none" stroke="#FF2800" stroke-width="2.5" rx="3" />
-                            <text x="85" y="14" fill="#FF2800" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">KMC MUNICIPAL PERMIT</text>
-                            <text x="85" y="24" fill="#FF2800" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">APPROVED // NPR 60,000</text>
-                          </g>
-                        </g>
-
-                        <!-- RIGHT BOARD: Geotechnical Soil Core Sample -->
-                        <g id="group-soil-stamp" opacity="1">
-                          <rect x="260" y="20" width="220" height="190" fill="#0A0A0F" stroke="#FFF" stroke-width="1.5" />
-                          <text x="270" y="38" fill="#FFF" font-family="monospace" font-size="9" font-weight="bold">[GEOTECHNICAL SOIL CORE]</text>
-
-                          <g transform="translate(270, 48)">
-                            <rect x="0" y="0" width="100" height="20" fill="#222" stroke="#444" stroke-width="1" />
-                            <text x="5" y="13" fill="#AAA" font-family="monospace" font-size="8">TOPSOIL 1.0M</text>
-
-                            <rect x="0" y="20" width="100" height="25" fill="#333" stroke="#444" stroke-width="1" />
-                            <text x="5" y="35" fill="#FFF" font-family="monospace" font-size="8">CLAY / SILT 2.5M</text>
-
-                            <rect x="0" y="45" width="100" height="30" fill="url(#soil-bedrock-pattern-n)" stroke="#444" stroke-width="1" />
-                            <text x="5" y="62" fill="#FF2800" font-family="monospace" font-size="8">HARD STRATA 4.0M</text>
-
-                            <rect x="115" y="10" width="80" height="65" fill="none" stroke="#FFF" stroke-width="1.5" />
-                            <path d="M 135 10 L 135 50 L 120 65 L 190 65 L 175 50 L 175 10 Z" fill="#FF2800" fill-opacity="0.3" stroke="#FF2800" stroke-width="1.5" />
-                            <text x="155" y="35" fill="#FFF" font-family="monospace" font-size="8" text-anchor="middle">RCC FOOTING</text>
-                          </g>
-
-                          <g transform="translate(275, 140)">
-                            <rect x="0" y="0" width="190" height="32" fill="none" stroke="#FFF" stroke-width="2" rx="3" />
-                            <text x="95" y="14" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">SOIL BEARING CAPACITY</text>
-                            <text x="95" y="24" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">VERIFIED // NPR 45,000</text>
-                          </g>
-
-                          <text x="270" y="196" fill="#888" font-family="monospace" font-size="8" font-weight="bold">BEARING CAPACITY: 150 KN/M²</text>
-                        </g>
+                      <g transform="translate(260, 30)">
+                        <rect x="0" y="0" width="210" height="120" fill="#0A0A0F" stroke="#FFF" stroke-width="1.5" />
+                        <text x="10" y="25" fill="#FFF" font-family="monospace" font-size="9" font-weight="bold">SOIL BEARING TEST REPORT</text>
+                        <text x="105" y="72" fill="#FF2800" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">BEARING: 150 KN/M² OK</text>
                       </g>
                     </svg>
-                  </div>
-
-                  <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; margin-top: 0.8rem; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <div>ADD-ONS STATUS: <span id="permit-spec-status" style="color: var(--nothing-red); font-weight: 700;">BOTH PERMITS INCLUDED (+NPR 105,000)</span></div>
-                    <div>VALIDATION: <span style="color: #FFF; font-weight: 700;">NEC REGISTERED STAMP</span></div>
-                    <div>LEGAL CODE: <span style="color: var(--nothing-red); font-weight: 700;">NBC 105:2020</span></div>
                   </div>
                 </div>
 
               </div>
 
-              <!-- STEP 5: FINAL BOQ SUMMARY RECEIPT & DYNAMIC COST DISTRIBUTION / RAW MATERIAL BOARD -->
+              <!-- STEP 5 -->
               <div class="wizard-slide" style="width: 20%; padding: 1.5rem; box-sizing: border-box; flex-shrink: 0;">
                 <h3 style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--nothing-red); text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px;">
                   5. ESTIMATED BOQ COST BREAKDOWN
                 </h3>
                 
-                <div id="cost-summary-card" class="receipt-card" style="background: var(--bg-surface); border: 1px solid var(--nothing-red); border-radius: var(--radius-card); padding: 1.8rem; margin-bottom: 1.8rem;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.2rem;">
+                <div id="cost-summary-card" class="receipt-card" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-card); padding: 1.8rem; margin-bottom: 1.8rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--border-color); padding-bottom: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.5rem;">
                     <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--nothing-red); font-weight: 700;">
                       KATHMANDU CONSTRUCTION BOQ SUMMARY
                     </div>
-                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #888;">
-                      [ VER. 2026.1 ]
+                    <div id="volume-badge-receipt" style="background: var(--nothing-red); color: #FFF; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px;">
+                      [VOLUME ECONOMY OF SCALE APPLIED]
                     </div>
                   </div>
 
                   <div style="margin-bottom: 1.5rem;">
-                    <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #AAA;">ESTIMATED TOTAL BUDGET:</div>
-                    <div id="summary-total-price" style="font-family: var(--font-mono); font-size: clamp(2.8rem, 5vw, 3.8rem); font-weight: 700; color: #FFF; line-height: 1; margin: 0.2rem 0;">
+                    <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">ESTIMATED TOTAL BUDGET:</div>
+                    <div id="summary-total-price" style="font-family: var(--font-mono); font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; color: var(--nothing-red); line-height: 1; margin: 0.2rem 0; letter-spacing: 1px;">
                       NPR 1.15 Crore
                     </div>
-                    <div id="summary-price-exact" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--nothing-red); font-weight: 700;">
+                    <div id="summary-price-exact" style="font-family: var(--font-mono); font-size: 0.85rem; color: #FFF; font-weight: 700;">
                       Exact: NPR 11,540,650
                     </div>
                   </div>
 
                   <div style="font-family: var(--font-mono); font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.6rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; margin-bottom: 1.5rem;">
                     <div style="display: flex; justify-content: space-between;">
-                      <span style="color: #888;">Plot Area:</span>
-                      <span id="sum-plot-area" style="color: #FFF; font-weight: 700;">4.0 Aana (1,369 sq. ft.)</span>
+                      <span style="color: var(--text-muted);">Category:</span>
+                      <span id="sum-category-title" style="color: #FFF; font-weight: 700;">RESIDENTIAL & MIXED-USE HOUSING</span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
-                      <span style="color: #888;">Built-up Area (70%):</span>
+                      <span style="color: var(--text-muted);">Built-up Area:</span>
                       <span id="sum-built-area" style="color: #FFF; font-weight: 700;">2,395.75 sq. ft. (2.5 Storeys)</span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
-                      <span style="color: #888;">Rate per sq. ft.:</span>
+                      <span style="color: var(--text-muted);">Rate per sq. ft.:</span>
                       <span id="sum-rate-sqft" style="color: var(--nothing-red); font-weight: 700;">NPR 4,800 / sq. ft. (Standard)</span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
-                      <span style="color: #888;">Structural Construction:</span>
+                      <span style="color: var(--text-muted);">Structural Execution:</span>
                       <span id="sum-struct-cost" style="color: #FFF; font-weight: 700;">NPR 11,499,600</span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
-                      <span style="color: #888;">Permits & Soil Test:</span>
-                      <span id="sum-permit-cost" style="color: var(--nothing-red); font-weight: 700;">NPR 105,000</span>
+                      <span style="color: var(--text-muted);">Permits & Soil Test:</span>
+                      <span id="sum-permit-cost" style="color: #FFF; font-weight: 700;">NPR 105,000</span>
+                    </div>
+                    <div id="row-resort-masterplan" style="display: none; justify-content: space-between;">
+                      <span style="color: var(--text-muted);">Resort Master Planning:</span>
+                      <span id="sum-masterplan-cost" style="color: var(--nothing-red); font-weight: 700;">NPR 15.0 Lakhs</span>
                     </div>
                   </div>
 
-                  <button id="btn-print-boq" class="btn-brutal green" style="width: 100%; justify-content: center; font-size: 1rem; padding: 0.9rem; border-radius: 6px;">
+                  <!-- ACCORDION FOR DISCIPLINE ALLOCATION CHART -->
+                  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; margin-bottom: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" id="btn-toggle-discipline-accordion">
+                      <span style="font-family: var(--font-mono); font-size: 0.85rem; color: #FFF; font-weight: 700;">📊 ENGINEERING DISCIPLINE COST ALLOCATION</span>
+                      <span id="accordion-arrow" style="font-size: 1rem; color: var(--nothing-red);">▲</span>
+                    </div>
+
+                    <div id="discipline-accordion-body" style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;">
+                      <div id="discipline-list-container" style="display: flex; flex-direction: column; gap: 0.8rem; font-family: var(--font-mono); font-size: 0.8rem;">
+                        <!-- Rendered dynamically -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <button id="btn-print-boq" class="btn-brutal green" style="width: 100%; justify-content: center; font-size: 1rem; padding: 0.9rem; border-radius: 6px; background: var(--nothing-red); color: #FFF;">
                     🖨️ PRINT OFFICIAL BOQ RECEIPT
                   </button>
                 </div>
 
-                <!-- DYNAMIC NEOBRUTALIST COST DISTRIBUTION BAR & RAW MATERIAL QUANTITY GRAPHIC SVG -->
-                <div id="material-quantity-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-card); padding: 1.5rem; position: relative;">
+                <!-- DYNAMIC RAW MATERIAL QUANTITY MATRIX -->
+                <div id="material-quantity-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.5rem; position: relative;">
                   <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <span style="color: var(--nothing-red); font-weight: 700;">📊 COST BREAKDOWN ALLOCATION & RAW MATERIAL ESTIMATOR</span>
+                    <span style="color: var(--nothing-red); font-weight: 700;">📦 ESTIMATED RAW MATERIAL QUANTITY MATRIX</span>
                     <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">NBC 105:2020 MATERIAL MATRIX</span>
                   </div>
 
-                  <!-- MODULE A: DYNAMIC COST ALLOCATION STACKED BAR -->
-                  <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; margin-bottom: 1.5rem;">
-                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #FFF; font-weight: 700; margin-bottom: 0.8rem;">
-                      MODULE A // BUDGET ALLOCATION PERCENTAGES:
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem;">
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; padding: 1rem;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">CEMENT BAGS</div>
+                      <div id="mat-cnt-cement" style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: #FFF; margin: 0.2rem 0;">~840 BAGS</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #888;">OPC 43/53 GRADE</div>
                     </div>
-
-                    <div style="width: 100%; height: 24px; display: flex; border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; margin-bottom: 0.8rem;">
-                      <div id="bar-civil" style="width: 40%; background: #FFF; transition: width 0.4s ease;" title="Civil Structure & RCC (40%)"></div>
-                      <div id="bar-finish" style="width: 35%; background: var(--nothing-red); transition: width 0.4s ease;" title="Finishing & Joinery (35%)"></div>
-                      <div id="bar-mep" style="width: 15%; background: #888; transition: width 0.4s ease;" title="MEP / Plumbing & Electrical (15%)"></div>
-                      <div id="bar-labor" style="width: 10%; background: #444; transition: width 0.4s ease;" title="Labor & Supervision (10%)"></div>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; padding: 1rem;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">STEEL REBAR</div>
+                      <div id="mat-cnt-steel" style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: #FFF; margin: 0.2rem 0;">~8.4 TONS</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #888;">TMT FE500D GRADE</div>
                     </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.8rem; font-family: var(--font-mono); font-size: 0.75rem;">
-                      <div>
-                        <span style="color: #FFF; font-weight: 700;">■ CIVIL & RCC (40%)</span>
-                        <div id="cost-val-civil" style="color: #FFF; font-weight: 700;">NPR 46.0 Lakhs</div>
-                      </div>
-                      <div>
-                        <span style="color: var(--nothing-red); font-weight: 700;">■ FINISHING (35%)</span>
-                        <div id="cost-val-finish" style="color: #FFF; font-weight: 700;">NPR 40.2 Lakhs</div>
-                      </div>
-                      <div>
-                        <span style="color: #888; font-weight: 700;">■ MEP SERVICES (15%)</span>
-                        <div id="cost-val-mep" style="color: #FFF; font-weight: 700;">NPR 17.3 Lakhs</div>
-                      </div>
-                      <div>
-                        <span style="color: #444; font-weight: 700;">■ LABOR (10%)</span>
-                        <div id="cost-val-labor" style="color: #FFF; font-weight: 700;">NPR 11.5 Lakhs</div>
-                      </div>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; padding: 1rem;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">RED BRICKS / ACC</div>
+                      <div id="mat-cnt-bricks" style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: #FFF; margin: 0.2rem 0;">~34,700 PCS</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #888;">MACHINE-PRESSED</div>
                     </div>
-                  </div>
-
-                  <!-- MODULE B: RAW MATERIAL QUANTITY COUNTER GRID -->
-                  <div>
-                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #FFF; font-weight: 700; margin-bottom: 0.8rem;">
-                      MODULE B // ESTIMATED RAW MATERIAL QUANTITY MATRIX:
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem;">
-                      
-                      <!-- Cement Bags -->
-                      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem; position: relative;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                          <span style="font-size: 1.5rem;">🧱</span>
-                          <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--nothing-red); font-weight: 700;">EST. MATERIAL</span>
-                        </div>
-                        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">CEMENT BAGS</div>
-                        <div id="mat-cnt-cement" style="font-family: var(--font-mono); font-size: 1.3rem; font-weight: 700; color: #FFF; margin: 0.2rem 0;">~840 BAGS</div>
-                        <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #888;">OPC 43/53 GRADE</div>
-                      </div>
-
-                      <!-- Steel Rebar -->
-                      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem; position: relative;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                          <span style="font-size: 1.5rem;">⛓️</span>
-                          <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--nothing-red); font-weight: 700;">EST. MATERIAL</span>
-                        </div>
-                        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">STEEL REBAR</div>
-                        <div id="mat-cnt-steel" style="font-family: var(--font-mono); font-size: 1.3rem; font-weight: 700; color: #FFF; margin: 0.2rem 0;">~8.4 TONS</div>
-                        <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #888;">TMT FE500D GRADE</div>
-                      </div>
-
-                      <!-- Bricks -->
-                      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem; position: relative;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                          <span style="font-size: 1.5rem;">🧱</span>
-                          <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--nothing-red); font-weight: 700;">EST. MATERIAL</span>
-                        </div>
-                        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">RED BRICKS</div>
-                        <div id="mat-cnt-bricks" style="font-family: var(--font-mono); font-size: 1.3rem; font-weight: 700; color: #FFF; margin: 0.2rem 0;">~34,700 PCS</div>
-                        <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #888;">MACHINE-PRESSED</div>
-                      </div>
-
-                      <!-- Sand & Aggregate -->
-                      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem; position: relative;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                          <span style="font-size: 1.5rem;">🚛</span>
-                          <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--nothing-red); font-weight: 700;">EST. MATERIAL</span>
-                        </div>
-                        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">SAND & AGGREGATE</div>
-                        <div id="mat-cnt-sand" style="font-family: var(--font-mono); font-size: 1.3rem; font-weight: 700; color: #FFF; margin: 0.2rem 0;">~43 TRIPS</div>
-                        <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #888;">RIVER SAND & CRUSHED</div>
-                      </div>
-
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 4px; padding: 1rem;">
+                      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">SAND & AGGREGATE</div>
+                      <div id="mat-cnt-sand" style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: #FFF; margin: 0.2rem 0;">~43 TRIPS</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #888;">RIVER SAND & CRUSHED</div>
                     </div>
                   </div>
                 </div>
@@ -686,17 +715,17 @@ export function createCostEstimator() {
             </div>
           </div>
 
-          <!-- Bottom Control Bar (Prev / Next Buttons) -->
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-            <button id="wizard-prev-btn" class="btn-brutal white" style="font-size: 0.95rem; padding: 0.8rem 1.6rem; visibility: hidden; border-radius: var(--radius-pill);">
+          <!-- Bottom Control Bar -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <button id="wizard-prev-btn" class="btn-brutal white" style="font-size: 0.95rem; padding: 0.8rem 1.6rem; visibility: hidden; border-radius: 6px;">
               ⬅ PREVIOUS STEP
             </button>
 
-            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #888;">
-              NAVIGATE STEPS OR TAP NUMBERS ABOVE
+            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+              NAVIGATE STEPS OR TAP CAROUSEL / NUMBERS ABOVE
             </div>
 
-            <button id="wizard-next-btn" class="btn-brutal yellow" style="font-size: 0.95rem; padding: 0.8rem 1.6rem; border-radius: var(--radius-pill);">
+            <button id="wizard-next-btn" class="btn-brutal yellow" style="font-size: 0.95rem; padding: 0.8rem 1.6rem; border-radius: 6px; background: var(--nothing-red); color: #FFF;">
               NEXT STEP ➔
             </button>
           </div>
@@ -716,15 +745,49 @@ export function initCostEstimatorEvents() {
   const chkNaksha = document.getElementById('chk-naksha');
   const chkSoil = document.getElementById('chk-soil');
 
+  // Resort Master Plan Elements
+  const resortBox = document.getElementById('resort-masterplan-box');
+  const chkMasterPlan = document.getElementById('chk-masterplan');
+  const masterPlanControls = document.getElementById('masterplan-controls');
+  const ropaniSlider = document.getElementById('ropani-slider');
+  const ropaniValLbl = document.getElementById('ropani-val-lbl');
+  const masterPlanFeeLbl = document.getElementById('masterplan-fee-lbl');
+  const rowResortMasterPlan = document.getElementById('row-resort-masterplan');
+  const sumMasterPlanCost = document.getElementById('sum-masterplan-cost');
+
+  // Category Carousel Elements
+  const catCards = document.querySelectorAll('.building-cat-card');
+  const carouselTrackContainer = document.getElementById('cat-carousel-track-container');
+  const carouselPrevBtn = document.getElementById('cat-carousel-prev');
+  const carouselNextBtn = document.getElementById('cat-carousel-next');
+
+  const catTitleStep1 = document.getElementById('cat-title-step1');
+  const catTitleStep2 = document.getElementById('cat-title-step2');
+  const sumCategoryTitle = document.getElementById('sum-category-title');
+
   // Summary Elements
   const sumTotal = document.getElementById('summary-total-price');
   const sumExact = document.getElementById('summary-price-exact');
-  const sumPlot = document.getElementById('sum-plot-area');
   const sumBuilt = document.getElementById('sum-built-area');
   const sumRate = document.getElementById('sum-rate-sqft');
   const sumStruct = document.getElementById('sum-struct-cost');
   const sumPermit = document.getElementById('sum-permit-cost');
   const printBtn = document.getElementById('btn-print-boq');
+  const volumeBadgeReceipt = document.getElementById('volume-badge-receipt');
+
+  const scaleTierName = document.getElementById('scale-tier-name');
+  const scaleTierDiscount = document.getElementById('scale-tier-discount');
+
+  // Discipline Accordion
+  const btnToggleAccordion = document.getElementById('btn-toggle-discipline-accordion');
+  const accordionBody = document.getElementById('discipline-accordion-body');
+  const accordionArrow = document.getElementById('accordion-arrow');
+  const disciplineListContainer = document.getElementById('discipline-list-container');
+
+  // Rate Labels Step 3
+  const rateLblBasic = document.getElementById('rate-lbl-basic');
+  const rateLblStandard = document.getElementById('rate-lbl-standard');
+  const rateLblPremium = document.getElementById('rate-lbl-premium');
 
   // Carousel Wizard Elements
   const track = document.querySelector('.wizard-carousel-track');
@@ -735,206 +798,235 @@ export function initCostEstimatorEvents() {
   const nextBtn = document.getElementById('wizard-next-btn');
   const stepNavBtns = document.querySelectorAll('.wiz-step-btn');
 
+  let activeCategory = BUILDING_CATEGORIES[0];
   let activeStorey = 2.5;
   let activeTierKey = 'standard';
   let currentStep = 1;
   const totalSteps = 5;
+  let isAccordionOpen = true;
 
   const stepNames = [
-    "LAND AREA",
+    "LAND & BUILT-UP AREA",
     "STOREYS",
     "FINISH TIER",
-    "PERMITS",
+    "PERMITS & MODULES",
     "BOQ SUMMARY"
   ];
 
-  function updateMaterialQuantityBoard(totalCost, builtUpSqft) {
-    const costCivil = document.getElementById('cost-val-civil');
-    const costFinish = document.getElementById('cost-val-finish');
-    const costMep = document.getElementById('cost-val-mep');
-    const costLabor = document.getElementById('cost-val-labor');
+  // Accordion Toggle
+  if (btnToggleAccordion) {
+    btnToggleAccordion.addEventListener('click', () => {
+      isAccordionOpen = !isAccordionOpen;
+      if (accordionBody) accordionBody.style.display = isAccordionOpen ? 'block' : 'none';
+      if (accordionArrow) accordionArrow.textContent = isAccordionOpen ? '▲' : '▼';
+    });
+  }
 
+  // Category Carousel Scrolling
+  if (carouselPrevBtn && carouselTrackContainer) {
+    carouselPrevBtn.addEventListener('click', () => {
+      carouselTrackContainer.scrollBy({ left: -240, behavior: 'smooth' });
+    });
+  }
+  if (carouselNextBtn && carouselTrackContainer) {
+    carouselNextBtn.addEventListener('click', () => {
+      carouselTrackContainer.scrollBy({ left: 240, behavior: 'smooth' });
+    });
+  }
+
+  // Category Card Selection
+  catCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const catId = card.getAttribute('data-cat-id');
+      const found = BUILDING_CATEGORIES.find(c => c.id === catId);
+      if (found) {
+        activeCategory = found;
+        
+        catCards.forEach(c => {
+          c.classList.remove('active');
+          c.style.background = 'var(--bg-surface)';
+          c.style.color = '#FFF';
+        });
+
+        card.classList.add('active');
+        card.style.background = 'var(--nothing-red)';
+        card.style.color = '#FFF';
+
+        // Update category title displays
+        if (catTitleStep1) catTitleStep1.textContent = activeCategory.title;
+        if (catTitleStep2) catTitleStep2.textContent = activeCategory.title;
+        if (sumCategoryTitle) sumCategoryTitle.textContent = activeCategory.title;
+
+        // Toggle Resort Master Plan box visibility
+        if (resortBox) {
+          resortBox.style.display = activeCategory.hasMasterPlanModule ? 'block' : 'none';
+        }
+
+        // Update finish rates in Step 3
+        const rates = activeCategory.defaultRates;
+        if (rateLblBasic) rateLblBasic.textContent = `NPR ${rates.basic.toLocaleString()} / SQ. FT.`;
+        if (rateLblStandard) rateLblStandard.textContent = `NPR ${rates.standard.toLocaleString()} / SQ. FT.`;
+        if (rateLblPremium) rateLblPremium.textContent = `NPR ${rates.premium.toLocaleString()} / SQ. FT.`;
+
+        calculateCosts();
+      }
+    });
+  });
+
+  // Resort Master Plan Checkbox & Slider
+  if (chkMasterPlan) {
+    chkMasterPlan.addEventListener('change', () => {
+      if (masterPlanControls) masterPlanControls.style.display = chkMasterPlan.checked ? 'block' : 'none';
+      if (rowResortMasterPlan) rowResortMasterPlan.style.display = chkMasterPlan.checked ? 'flex' : 'none';
+      calculateCosts();
+    });
+  }
+
+  if (ropaniSlider) {
+    ropaniSlider.addEventListener('input', calculateCosts);
+  }
+
+  function calculateCosts() {
+    if (!slider) return;
+
+    const aana = parseFloat(slider.value);
+    const totalLandSqft = aana * AANA_TO_SQFT;
+    const groundCoverageSqft = totalLandSqft * GROUND_COVERAGE_RATIO;
+    const totalBuiltUpSqft = groundCoverageSqft * activeStorey;
+
+    // Determine baseline rate from active category and finish tier
+    const baseRates = activeCategory.defaultRates;
+    let baseRate = baseRates[activeTierKey] || baseRates.standard;
+
+    // Determine scale tier discount
+    let appliedDiscountPct = 0;
+    let activeScaleTierName = activeCategory.scaleTiers[0].name;
+
+    for (let tier of activeCategory.scaleTiers) {
+      if (totalBuiltUpSqft > (tier.limitSqft === Infinity ? 0 : 0)) {
+        if (totalBuiltUpSqft > tier.limitSqft) continue;
+        appliedDiscountPct = tier.discountPct;
+        activeScaleTierName = tier.name;
+        break;
+      }
+    }
+
+    if (totalBuiltUpSqft > activeCategory.scaleTiers[activeCategory.scaleTiers.length - 1].limitSqft) {
+      const lastTier = activeCategory.scaleTiers[activeCategory.scaleTiers.length - 1];
+      appliedDiscountPct = lastTier.discountPct;
+      activeScaleTierName = lastTier.name;
+    }
+
+    // Apply volume economy discount
+    const effectiveRatePerSqft = baseRate * (1 - appliedDiscountPct / 100);
+    const structuralCost = totalBuiltUpSqft * effectiveRatePerSqft;
+
+    // Permits
+    let nakshaOn = chkNaksha && chkNaksha.checked;
+    let soilOn = chkSoil && chkSoil.checked;
+
+    let permitCost = 0;
+    if (nakshaOn) permitCost += 60000;
+    if (soilOn) permitCost += 45000;
+
+    // Resort Master Planning Fee Calculation
+    let masterPlanFee = 0;
+    if (activeCategory.hasMasterPlanModule && chkMasterPlan && chkMasterPlan.checked && ropaniSlider) {
+      const ropanis = parseFloat(ropaniSlider.value);
+      if (ropaniValLbl) ropaniValLbl.textContent = `${ropanis} ROPANIS (${Math.round(ropanis * ROPANI_TO_SQFT).toLocaleString()} SQ. FT.)`;
+
+      let ratePerRopani = 150000;
+      if (ropanis <= 20) ratePerRopani = 150000;
+      else if (ropanis <= 50) ratePerRopani = 120000;
+      else ratePerRopani = 95000;
+
+      masterPlanFee = ropanis * ratePerRopani;
+      const feeLakhs = masterPlanFee / 100000;
+      if (masterPlanFeeLbl) {
+        masterPlanFeeLbl.textContent = `NPR ${feeLakhs.toFixed(1)} Lakhs (NPR ${ratePerRopani.toLocaleString()} / Ropani)`;
+      }
+      if (sumMasterPlanCost) sumMasterPlanCost.textContent = `NPR ${feeLakhs.toFixed(1)} Lakhs`;
+    }
+
+    const totalEstimate = structuralCost + permitCost + masterPlanFee;
+
+    // Formatters
+    const crores = totalEstimate / 10000000;
+    const lakhs = totalEstimate / 100000;
+    let formattedShort = crores >= 1 ? `NPR ${crores.toFixed(2)} Crore` : `NPR ${lakhs.toFixed(2)} Lakhs`;
+
+    if (aanaValDisplay) {
+      aanaValDisplay.textContent = `${aana.toFixed(1)} AANA (${Math.round(totalLandSqft).toLocaleString()} SQ. FT.)`;
+    }
+
+    if (scaleTierName) scaleTierName.textContent = activeScaleTierName;
+    if (scaleTierDiscount) {
+      if (appliedDiscountPct > 0) {
+        scaleTierDiscount.textContent = `${appliedDiscountPct}% VOLUME ECONOMY DISCOUNT APPLIED`;
+        scaleTierDiscount.style.background = 'var(--nothing-red)';
+        scaleTierDiscount.style.color = '#FFF';
+      } else {
+        scaleTierDiscount.textContent = `STANDARD BASE RATE`;
+        scaleTierDiscount.style.background = 'var(--bg-card)';
+        scaleTierDiscount.style.color = '#FFF';
+      }
+    }
+
+    if (volumeBadgeReceipt) {
+      if (appliedDiscountPct > 0) {
+        volumeBadgeReceipt.textContent = `[${appliedDiscountPct}% VOLUME ECONOMY OF SCALE APPLIED]`;
+        volumeBadgeReceipt.style.background = 'var(--nothing-red)';
+      } else {
+        volumeBadgeReceipt.textContent = `[STANDARD VOLUME SCALE]`;
+        volumeBadgeReceipt.style.background = 'var(--bg-card)';
+      }
+    }
+
+    if (sumTotal) sumTotal.textContent = formattedShort;
+    if (sumExact) sumExact.textContent = `Exact: NPR ${Math.round(totalEstimate).toLocaleString()}`;
+    if (sumBuilt) sumBuilt.textContent = `${Math.round(totalBuiltUpSqft).toLocaleString()} sq. ft. (${activeStorey} Storeys)`;
+    if (sumRate) sumRate.textContent = `NPR ${Math.round(effectiveRatePerSqft).toLocaleString()} / sq. ft. (${activeTierKey.toUpperCase()})`;
+    if (sumStruct) sumStruct.textContent = `NPR ${Math.round(structuralCost).toLocaleString()}`;
+    if (sumPermit) sumPermit.textContent = `NPR ${permitCost.toLocaleString()}`;
+
+    // Render Engineering Discipline Allocation List
+    if (disciplineListContainer) {
+      disciplineListContainer.innerHTML = activeCategory.disciplines.map(d => {
+        const dCost = structuralCost * (d.pct / 100);
+        const dLakhs = dCost / 100000;
+        return `
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.2rem;">
+              <span style="color: ${d.color}; font-weight: 700;">■ ${d.name} (${d.pct}%)</span>
+              <span style="color: #FFF; font-weight: 700;">NPR ${dLakhs.toFixed(1)} Lakhs</span>
+            </div>
+            <div style="width: 100%; height: 6px; background: #222; border-radius: 3px; overflow: hidden;">
+              <div style="width: ${d.pct}%; height: 100%; background: ${d.color};"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Material Quantities
     const cntCement = document.getElementById('mat-cnt-cement');
     const cntSteel = document.getElementById('mat-cnt-steel');
     const cntBricks = document.getElementById('mat-cnt-bricks');
     const cntSand = document.getElementById('mat-cnt-sand');
 
-    const civilVal = totalCost * 0.40;
-    const finishVal = totalCost * 0.35;
-    const mepVal = totalCost * 0.15;
-    const laborVal = totalCost * 0.10;
-
-    function fmtLakhs(n) {
-      const lakhs = n / 100000;
-      return `NPR ${lakhs.toFixed(1)} Lakhs`;
-    }
-
-    if (costCivil) costCivil.textContent = fmtLakhs(civilVal);
-    if (costFinish) costFinish.textContent = fmtLakhs(finishVal);
-    if (costMep) costMep.textContent = fmtLakhs(mepVal);
-    if (costLabor) costLabor.textContent = fmtLakhs(laborVal);
-
-    const targetCement = Math.round(builtUpSqft * 0.35);
-    const targetSteel = (builtUpSqft * 0.0035).toFixed(1);
-    const targetBricks = Math.round(builtUpSqft * 14.5);
-    const targetSand = Math.round(builtUpSqft * 0.018);
+    const targetCement = Math.round(totalBuiltUpSqft * 0.35);
+    const targetSteel = (totalBuiltUpSqft * 0.0035).toFixed(1);
+    const targetBricks = Math.round(totalBuiltUpSqft * 14.5);
+    const targetSand = Math.round(totalBuiltUpSqft * 0.018);
 
     if (cntCement) cntCement.textContent = `~${targetCement.toLocaleString()} BAGS`;
     if (cntSteel) cntSteel.textContent = `~${targetSteel} TONS`;
     if (cntBricks) cntBricks.textContent = `~${targetBricks.toLocaleString()} PCS`;
     if (cntSand) cntSand.textContent = `~${targetSand} TRIPS`;
 
-    if (window.gsap && cntCement) {
-      window.gsap.fromTo([cntCement, cntSteel, cntBricks, cntSand], 
-        { opacity: 0.4, scale: 0.95 }, 
-        { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }
-      );
-    }
-  }
-
-  function updatePermitStampGraphic(nakshaChecked, soilChecked) {
-    const stateExcluded = document.getElementById('state-excluded');
-    const stateIncluded = document.getElementById('state-included');
-    const groupNaksha = document.getElementById('group-naksha-stamp');
-    const groupSoil = document.getElementById('group-soil-stamp');
-    const specStatus = document.getElementById('permit-spec-status');
-
-    if (!nakshaChecked && !soilChecked) {
-      if (stateExcluded) stateExcluded.setAttribute('opacity', '1');
-      if (stateIncluded) stateIncluded.setAttribute('opacity', '0');
-      if (specStatus) {
-        specStatus.textContent = 'EXCLUDED (NPR 0 ADD-ONS)';
-        specStatus.style.color = '#888';
-      }
-    } else {
-      if (stateExcluded) stateExcluded.setAttribute('opacity', '0');
-      if (stateIncluded) stateIncluded.setAttribute('opacity', '1');
-
-      if (groupNaksha) groupNaksha.setAttribute('opacity', nakshaChecked ? '1' : '0.2');
-      if (groupSoil) groupSoil.setAttribute('opacity', soilChecked ? '1' : '0.2');
-
-      let totalAdd = 0;
-      if (nakshaChecked) totalAdd += 60000;
-      if (soilChecked) totalAdd += 45000;
-
-      if (specStatus) {
-        specStatus.textContent = `PERMITS ACTIVE (+NPR ${totalAdd.toLocaleString()})`;
-        specStatus.style.color = 'var(--nothing-red)';
-      }
-    }
-
-    const svgCanvas = document.getElementById('permit-stamp-svg');
-    if (window.gsap && svgCanvas) {
-      window.gsap.fromTo(svgCanvas, { opacity: 0.5 }, { opacity: 1, duration: 0.3, ease: "power2.out" });
-    }
-  }
-
-  const VECTOR_MATERIAL_DATA = {
-    basic: {
-      tierBadge: "📐 ARCHITECTURAL MATERIAL ASSEMBLY // BASIC TIER (NPR 3,800/SQ. FT.)",
-      shadowColor: "#FFF",
-      grade: "BASIC B-GRADE / RENTAL FOCUS",
-      rate: "NPR 3,800 / SQ. FT.",
-      floorPattern: "url(#pat-basic-tile-n)",
-      floorStroke: "#FFF",
-      wallFill: "#FFF",
-      winFrameStroke: "#FFF",
-      swatchLbl1: "CERAMIC // 300x300",
-      swatchLbl1Color: "#FFF",
-      swatchLbl2: "ALUMINUM // FLUSH",
-      swatchLbl2Color: "#FFF",
-      swatchLbl3: "STANDARD // PVC",
-      swatchLbl3Color: "#FFF",
-      swatchLbl4: "WEATHERCOAT // DISTEMPER",
-      swatchLbl4Color: "#FFF"
-    },
-    standard: {
-      tierBadge: "📐 ARCHITECTURAL MATERIAL ASSEMBLY // STANDARD TIER (NPR 4,800/SQ. FT.)",
-      shadowColor: "var(--nothing-red)",
-      grade: "STANDARD A-GRADE RESIDENTIAL",
-      rate: "NPR 4,800 / SQ. FT.",
-      floorPattern: "url(#pat-std-tile-n)",
-      floorStroke: "#FF2800",
-      wallFill: "#FF2800",
-      winFrameStroke: "#FF2800",
-      swatchLbl1: "VITRIFIED // 600x600",
-      swatchLbl1Color: "#FF2800",
-      swatchLbl2: "UPVC // SAL WOOD",
-      swatchLbl2Color: "#FF2800",
-      swatchLbl3: "CONCEALED // CP",
-      swatchLbl3Color: "#FF2800",
-      swatchLbl4: "APEX // ACRYLIC",
-      swatchLbl4Color: "#FF2800"
-    },
-    premium: {
-      tierBadge: "📐 ARCHITECTURAL MATERIAL ASSEMBLY // PREMIUM LUXURY TIER (NPR 6,800/SQ. FT.)",
-      shadowColor: "#FFF",
-      grade: "PREMIUM LUXURY VILLA GRADE",
-      rate: "NPR 6,800 / SQ. FT.",
-      floorPattern: "url(#pat-hpl-cladding-n)",
-      floorStroke: "#FFF",
-      wallFill: "#FFF",
-      winFrameStroke: "#FFF",
-      swatchLbl1: "ITALIAN MARBLE // SLAB",
-      swatchLbl1Color: "#FFF",
-      swatchLbl2: "THERMAL UPVC // TEAK",
-      swatchLbl2Color: "#FFF",
-      swatchLbl3: "KOHLER // RAINSHOWER",
-      swatchLbl3Color: "#FFF",
-      swatchLbl4: "HPL PANEL // CLADDING",
-      swatchLbl4Color: "#FFF"
-    }
-  };
-
-  function updateMaterialSpecGraphic(tierKey) {
-    const data = VECTOR_MATERIAL_DATA[tierKey] || VECTOR_MATERIAL_DATA.standard;
-    const container = document.getElementById('material-spec-container');
-    const badge = document.getElementById('mat-spec-tier-badge');
-    const grade = document.getElementById('mat-spec-grade');
-    const rate = document.getElementById('mat-spec-rate');
-
-    const cutFloor = document.getElementById('cutaway-floor-layer');
-    const cutWall = document.getElementById('cutaway-wall-layer');
-    const cutWin = document.getElementById('cutaway-window-frame');
-
-    const lbl1 = document.getElementById('swatch-lbl-1');
-    const lbl2 = document.getElementById('swatch-lbl-2');
-    const lbl3 = document.getElementById('swatch-lbl-3');
-    const lbl4 = document.getElementById('swatch-lbl-4');
-
-    const bg1 = document.getElementById('swatch-bg-1');
-    const bg4 = document.getElementById('swatch-bg-4');
-
-    if (container) container.style.borderColor = data.shadowColor;
-    if (badge) {
-      badge.textContent = data.tierBadge;
-      badge.style.color = data.shadowColor;
-    }
-    if (grade) {
-      grade.textContent = data.grade;
-      grade.style.color = data.shadowColor;
-    }
-    if (rate) rate.textContent = data.rate;
-
-    if (cutFloor) {
-      cutFloor.setAttribute('fill', data.floorPattern);
-      cutFloor.setAttribute('stroke', data.floorStroke);
-    }
-    if (cutWall) cutWall.setAttribute('fill', data.wallFill);
-    if (cutWin) cutWin.setAttribute('stroke', data.winFrameStroke);
-
-    if (bg1) bg1.setAttribute('fill', data.floorPattern);
-    if (bg4) bg4.setAttribute('stroke', data.shadowColor);
-
-    if (lbl1) { lbl1.textContent = data.swatchLbl1; lbl1.setAttribute('fill', data.swatchLbl1Color); }
-    if (lbl2) { lbl2.textContent = data.swatchLbl2; lbl2.setAttribute('fill', data.swatchLbl2Color); }
-    if (lbl3) { lbl3.textContent = data.swatchLbl3; lbl3.setAttribute('fill', data.swatchLbl3Color); }
-    if (lbl4) { lbl4.textContent = data.swatchLbl4; lbl4.setAttribute('fill', data.swatchLbl4Color); }
-
-    const svgCanvas = document.getElementById('mat-assembly-svg');
-    if (window.gsap && svgCanvas) {
-      window.gsap.fromTo(svgCanvas, { opacity: 0.4, scale: 0.98 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
-    }
+    // SVG Graphics
+    updatePlotGraphic(aana);
+    updateElevationGraphic(activeStorey);
   }
 
   function updatePlotGraphic(aana) {
@@ -947,7 +1039,7 @@ export function initCostEstimatorEvents() {
     const minHeight = 85;
     const maxHeight = 165;
 
-    const scaleRatio = (aana - 2) / (10 - 2);
+    const scaleRatio = Math.min(1, (aana - 2) / (25 - 2));
     const rectW = minWidth + (maxWidth - minWidth) * scaleRatio;
     const rectH = minHeight + (maxHeight - minHeight) * scaleRatio;
     const rectX = 200 - rectW / 2;
@@ -1019,28 +1111,24 @@ export function initCostEstimatorEvents() {
     let topY = 140;
 
     let l1Op = 1, l2Op = 0, l25Op = 0, l3Op = 0;
-    let typeLabel = "1 STOREY RESIDENCE";
+    let typeLabel = `${storey} STOREYS (${activeCategory.title})`;
 
     if (storey === 1) {
       l1Op = 1; l2Op = 0; l25Op = 0; l3Op = 0;
       totalHeightFt = 10.0;
       topY = 140;
-      typeLabel = "1 STOREY RESIDENCE";
     } else if (storey === 2) {
       l1Op = 1; l2Op = 1; l25Op = 0; l3Op = 0;
       totalHeightFt = 20.0;
       topY = 95;
-      typeLabel = "2 STOREYS RESIDENCE";
     } else if (storey === 2.5) {
       l1Op = 1; l2Op = 1; l25Op = 1; l3Op = 0;
       totalHeightFt = 28.5;
       topY = 65;
-      typeLabel = "2.5 STOREYS (KTM STANDARD)";
     } else if (storey === 3) {
       l1Op = 1; l2Op = 1; l25Op = 0; l3Op = 1;
       totalHeightFt = 30.0;
       topY = 50;
-      typeLabel = "3 STOREYS FULL VILLA";
     }
 
     const meters = (totalHeightFt * 0.3048).toFixed(2);
@@ -1063,7 +1151,7 @@ export function initCostEstimatorEvents() {
       if (dimTopCap) { dimTopCap.setAttribute('y1', topY); dimTopCap.setAttribute('y2', topY); }
     }
 
-    if (heightTxt) heightTxt.textContent = `${totalHeightFt.toFixed(1)} FT TOTAL HEIGHT`;
+    if (heightTxt) heightTxt.textContent = `${totalHeightFt.toFixed(1)} FT HEIGHT`;
     if (specType) specType.textContent = typeLabel;
     if (specHeight) specHeight.textContent = `${totalHeightFt.toFixed(1)} FT (${meters}M)`;
   }
@@ -1085,8 +1173,12 @@ export function initCostEstimatorEvents() {
     if (nextBtn) {
       if (currentStep === totalSteps) {
         nextBtn.textContent = 'RECALCULATE 🔄';
+        nextBtn.classList.remove('yellow');
+        nextBtn.classList.add('green');
       } else {
         nextBtn.textContent = 'NEXT STEP ➔';
+        nextBtn.classList.remove('green');
+        nextBtn.classList.add('yellow');
       }
     }
 
@@ -1104,74 +1196,20 @@ export function initCostEstimatorEvents() {
         btn.style.color = '#FFF';
         btn.classList.remove('active');
         if (dot) {
-          dot.style.background = '#444';
-          dot.style.color = '#FFF';
+          dot.style.background = '#FFF';
+          dot.style.color = '#000';
         }
       } else {
         btn.style.color = '#666';
         btn.classList.remove('active');
         if (dot) {
-          dot.style.background = '#222';
+          dot.style.background = '#333';
           dot.style.color = '#FFF';
         }
       }
     });
 
     calculateCosts();
-  }
-
-  function calculateCosts() {
-    if (!slider) return;
-
-    const aana = parseFloat(slider.value);
-    const totalLandSqft = aana * AANA_TO_SQFT;
-    const groundCoverageSqft = totalLandSqft * GROUND_COVERAGE_RATIO;
-    const totalBuiltUpSqft = groundCoverageSqft * activeStorey;
-
-    const tierObj = FINISH_TIERS[activeTierKey] || FINISH_TIERS.standard;
-    const ratePerSqft = tierObj.rate;
-    const structuralCost = totalBuiltUpSqft * ratePerSqft;
-
-    let nakshaOn = chkNaksha && chkNaksha.checked;
-    let soilOn = chkSoil && chkSoil.checked;
-
-    let permitCost = 0;
-    if (nakshaOn) permitCost += 60000;
-    if (soilOn) permitCost += 45000;
-
-    const totalEstimate = structuralCost + permitCost;
-
-    // Formatters
-    const crores = totalEstimate / 10000000;
-    const lakhs = totalEstimate / 100000;
-    let formattedShort = crores >= 1 ? `NPR ${crores.toFixed(2)} Crore` : `NPR ${lakhs.toFixed(2)} Lakhs`;
-
-    if (aanaValDisplay) {
-      aanaValDisplay.textContent = `${aana.toFixed(1)} AANA (${Math.round(totalLandSqft).toLocaleString()} SQ. FT.)`;
-    }
-
-    if (sumTotal) sumTotal.textContent = formattedShort;
-    if (sumExact) sumExact.textContent = `Exact: NPR ${Math.round(totalEstimate).toLocaleString()}`;
-    if (sumPlot) sumPlot.textContent = `${aana.toFixed(1)} Aana (${Math.round(totalLandSqft).toLocaleString()} sq. ft.)`;
-    if (sumBuilt) sumBuilt.textContent = `${Math.round(totalBuiltUpSqft).toLocaleString()} sq. ft. (${activeStorey} Storeys)`;
-    if (sumRate) sumRate.textContent = `NPR ${ratePerSqft.toLocaleString()} / sq. ft. (${tierObj.name})`;
-    if (sumStruct) sumStruct.textContent = `NPR ${Math.round(structuralCost).toLocaleString()}`;
-    if (sumPermit) sumPermit.textContent = `NPR ${permitCost.toLocaleString()}`;
-
-    // Update Interactive Land Plot Graphic SVG
-    updatePlotGraphic(aana);
-
-    // Update Interactive Architectural Elevation Graphic SVG
-    updateElevationGraphic(activeStorey);
-
-    // Update Interactive Pure Vector Material Specification Grid
-    updateMaterialSpecGraphic(activeTierKey);
-
-    // Update Interactive Digital Permit & Soil Stamp Board
-    updatePermitStampGraphic(nakshaOn, soilOn);
-
-    // Update Interactive Cost Distribution Bar & Raw Material Quantity Counter Board
-    updateMaterialQuantityBoard(totalEstimate, totalBuiltUpSqft);
   }
 
   // Event Handlers
