@@ -263,7 +263,7 @@ export function renderTabSwitcher() {
               <div class="legal-panel-box">
                 <div style="border-bottom: var(--border-thin); padding-bottom: 0.75rem; margin-bottom: 1.25rem;">
                   <span class="mono-badge pink">KMC BYLAWS CHECKER</span>
-                  <h3 style="font-size: 1.4rem; margin-top: 0.25rem;">ROAD WIDTH & SETBACK BYLAWS</h3>
+                  <h3 style="font-size: 1.4rem; margin-top: 0.25rem;">BYLAWS CALCULATOR</h3>
                   <p style="font-size: 0.85rem; color: var(--color-mid-gray);">Check maximum allowed storeys & setbacks based on Kathmandu road width.</p>
                 </div>
 
