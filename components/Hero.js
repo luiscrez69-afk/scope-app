@@ -64,8 +64,8 @@ export function createHero() {
             <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--nothing-red); color: #FFF; font-family: var(--font-mono); font-weight: 700; font-size: 0.75rem; padding: 0.25rem 0.9rem; border-radius: 4px; text-transform: uppercase; white-space: nowrap;">
               ● KATHMANDU RESIDENTIAL PORTAL
             </div>
-            <p class="hero-tagline-text" style="font-family: 'ND Dot', 'DotGothic16', monospace; font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 700; color: var(--text-main); line-height: 1.15; margin: 0.4rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">
-              "The home you dream covered with all the information you need"
+            <p class="hero-tagline-text" style="font-family: var(--font-display); font-size: clamp(1.4rem, 3.5vw, 2.4rem); font-weight: 700; color: var(--text-main); line-height: 1.15; margin: 0.4rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">
+              "AUTHORITATIVE CONSTRUCTION COST CALCULATOR & MUNICIPAL PERMIT HUB"
             </p>
           </div>
         </div>
@@ -73,12 +73,12 @@ export function createHero() {
     </section>
 
     <!-- Kinetic Marquee Ticker -->
-    <div class="ticker-wrap" style="background: var(--nothing-red); color: #FFF;">
+    <div class="ticker-wrap">
       <div class="ticker">
-        <span class="ticker-item">★ THE HOME YOU DREAM COVERED WITH ALL THE INFORMATION YOU NEED</span>
+        <span class="ticker-item">★ KATHMANDU VALLEY BUILDING PORTAL</span>
         <span class="ticker-item">● KATHMANDU CONSTRUCTION COST ESTIMATOR</span>
         <span class="ticker-item">★ PERMIT & LEGAL COMPLIANCE HUB</span>
-        <span class="ticker-item">● THE HOME YOU DREAM COVERED WITH ALL THE INFORMATION YOU NEED</span>
+        <span class="ticker-item">● NBC 105:2020 & KMC BYLAWS 2078</span>
         <span class="ticker-item">★ KATHMANDU CONSTRUCTION COST ESTIMATOR</span>
         <span class="ticker-item">● PERMIT & LEGAL COMPLIANCE HUB</span>
       </div>
