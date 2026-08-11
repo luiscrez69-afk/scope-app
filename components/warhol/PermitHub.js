@@ -262,8 +262,10 @@ export function createPermitHub() {
                 <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 900; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   ARCHITECTURAL DRAFTING
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.8rem;">
-                  Architect & Structural Engineer complete working drawings per KMC guidelines.
+                <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.2rem; min-height: 3.5rem;">
+                  <span style="background: rgba(0,229,255,0.15); border: 1px solid #00E5FF; color: #00E5FF; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700;">📐 SITE PLAN 1:200</span>
+                  <span style="background: rgba(255,255,255,0.1); border: 1px solid #666; color: #EEE; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono);">✍️ NEA ER. SEAL</span>
+                  <span style="background: rgba(255,255,255,0.1); border: 1px solid #666; color: #EEE; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono);">🏢 4 ELEVATIONS</span>
                 </div>
               </div>
 
@@ -299,8 +301,10 @@ export function createPermitHub() {
                 <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 900; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   WARD OFFICE VERIFICATION
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.8rem;">
-                  7-day public notice issued & boundary field verification by Ward Technical Team.
+                <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.2rem; min-height: 3.5rem;">
+                  <span style="background: rgba(255,215,0,0.15); border: 1px solid #FFD700; color: #FFD700; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700;">📢 7-DAY NOTICE</span>
+                  <span style="background: rgba(255,255,255,0.1); border: 1px solid #666; color: #EEE; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono);">🏛️ WARD SEAL</span>
+                  <span style="background: rgba(255,255,255,0.1); border: 1px solid #666; color: #EEE; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono);">🗺️ FIELD CHECK</span>
                 </div>
               </div>
 
@@ -336,8 +340,10 @@ export function createPermitHub() {
                 <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 900; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   ASTHAYI SWIKRITI (TEMP PERMIT)
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.8rem;">
-                  Temporary construction permit granted for foundation & plinth level execution.
+                <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.2rem; min-height: 3.5rem;">
+                  <span style="background: rgba(255,0,127,0.15); border: 1px solid #FF007F; color: #FF007F; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700;">📄 ASTHAYI PERMIT</span>
+                  <span style="background: rgba(255,255,255,0.1); border: 1px solid #666; color: #EEE; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono);">🏗️ PLINTH CHECK</span>
+                  <span style="background: rgba(255,255,255,0.1); border: 1px solid #666; color: #EEE; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono);">🧱 FOUNDATION PASS</span>
                 </div>
               </div>
 
@@ -373,8 +379,10 @@ export function createPermitHub() {
                 <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 900; color: #FFF; margin-bottom: 0.6rem; min-height: 2.8rem; display: flex; align-items: flex-start; line-height: 1.25; text-transform: uppercase;">
                   NIRMAṆA SAMPANNA (FINAL CERT)
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; margin-bottom: 1.2rem; line-height: 1.45; min-height: 3.8rem;">
-                  Final completion inspection, utility connection clearance & permanent certificate.
+                <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.2rem; min-height: 3.5rem;">
+                  <span style="background: rgba(0,255,102,0.15); border: 1px solid #00FF66; color: #00FF66; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700;">🏆 FINAL CERTIFICATE</span>
+                  <span style="background: rgba(255,255,255,0.1); border: 1px solid #666; color: #EEE; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono);">⚡ NEA POWER LINE</span>
+                  <span style="background: rgba(255,255,255,0.1); border: 1px solid #666; color: #EEE; padding: 0.2rem 0.4rem; font-size: 0.65rem; font-family: var(--font-mono);">🚰 KUKL WATER METER</span>
                 </div>
               </div>
 

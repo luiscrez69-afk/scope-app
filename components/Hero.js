@@ -64,8 +64,8 @@ export function createHero() {
             <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--nothing-red); color: #FFF; font-family: var(--font-mono); font-weight: 700; font-size: 0.75rem; padding: 0.25rem 0.9rem; border-radius: 4px; text-transform: uppercase; white-space: nowrap;">
               ● KATHMANDU RESIDENTIAL PORTAL
             </div>
-            <p class="hero-tagline-text" style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--text-main); line-height: 1.6; margin: 0.6rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">
-              "The home you dream covered with all the information you need — slide through our authoritative construction cost calculator and municipal permit compliance hub across Kathmandu, Lalitpur & Bhaktapur"
+            <p class="hero-tagline-text" style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--text-main); line-height: 1.5; margin: 0.6rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">
+              "The home you dream covered with all the information you need — construction cost calculator & municipal permit compliance hub across Kathmandu, Lalitpur & Bhaktapur"
             </p>
           </div>
         </div>
