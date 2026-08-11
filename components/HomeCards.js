@@ -16,7 +16,7 @@ export function createHomeCards() {
           </div>
 
           <h1 style="font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--text-main); line-height: 0.9; margin: 0.4rem 0 0.8rem; text-transform: uppercase;">
-            SCOPE <span style="color: var(--nothing-red)">SERVICES</span>
+            THE CURRENT <span style="color: var(--nothing-red)">PREDICAMENT</span>
           </h1>
         </div>
 

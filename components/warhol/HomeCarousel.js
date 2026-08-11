@@ -16,7 +16,7 @@ export function createHomeCarousel() {
           </div>
 
           <h1 style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(3.2rem, 7vw, 5rem); font-weight: 900; color: var(--text-main); line-height: 0.9; margin: 0.4rem 0 0.8rem; text-transform: uppercase;">
-            FEATURED <span style="color: var(--cmyk-yellow)">SERVICES</span>
+            THE CURRENT <span style="color: var(--cmyk-yellow)">PREDICAMENT</span>
           </h1>
         </div>
 
