@@ -215,7 +215,7 @@ export function initHomeCarouselEvents(navigateTo) {
   // Keyboard Left / Right Navigation (Scoped)
   const handleKeyDown = (e) => {
     if (!document.getElementById('home-issues-carousel')) return;
-    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+    if (document.activeElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
     if (e.key === 'ArrowLeft') {
       updateCarousel(currentSlide - 1);
     } else if (e.key === 'ArrowRight') {
