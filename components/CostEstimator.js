@@ -2,7 +2,7 @@
  * CostEstimator Component - SCOPE Web App (Nothing Tech Inspired)
  * Kathmandu Valley Construction Cost Calculator with Interactive 6-Category Building Carousel Selector,
  * Accurate Engineering Discipline Cost Ratios, Volume Scale Economy Tiers, Resort Master Planning Module,
- * Dynamic SVG Graphic Synchronization (Plot, Elevation, Material Swatches),
+ * EXPANDED HIGH-IMPACT VECTOR MATRIX GRAPHICS (Steps 1-4),
  * and Expandable BOQ Receipt Discipline Breakdown.
  */
 
@@ -302,7 +302,7 @@ export function createCostEstimator() {
           </div>
 
           <!-- CAROUSEL SLIDE VIEWPORT -->
-          <div class="wizard-carousel-viewport" style="overflow: hidden; min-height: 440px; position: relative;">
+          <div class="wizard-carousel-viewport" style="overflow: hidden; min-height: 560px; position: relative;">
             <div class="wizard-carousel-track" style="display: flex; transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); width: 500%;">
               
               <!-- STEP 1 -->
@@ -336,37 +336,40 @@ export function createCostEstimator() {
                   <span id="scale-tier-discount" style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">STANDARD BASE RATE</span>
                 </div>
 
-                <!-- DYNAMIC NEOBRUTALIST ARCHITECTURAL LAND PLOT GRAPHIC SVG -->
+                <!-- EXPANDED DYNAMIC ARCHITECTURAL LAND PLOT GRAPHIC SVG -->
                 <div class="land-plot-graphic-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; position: relative;">
                   <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <span style="color: var(--nothing-red); font-weight: 700;">📐 INTERACTIVE LAND BOUNDARY & BUILDABLE FOOTPRINT</span>
+                    <span style="color: var(--nothing-red); font-weight: 700;">📐 INTERACTIVE LAND BOUNDARY & BUILDABLE FOOTPRINT MATRIX</span>
                     <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">TYPOLOGY MATRIX // 70% COVERAGE RATIO</span>
                   </div>
 
-                  <div style="width: 100%; height: 210px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <svg id="plot-svg-canvas" viewBox="0 0 400 200" style="width: 100%; height: 100%;">
+                  <div style="width: 100%; height: 320px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <svg id="plot-svg-canvas" viewBox="0 0 500 280" style="width: 100%; height: 100%;">
                       <defs>
-                        <pattern id="hatch-pattern-n" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-                          <line x1="0" y1="0" x2="0" y2="10" stroke="#FF2800" stroke-width="2" />
+                        <pattern id="hatch-pattern-n" width="12" height="12" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+                          <line x1="0" y1="0" x2="0" y2="12" stroke="#FF2800" stroke-width="2.5" />
                         </pattern>
                       </defs>
                       <g stroke="#1A1A1E" stroke-width="1">
-                        <line x1="0" y1="40" x2="400" y2="40" />
-                        <line x1="0" y1="80" x2="400" y2="80" />
-                        <line x1="0" y1="120" x2="400" y2="120" />
-                        <line x1="0" y1="160" x2="400" y2="160" />
-                        <line x1="80" y1="0" x2="80" y2="200" />
-                        <line x1="160" y1="0" x2="160" y2="200" />
-                        <line x1="240" y1="0" x2="240" y2="200" />
-                        <line x1="320" y1="0" x2="320" y2="200" />
+                        <line x1="0" y1="40" x2="500" y2="40" />
+                        <line x1="0" y1="80" x2="500" y2="80" />
+                        <line x1="0" y1="120" x2="500" y2="120" />
+                        <line x1="0" y1="160" x2="500" y2="160" />
+                        <line x1="0" y1="200" x2="500" y2="200" />
+                        <line x1="0" y1="240" x2="500" y2="240" />
+                        <line x1="80" y1="0" x2="80" y2="280" />
+                        <line x1="160" y1="0" x2="160" y2="280" />
+                        <line x1="240" y1="0" x2="240" y2="280" />
+                        <line x1="320" y1="0" x2="320" y2="280" />
+                        <line x1="400" y1="0" x2="400" y2="280" />
                       </g>
-                      <rect id="svg-plot-rect" x="80" y="20" width="240" height="160" fill="none" stroke="#FF2800" stroke-width="3" />
-                      <rect id="svg-setback-rect" x="96" y="32" width="208" height="136" fill="none" stroke="#FFF" stroke-width="2" stroke-dasharray="5,4" />
-                      <rect id="svg-build-rect" x="106" y="40" width="188" height="120" fill="url(#hatch-pattern-n)" fill-opacity="0.3" stroke="#FF2800" stroke-width="2" />
-                      <text id="svg-plot-dim-w" x="200" y="14" fill="#FF2800" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">37.0 FT (WIDTH)</text>
-                      <text id="svg-plot-dim-h" x="345" y="105" fill="#FF2800" font-family="monospace" font-size="11" font-weight="bold" text-anchor="start">37.0 FT (DEPTH)</text>
-                      <text id="svg-build-footprint-txt" x="200" y="96" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">BUILDABLE FOOTPRINT (70%)</text>
-                      <text id="svg-plot-sqft-txt" x="200" y="116" fill="#FFF" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">958 SQ. FT. GROUND COVERAGE</text>
+                      <rect id="svg-plot-rect" x="60" y="25" width="380" height="230" fill="none" stroke="#FF2800" stroke-width="3.5" />
+                      <rect id="svg-setback-rect" x="80" y="40" width="340" height="200" fill="none" stroke="#FFF" stroke-width="2.5" stroke-dasharray="6,4" />
+                      <rect id="svg-build-rect" x="95" y="52" width="310" height="176" fill="url(#hatch-pattern-n)" fill-opacity="0.35" stroke="#FF2800" stroke-width="3" />
+                      <text id="svg-plot-dim-w" x="250" y="18" fill="#FF2800" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">37.0 FT (WIDTH)</text>
+                      <text id="svg-plot-dim-h" x="455" y="140" fill="#FF2800" font-family="monospace" font-size="12" font-weight="bold" text-anchor="start">37.0 FT (DEPTH)</text>
+                      <text id="svg-build-footprint-txt" x="250" y="130" fill="#FFFFFF" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">BUILDABLE FOOTPRINT (70%)</text>
+                      <text id="svg-plot-sqft-txt" x="250" y="155" fill="#FFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">958 SQ. FT. GROUND COVERAGE</text>
                     </svg>
                   </div>
 
@@ -411,63 +414,63 @@ export function createCostEstimator() {
                   </button>
                 </div>
 
-                <!-- DYNAMIC ELEVATION GRAPHIC SVG -->
+                <!-- EXPANDED ELEVATION GRAPHIC SVG -->
                 <div class="elevation-graphic-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; position: relative;">
                   <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <span style="color: var(--nothing-red); font-weight: 700;">🏛️ STRUCTURAL ELEVATION CROSS-SECTION</span>
+                    <span style="color: var(--nothing-red); font-weight: 700;">🏛️ STRUCTURAL ELEVATION CROSS-SECTION MATRIX</span>
                     <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">ELEVATION MATRIX</span>
                   </div>
 
-                  <div style="width: 100%; height: 210px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <svg id="elevation-svg-canvas" viewBox="0 0 400 210" style="width: 100%; height: 100%;">
-                      <line x1="20" y1="185" x2="380" y2="185" stroke="#FFF" stroke-width="3" />
-                      <text x="25" y="198" fill="#888" font-family="monospace" font-size="9" font-weight="bold">GROUND DATUM ±0.00 M</text>
-                      <text x="250" y="198" fill="#FF2800" font-family="monospace" font-size="9" font-weight="bold">PLINTH LEVEL +2'0"</text>
+                  <div style="width: 100%; height: 320px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <svg id="elevation-svg-canvas" viewBox="0 0 500 300" style="width: 100%; height: 100%;">
+                      <line x1="20" y1="265" x2="480" y2="265" stroke="#FFF" stroke-width="3.5" />
+                      <text x="25" y="285" fill="#888" font-family="monospace" font-size="10" font-weight="bold">GROUND DATUM ±0.00 M</text>
+                      <text x="320" y="285" fill="#FF2800" font-family="monospace" font-size="10" font-weight="bold">PLINTH LEVEL +2'0"</text>
 
-                      <g stroke="#FF2800" stroke-width="1.5">
-                        <line id="elev-dim-line" x1="45" y1="185" x2="45" y2="65" />
-                        <line x1="40" y1="185" x2="50" y2="185" />
-                        <line id="elev-dim-top-cap" x1="40" y1="65" x2="50" y2="65" />
+                      <g stroke="#FF2800" stroke-width="2">
+                        <line id="elev-dim-line" x1="45" y1="265" x2="45" y2="90" />
+                        <line x1="38" y1="265" x2="52" y2="265" />
+                        <line id="elev-dim-top-cap" x1="38" y1="90" x2="52" y2="90" />
                       </g>
-                      <text id="elev-height-txt" x="40" y="125" fill="#FF2800" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end" transform="rotate(-90 40 125)">28.5 FT TOTAL HEIGHT</text>
+                      <text id="elev-height-txt" x="38" y="180" fill="#FF2800" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle" transform="rotate(-90 38 180)">28.5 FT TOTAL HEIGHT</text>
 
                       <g id="floor-l1" opacity="1">
-                        <rect x="75" y="140" width="160" height="45" fill="none" stroke="#FF2800" stroke-width="2" />
-                        <line x1="75" y1="140" x2="235" y2="140" stroke="#FFF" stroke-width="3" />
-                        <rect x="80" y="140" width="12" height="45" fill="#FF2800" />
-                        <rect x="150" y="140" width="12" height="45" fill="#FF2800" />
-                        <rect x="218" y="140" width="12" height="45" fill="#FF2800" />
-                        <rect x="105" y="152" width="32" height="22" fill="none" stroke="#FFF" stroke-width="1.5" />
-                        <text x="245" y="165" fill="#FF2800" font-family="monospace" font-size="10" font-weight="bold">L01: GROUND PLINTH (10.0 FT)</text>
+                        <rect x="75" y="200" width="240" height="65" fill="none" stroke="#FF2800" stroke-width="2.5" />
+                        <line x1="75" y1="200" x2="315" y2="200" stroke="#FFF" stroke-width="3.5" />
+                        <rect x="85" y="200" width="16" height="65" fill="#FF2800" />
+                        <rect x="185" y="200" width="16" height="65" fill="#FF2800" />
+                        <rect x="290" y="200" width="16" height="65" fill="#FF2800" />
+                        <rect x="115" y="215" width="50" height="35" fill="none" stroke="#FFF" stroke-width="2" />
+                        <text x="330" y="235" fill="#FF2800" font-family="monospace" font-size="11" font-weight="bold">L01: GROUND PLINTH (10.0 FT)</text>
                       </g>
 
                       <g id="floor-l2" opacity="1">
-                        <rect x="75" y="95" width="160" height="45" fill="none" stroke="#FFF" stroke-width="2" />
-                        <line x1="75" y1="95" x2="235" y2="95" stroke="#FFF" stroke-width="3" />
-                        <rect x="80" y="95" width="12" height="45" fill="#FFF" />
-                        <rect x="150" y="95" width="12" height="45" fill="#FFF" />
-                        <rect x="218" y="95" width="12" height="45" fill="#FFF" />
-                        <rect x="105" y="107" width="32" height="22" fill="none" stroke="#FF2800" stroke-width="1.5" />
-                        <rect x="175" y="107" width="32" height="22" fill="none" stroke="#FF2800" stroke-width="1.5" />
-                        <text x="245" y="120" fill="#FFF" font-family="monospace" font-size="10" font-weight="bold">L02: UPPER FLOOR (10.0 FT)</text>
+                        <rect x="75" y="135" width="240" height="65" fill="none" stroke="#FFF" stroke-width="2.5" />
+                        <line x1="75" y1="135" x2="315" y2="135" stroke="#FFF" stroke-width="3.5" />
+                        <rect x="85" y="135" width="16" height="65" fill="#FFF" />
+                        <rect x="185" y="135" width="16" height="65" fill="#FFF" />
+                        <rect x="290" y="135" width="16" height="65" fill="#FFF" />
+                        <rect x="115" y="150" width="50" height="35" fill="none" stroke="#FF2800" stroke-width="2" />
+                        <rect x="225" y="150" width="50" height="35" fill="none" stroke="#FF2800" stroke-width="2" />
+                        <text x="330" y="170" fill="#FFF" font-family="monospace" font-size="11" font-weight="bold">L02: UPPER FLOOR (10.0 FT)</text>
                       </g>
 
                       <g id="floor-l2-5" opacity="1">
-                        <rect x="75" y="65" width="85" height="30" fill="none" stroke="#FF2800" stroke-width="2" />
-                        <line x1="75" y1="65" x2="160" y2="65" stroke="#FFF" stroke-width="2.5" />
-                        <line x1="160" y1="85" x2="235" y2="85" stroke="#FF2800" stroke-width="2" stroke-dasharray="3,3" />
-                        <rect x="80" y="65" width="10" height="30" fill="#FF2800" />
-                        <rect x="145" y="65" width="10" height="30" fill="#FF2800" />
-                        <text x="245" y="80" fill="#FF2800" font-family="monospace" font-size="10" font-weight="bold">L0.5: TERRACE CABIN (8.5 FT)</text>
+                        <rect x="75" y="90" width="130" height="45" fill="none" stroke="#FF2800" stroke-width="2.5" />
+                        <line x1="75" y1="90" x2="205" y2="90" stroke="#FFF" stroke-width="3" />
+                        <line x1="205" y1="120" x2="315" y2="120" stroke="#FF2800" stroke-width="2.5" stroke-dasharray="4,4" />
+                        <rect x="85" y="90" width="14" height="45" fill="#FF2800" />
+                        <rect x="180" y="90" width="14" height="45" fill="#FF2800" />
+                        <text x="330" y="115" fill="#FF2800" font-family="monospace" font-size="11" font-weight="bold">L0.5: TERRACE CABIN (8.5 FT)</text>
                       </g>
 
                       <g id="floor-l3" opacity="0">
-                        <rect x="75" y="50" width="160" height="45" fill="none" stroke="#FFF" stroke-width="2" />
-                        <line x1="75" y1="50" x2="235" y2="50" stroke="#FFF" stroke-width="3" />
-                        <rect x="80" y="50" width="12" height="45" fill="#FFF" />
-                        <rect x="150" y="50" width="12" height="45" fill="#FFF" />
-                        <rect x="218" y="50" width="12" height="45" fill="#FFF" />
-                        <text x="245" y="65" fill="#FFF" font-family="monospace" font-size="10" font-weight="bold">L03: TOP LEVEL FLOOR (10.0 FT)</text>
+                        <rect x="75" y="70" width="240" height="65" fill="none" stroke="#FFF" stroke-width="2.5" />
+                        <line x1="75" y1="70" x2="315" y2="70" stroke="#FFF" stroke-width="3.5" />
+                        <rect x="85" y="70" width="16" height="65" fill="#FFF" />
+                        <rect x="185" y="70" width="16" height="65" fill="#FFF" />
+                        <rect x="290" y="70" width="16" height="65" fill="#FFF" />
+                        <text x="330" y="105" fill="#FFF" font-family="monospace" font-size="11" font-weight="bold">L03: TOP LEVEL FLOOR (10.0 FT)</text>
                       </g>
                     </svg>
                   </div>
@@ -516,52 +519,52 @@ export function createCostEstimator() {
                   </button>
                 </div>
 
-                <!-- DYNAMIC MATERIAL ASSEMBLY SVG CONTAINER -->
+                <!-- EXPANDED DYNAMIC MATERIAL ASSEMBLY SVG CONTAINER -->
                 <div id="material-spec-container" class="material-spec-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; position: relative;">
                   <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
                     <span id="mat-spec-tier-badge" style="color: var(--nothing-red); font-weight: 700;">📐 ARCHITECTURAL MATERIAL ASSEMBLY & VECTOR SWATCH DIAGRAM</span>
                     <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">VECTOR MATRIX</span>
                   </div>
 
-                  <div style="width: 100%; height: 210px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <svg id="mat-assembly-svg" viewBox="0 0 500 210" style="width: 100%; height: 100%;">
+                  <div style="width: 100%; height: 320px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <svg id="mat-assembly-svg" viewBox="0 0 550 280" style="width: 100%; height: 100%;">
                       <defs>
-                        <pattern id="pat-std-tile-n" width="28" height="28" patternUnits="userSpaceOnUse">
-                          <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#FF2800" stroke-width="1.2" />
+                        <pattern id="pat-std-tile-n" width="32" height="32" patternUnits="userSpaceOnUse">
+                          <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#FF2800" stroke-width="1.5" />
                         </pattern>
                       </defs>
 
                       <g id="cutaway-group">
-                        <rect x="20" y="145" width="200" height="35" fill="#18181A" stroke="#FFF" stroke-width="2" />
-                        <text x="25" y="167" fill="#666" font-family="monospace" font-size="9" font-weight="bold">RCC STRUCTURAL SLAB 150MM</text>
-                        <rect id="cutaway-floor-layer" x="20" y="130" width="200" height="15" fill="url(#pat-std-tile-n)" stroke="#FF2800" stroke-width="1.5" />
-                        <rect x="170" y="25" width="50" height="105" fill="#111" stroke="#FFF" stroke-width="2" />
-                        <rect id="cutaway-wall-layer" x="215" y="25" width="12" height="105" fill="#FF2800" opacity="0.8" />
-                        <rect id="cutaway-window-frame" x="125" y="45" width="45" height="60" fill="none" stroke="#FFF" stroke-width="2" />
+                        <rect x="20" y="210" width="250" height="45" fill="#18181A" stroke="#FFF" stroke-width="2.5" />
+                        <text x="25" y="238" fill="#888" font-family="monospace" font-size="10" font-weight="bold">RCC STRUCTURAL SLAB 150MM</text>
+                        <rect id="cutaway-floor-layer" x="20" y="190" width="250" height="20" fill="url(#pat-std-tile-n)" stroke="#FF2800" stroke-width="2" />
+                        <rect x="215" y="25" width="55" height="165" fill="#111" stroke="#FFF" stroke-width="2.5" />
+                        <rect id="cutaway-wall-layer" x="270" y="25" width="16" height="165" fill="#FF2800" opacity="0.85" />
+                        <rect id="cutaway-window-frame" x="120" y="65" width="65" height="85" fill="none" stroke="#FFF" stroke-width="2.5" />
                       </g>
 
-                      <line x1="245" y1="15" x2="245" y2="195" stroke="#333" stroke-width="1.5" stroke-dasharray="4,4" />
+                      <line x1="305" y1="15" x2="305" y2="265" stroke="#333" stroke-width="1.5" stroke-dasharray="5,5" />
 
                       <g id="swatch-matrix-group">
-                        <g id="swatch-tile-1" transform="translate(260, 20)">
-                          <rect x="0" y="0" width="100" height="80" fill="#000" stroke="#FFF" stroke-width="1.5" />
-                          <rect id="swatch-bg-1" x="5" y="5" width="90" height="50" fill="url(#pat-std-tile-n)" />
-                          <text id="swatch-lbl-1" x="50" y="71" fill="#FF2800" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">VITRIFIED // 600x600</text>
+                        <g id="swatch-tile-1" transform="translate(325, 25)">
+                          <rect x="0" y="0" width="105" height="105" fill="#000" stroke="#FFF" stroke-width="2" />
+                          <rect id="swatch-bg-1" x="6" y="6" width="93" height="68" fill="url(#pat-std-tile-n)" />
+                          <text id="swatch-lbl-1" x="52" y="93" fill="#FF2800" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle">VITRIFIED // 600x600</text>
                         </g>
 
-                        <g id="swatch-tile-2" transform="translate(375, 20)">
-                          <rect x="0" y="0" width="100" height="80" fill="#000" stroke="#FFF" stroke-width="1.5" />
-                          <text id="swatch-lbl-2" x="50" y="71" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">UPVC // ALUMINUM</text>
+                        <g id="swatch-tile-2" transform="translate(438, 25)">
+                          <rect x="0" y="0" width="105" height="105" fill="#000" stroke="#FFF" stroke-width="2" />
+                          <text id="swatch-lbl-2" x="52" y="93" fill="#FFF" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle">UPVC // ALUMINUM</text>
                         </g>
 
-                        <g id="swatch-tile-3" transform="translate(260, 110)">
-                          <rect x="0" y="0" width="100" height="80" fill="#000" stroke="#FFF" stroke-width="1.5" />
-                          <text id="swatch-lbl-3" x="50" y="71" fill="#FFF" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">CONCEALED // CP</text>
+                        <g id="swatch-tile-3" transform="translate(325, 145)">
+                          <rect x="0" y="0" width="105" height="105" fill="#000" stroke="#FFF" stroke-width="2" />
+                          <text id="swatch-lbl-3" x="52" y="93" fill="#FFF" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle">CONCEALED // CP</text>
                         </g>
 
-                        <g id="swatch-tile-4" transform="translate(375, 110)">
-                          <rect x="0" y="0" width="100" height="80" fill="#000" stroke="#FFF" stroke-width="1.5" />
-                          <text id="swatch-lbl-4" x="50" y="71" fill="#FF2800" font-family="monospace" font-size="8" font-weight="bold" text-anchor="middle">APEX // ACRYLIC</text>
+                        <g id="swatch-tile-4" transform="translate(438, 145)">
+                          <rect x="0" y="0" width="105" height="105" fill="#000" stroke="#FFF" stroke-width="2" />
+                          <text id="swatch-lbl-4" x="52" y="93" fill="#FF2800" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle">APEX // ACRYLIC</text>
                         </g>
                       </g>
                     </svg>
@@ -635,25 +638,30 @@ export function createCostEstimator() {
                   </div>
                 </div>
 
-                <!-- DYNAMIC MUNICIPAL PERMIT GRAPHIC BOARD -->
+                <!-- EXPANDED DYNAMIC MUNICIPAL PERMIT GRAPHIC BOARD -->
                 <div id="permit-stamp-container" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.2rem; position: relative;">
                   <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
                     <span style="color: var(--nothing-red); font-weight: 700;">📜 MUNICIPAL PERMIT & ENGINEERING VERIFICATION BOARD</span>
                     <span style="background: var(--nothing-red); color: #FFF; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem;">NBC 105:2020 COMPLIANT</span>
                   </div>
 
-                  <div style="width: 100%; height: 180px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <svg id="permit-stamp-svg" viewBox="0 0 500 180" style="width: 100%; height: 100%;">
-                      <g transform="translate(30, 30)">
-                        <rect x="0" y="0" width="200" height="120" fill="#0A0A0F" stroke="#FFF" stroke-width="1.5" />
-                        <text x="10" y="25" fill="#FFF" font-family="monospace" font-size="9" font-weight="bold">KMC MUNICIPAL BLUEPRINT</text>
-                        <rect x="15" y="40" width="170" height="55" fill="none" stroke="#FF2800" stroke-width="1" stroke-dasharray="3,3" />
-                        <text x="100" y="72" fill="#FF2800" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">STAMPED & VERIFIED</text>
+                  <div style="width: 100%; height: 300px; position: relative; background: #000; border: 1px dashed var(--border-color); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <svg id="permit-stamp-svg" viewBox="0 0 520 260" style="width: 100%; height: 100%;">
+                      <g transform="translate(20, 30)">
+                        <rect x="0" y="0" width="230" height="200" fill="#0A0A0F" stroke="#FFF" stroke-width="2" />
+                        <text x="15" y="30" fill="#FFF" font-family="monospace" font-size="11" font-weight="bold">KMC MUNICIPAL BLUEPRINT</text>
+                        <rect x="20" y="48" width="190" height="130" fill="none" stroke="#FF2800" stroke-width="1.5" stroke-dasharray="4,4" />
+                        <circle cx="115" cy="113" r="40" fill="none" stroke="#FF2800" stroke-width="2" />
+                        <text x="115" y="108" fill="#FF2800" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">OFFICIAL SEAL</text>
+                        <text x="115" y="123" fill="#FFF" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">APPROVED</text>
                       </g>
-                      <g transform="translate(260, 30)">
-                        <rect x="0" y="0" width="210" height="120" fill="#0A0A0F" stroke="#FFF" stroke-width="1.5" />
-                        <text x="10" y="25" fill="#FFF" font-family="monospace" font-size="9" font-weight="bold">SOIL BEARING TEST REPORT</text>
-                        <text x="105" y="72" fill="#FF2800" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">BEARING: 150 KN/M² OK</text>
+                      <g transform="translate(270, 30)">
+                        <rect x="0" y="0" width="230" height="200" fill="#0A0A0F" stroke="#FFF" stroke-width="2" />
+                        <text x="15" y="30" fill="#FFF" font-family="monospace" font-size="11" font-weight="bold">SOIL BEARING TEST REPORT</text>
+                        <rect x="20" y="48" width="190" height="130" fill="none" stroke="#FF2800" stroke-width="1.5" stroke-dasharray="4,4" />
+                        <circle cx="115" cy="113" r="40" fill="none" stroke="#FF2800" stroke-width="2" />
+                        <text x="115" y="108" fill="#FF2800" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">GEOTECH OK</text>
+                        <text x="115" y="123" fill="#FFF" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">150 KN/M²</text>
                       </g>
                     </svg>
                   </div>
@@ -1134,26 +1142,26 @@ export function initCostEstimatorEvents() {
     const sideFt = Math.sqrt(plotSqft);
     const groundSqft = plotSqft * GROUND_COVERAGE_RATIO;
 
-    const minWidth = 140;
-    const maxWidth = 290;
-    const minHeight = 85;
-    const maxHeight = 165;
+    const minWidth = 220;
+    const maxWidth = 420;
+    const minHeight = 130;
+    const maxHeight = 220;
 
     const scaleRatio = Math.min(1, (aana - 2) / (25 - 2));
     const rectW = minWidth + (maxWidth - minWidth) * scaleRatio;
     const rectH = minHeight + (maxHeight - minHeight) * scaleRatio;
-    const rectX = 200 - rectW / 2;
-    const rectY = 100 - rectH / 2;
+    const rectX = 250 - rectW / 2;
+    const rectY = 140 - rectH / 2;
 
-    const setX = rectX + 12;
-    const setY = rectY + 10;
-    const setW = rectW - 24;
-    const setH = rectH - 20;
+    const setX = rectX + 16;
+    const setY = rectY + 14;
+    const setW = rectW - 32;
+    const setH = rectH - 28;
 
-    const bldX = rectX + 20;
-    const bldY = rectY + 16;
-    const bldW = rectW - 40;
-    const bldH = rectH - 32;
+    const bldX = rectX + 28;
+    const bldY = rectY + 24;
+    const bldW = rectW - 56;
+    const bldH = rectH - 48;
 
     const svgPlotRect = document.getElementById('svg-plot-rect');
     const svgSetbackRect = document.getElementById('svg-setback-rect');
@@ -1180,14 +1188,14 @@ export function initCostEstimatorEvents() {
     if (dimW) dimW.textContent = `${sideFt.toFixed(1)} FT (WIDTH)`;
     if (dimH) {
       dimH.textContent = `${sideFt.toFixed(1)} FT (DEPTH)`;
-      dimH.setAttribute('x', Math.min(380, rectX + rectW + 15));
+      dimH.setAttribute('x', Math.min(470, rectX + rectW + 15));
       dimH.setAttribute('y', rectY + rectH / 2 + 4);
     }
 
-    if (footTxt) footTxt.setAttribute('y', rectY + rectH / 2 - 6);
+    if (footTxt) footTxt.setAttribute('y', rectY + rectH / 2 - 8);
     if (sqftTxt) {
       sqftTxt.textContent = `${Math.round(groundSqft).toLocaleString()} SQ. FT. GROUND COVERAGE`;
-      sqftTxt.setAttribute('y', rectY + rectH / 2 + 12);
+      sqftTxt.setAttribute('y', rectY + rectH / 2 + 14);
     }
 
     if (specTotal) specTotal.textContent = `${Math.round(plotSqft).toLocaleString()} SQ. FT.`;
@@ -1208,7 +1216,7 @@ export function initCostEstimatorEvents() {
     const specHeight = document.getElementById('elev-spec-height');
 
     let totalHeightFt = 10.0;
-    let topY = 140;
+    let topY = 200;
 
     let l1Op = 1, l2Op = 0, l25Op = 0, l3Op = 0;
     let typeLabel = `${storey} STOREYS (${activeCategory.title})`;
@@ -1216,19 +1224,19 @@ export function initCostEstimatorEvents() {
     if (storey === 1) {
       l1Op = 1; l2Op = 0; l25Op = 0; l3Op = 0;
       totalHeightFt = 10.0;
-      topY = 140;
+      topY = 200;
     } else if (storey === 2) {
       l1Op = 1; l2Op = 1; l25Op = 0; l3Op = 0;
       totalHeightFt = 20.0;
-      topY = 95;
+      topY = 135;
     } else if (storey === 2.5) {
       l1Op = 1; l2Op = 1; l25Op = 1; l3Op = 0;
       totalHeightFt = 28.5;
-      topY = 65;
+      topY = 90;
     } else if (storey === 3) {
       l1Op = 1; l2Op = 1; l25Op = 0; l3Op = 1;
       totalHeightFt = 30.0;
-      topY = 50;
+      topY = 70;
     }
 
     const meters = (totalHeightFt * 0.3048).toFixed(2);
