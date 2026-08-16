@@ -76,10 +76,10 @@ export function createHero() {
     <div class="ticker-wrap">
       <div class="ticker">
         <span class="ticker-item">★ KATHMANDU VALLEY BUILDING PORTAL</span>
-        <span class="ticker-item">● KATHMANDU CONSTRUCTION COST ESTIMATOR</span>
+        <span class="ticker-item">● CONSTRUCTION COST ESTIMATOR</span>
         <span class="ticker-item">★ PERMIT & LEGAL COMPLIANCE HUB</span>
         <span class="ticker-item">● NBC 105:2020 & KMC BYLAWS 2078</span>
-        <span class="ticker-item">★ KATHMANDU CONSTRUCTION COST ESTIMATOR</span>
+        <span class="ticker-item">★ CONSTRUCTION COST ESTIMATOR</span>
         <span class="ticker-item">● PERMIT & LEGAL COMPLIANCE HUB</span>
       </div>
     </div>
