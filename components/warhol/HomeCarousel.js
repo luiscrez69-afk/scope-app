@@ -69,19 +69,21 @@ export function createHomeCarousel() {
                 <!-- Enlarged Arch Meter & Symmetrical Full-Space KPI Matrix -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; align-items: stretch; width: 100%; margin: 0.4rem 0 0.6rem; flex: 1;">
                   
-                  <!-- Left Metric Pillar (Compliant Section with 50% GAP) -->
-                  <div style="background: #000; border: 2px solid #FFF; padding: 1.2rem; box-shadow: 5px 5px 0px #FFE600; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; overflow: hidden;">
+                  <!-- Left Metric Pillar (Compliant Section with 50% COMPLIANCE) -->
+                  <div style="background: #000; border: 2px solid #FFF; padding: 1.3rem 1.1rem; box-shadow: 5px 5px 0px #FFE600; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; overflow: hidden;">
                     <div>
                       <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 900; color: #FFE600; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase;">
                         ● COMPLIANCE FORECAST
                       </div>
-                      <div style="display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;">
-                        <span style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(2.2rem, 3.8vw, 3.2rem); font-weight: 900; color: #FFF; line-height: 0.85;">50%</span>
-                        <span style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #FFE600; line-height: 0.85;">GAP</span>
+                      <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(3rem, 5vw, 4.4rem); font-weight: 900; color: #FFF; line-height: 0.85;">
+                        50%
+                      </div>
+                      <div style="font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.1rem); font-weight: 900; color: #FFE600; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 0.35rem;">
+                        COMPLIANCE
                       </div>
                     </div>
                     <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; line-height: 1.35; border-top: 1px solid #222; padding-top: 0.7rem; margin-top: 0.8rem;">
-                      Forecasted municipal trajectory leaves a 50% regulatory compliance ceiling.
+                      Forecasted municipal trajectory reaches 50% regulatory compliance ceiling.
                     </div>
                   </div>
 
@@ -108,7 +110,7 @@ export function createHomeCarousel() {
                         
                         <!-- Radial Labels -->
                         <text x="35" y="150" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9.5" font-weight="700" fill="#777">0%</text>
-                        <text x="140" y="8" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9.5" font-weight="900" fill="#FFE600">50% GAP</text>
+                        <text x="140" y="8" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9.5" font-weight="900" fill="#FFE600">50% CEILING</text>
                         <text x="245" y="150" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9.5" font-weight="700" fill="#777">100%</text>
                       </svg>
                     </div>
@@ -117,15 +119,17 @@ export function createHomeCarousel() {
                     </div>
                   </div>
 
-                  <!-- Right Metric Pillar (Deficit Section) -->
-                  <div style="background: #000; border: 2px solid #FFF; padding: 1.2rem; box-shadow: 5px 5px 0px #FF2A85; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; overflow: hidden;">
+                  <!-- Right Metric Pillar (Deficit Section with 50% DEFICIT) -->
+                  <div style="background: #000; border: 2px solid #FFF; padding: 1.3rem 1.1rem; box-shadow: 5px 5px 0px #FF2A85; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; overflow: hidden;">
                     <div>
                       <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 900; color: #FF2A85; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase;">
                         ▲ CRITICAL BOTTLENECK
                       </div>
-                      <div style="display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;">
-                        <span style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(2.2rem, 3.8vw, 3.2rem); font-weight: 900; color: #FF2A85; line-height: 0.85;">50%</span>
-                        <span style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #FF2A85; line-height: 0.85;">DEFICIT</span>
+                      <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(3rem, 5vw, 4.4rem); font-weight: 900; color: #FF2A85; line-height: 0.85;">
+                        50%
+                      </div>
+                      <div style="font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.1rem); font-weight: 900; color: #FF2A85; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 0.35rem;">
+                        DEFICIT
                       </div>
                     </div>
                     <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; line-height: 1.35; border-top: 1px solid #222; padding-top: 0.7rem; margin-top: 0.8rem;">
