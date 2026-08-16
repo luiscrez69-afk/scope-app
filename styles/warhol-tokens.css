@@ -1,27 +1,7 @@
-/* Webfont Imports - MangoGrotesque */
-@font-face {
-  font-family: 'MangoGrotesque';
-  src: url('https://cdn.prod.website-files.com/6718c8afa78e156621f3a2ed/6718d578a526a2717fbf2172_MangoGrotesque-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'MangoGrotesque';
-  src: url('https://cdn.prod.website-files.com/6718c8afa78e156621f3a2ed/6718d57859e02ec07e1cea96_MangoGrotesque-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'MangoGrotesque';
-  src: url('https://cdn.prod.website-files.com/6718c8afa78e156621f3a2ed/6718d57888ded80f8478379a_MangoGrotesque-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+/* ==========================================================================
+   SCOPE DESIGN SYSTEM - DESIGN TOKENS
+   Inspired by Andy Warhol Pop-Art & Dark Neo-Brutalism (warhol-arts)
+   ========================================================================== */
 
 :root {
   /* Color Palette - Dark Theme Default */
