@@ -62,68 +62,72 @@ export function createHomeCarousel() {
                     </span>
                   </div>
                   <div style="background: rgba(255,255,255,0.08); color: var(--text-main); font-family: var(--font-mono); font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.15);">
-                    FORECAST: 50% CAP
+                    FORECAST: 50% GAP
                   </div>
                 </div>
 
-                <!-- Enlarged Arch Meter & Dual KPI Columns (Style 1: Semi-Circular Gauge) -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; align-items: center; width: 100%; margin: 0.5rem 0 0.8rem;">
+                <!-- Enlarged Arch Meter & Symmetrical Full-Space KPI Matrix -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; align-items: stretch; width: 100%; margin: 0.4rem 0 0.6rem; flex: 1;">
                   
-                  <!-- Left Metric Pillar -->
-                  <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.2rem; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                    <div style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: #FFF; letter-spacing: 1px; margin-bottom: 0.4rem;">
-                      ● 50% COMPLIANT
+                  <!-- Left Metric Pillar (Compliant Section with 50% GAP) -->
+                  <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.4rem 1.2rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                      <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #FFF; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase;">
+                        ● COMPLIANCE FORECAST
+                      </div>
+                      <div style="font-family: var(--font-display); font-size: clamp(2.4rem, 4.5vw, 3.5rem); font-weight: 700; color: #FFF; line-height: 0.95;">
+                        50% GAP
+                      </div>
                     </div>
-                    <div style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #FFF; line-height: 0.95;">
-                      50% CAP
-                    </div>
-                    <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.3;">
-                      Projected ceiling under current municipal technical staffing
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.8rem; margin-top: 1rem;">
+                      Forecasted municipal trajectory leaves a 50% regulatory compliance ceiling.
                     </div>
                   </div>
 
-                  <!-- Center: Enlarged Semicircular Radial Arch Gauge -->
-                  <div style="background: rgba(0,0,0,0.6); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
-                    <div style="width: 100%; max-width: 260px; height: 135px; position: relative;">
-                      <svg viewBox="0 0 260 140" width="100%" height="100%" style="overflow: visible;">
+                  <!-- Center: Enlarged Semicircular Radial Arch Gauge with Lifted Readout -->
+                  <div style="background: rgba(0,0,0,0.6); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.4rem 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; position: relative;">
+                    <div style="width: 100%; max-width: 270px; height: 145px; position: relative; margin-top: 0.2rem;">
+                      <svg viewBox="0 0 280 155" width="100%" height="100%" style="overflow: visible;">
                         <!-- Gauge Background Outer Track -->
-                        <path d="M 30 130 A 100 100 0 0 1 230 130" fill="none" stroke="#222" stroke-width="22" stroke-linecap="round" />
+                        <path d="M 35 130 A 105 105 0 0 1 245 130" fill="none" stroke="#222" stroke-width="22" stroke-linecap="round" />
                         
                         <!-- Left Arc: 50% Compliant (White) -->
-                        <path d="M 30 130 A 100 100 0 0 1 130 30" fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" />
+                        <path d="M 35 130 A 105 105 0 0 1 140 25" fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" />
                         
                         <!-- Right Arc: 50% Deficit (Nothing Red) -->
-                        <path d="M 130 30 A 100 100 0 0 1 230 130" fill="none" stroke="var(--nothing-red)" stroke-width="22" stroke-linecap="round" />
+                        <path d="M 140 25 A 105 105 0 0 1 245 130" fill="none" stroke="var(--nothing-red)" stroke-width="22" stroke-linecap="round" />
                         
-                        <!-- Divider Notch at Top (50%) -->
-                        <line x1="130" y1="15" x2="130" y2="45" stroke="#000" stroke-width="4" />
+                        <!-- Top Notch -->
+                        <line x1="140" y1="12" x2="140" y2="40" stroke="#000" stroke-width="4" />
                         
-                        <!-- Center Core Hub -->
-                        <circle cx="130" cy="130" r="45" fill="#0A0A0A" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
-                        <text x="130" y="118" text-anchor="middle" font-family="'Space Mono', monospace" font-size="28" font-weight="700" fill="#FFF">50%</text>
-                        <text x="130" y="132" text-anchor="middle" font-family="'Space Mono', monospace" font-size="7.5" font-weight="700" fill="var(--nothing-red)" letter-spacing="1">CEILING</text>
+                        <!-- Raised Center Core Hub for High Legibility -->
+                        <circle cx="140" cy="110" r="46" fill="#0A0A0A" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+                        <text x="140" y="98" text-anchor="middle" font-family="'Space Mono', monospace" font-size="28" font-weight="700" fill="#FFF">50%</text>
+                        <text x="140" y="117" text-anchor="middle" font-family="'Space Mono', monospace" font-size="8.5" font-weight="700" fill="var(--nothing-red)" letter-spacing="2">CEILING</text>
                         
-                        <!-- 0% and 100% Labels -->
-                        <text x="30" y="150" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" font-weight="700" fill="#777">0%</text>
-                        <text x="130" y="10" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" font-weight="700" fill="#FFF">50% CAP</text>
-                        <text x="230" y="150" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" font-weight="700" fill="#777">100%</text>
+                        <!-- Radial Labels -->
+                        <text x="35" y="150" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9.5" font-weight="700" fill="#777">0%</text>
+                        <text x="140" y="8" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9.5" font-weight="700" fill="#FFF">50% GAP</text>
+                        <text x="245" y="150" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9.5" font-weight="700" fill="#777">100%</text>
                       </svg>
                     </div>
-                    <div style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-align: center; margin-top: 0.6rem; letter-spacing: 0.5px;">
+                    <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-align: center; margin-top: 0.5rem; letter-spacing: 0.5px;">
                       NBC 105:2020 BYLAW CAPACITY GAUGE
                     </div>
                   </div>
 
-                  <!-- Right Metric Pillar -->
-                  <div style="background: rgba(215,25,33,0.06); border: 1px solid var(--nothing-red); border-radius: var(--radius-md); padding: 1.2rem; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                    <div style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: var(--nothing-red); letter-spacing: 1px; margin-bottom: 0.4rem;">
-                      ▲ 50% DEFICIT
+                  <!-- Right Metric Pillar (Deficit Section) -->
+                  <div style="background: rgba(215,25,33,0.06); border: 1px solid var(--nothing-red); border-radius: var(--radius-md); padding: 1.4rem 1.2rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                      <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--nothing-red); letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase;">
+                        ▲ CRITICAL BOTTLENECK
+                      </div>
+                      <div style="font-family: var(--font-display); font-size: clamp(2.4rem, 4.5vw, 3.5rem); font-weight: 700; color: var(--nothing-red); line-height: 0.95;">
+                        50% DEFICIT
+                      </div>
                     </div>
-                    <div style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--nothing-red); line-height: 0.95;">
-                      GAP 50%
-                    </div>
-                    <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.3;">
-                      Engineer availability bottleneck across rural ward offices
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; border-top: 1px solid rgba(215,25,33,0.2); padding-top: 0.8rem; margin-top: 1rem;">
+                      Severe shortfall in certified municipal engineers across rural ward offices.
                     </div>
                   </div>
 
