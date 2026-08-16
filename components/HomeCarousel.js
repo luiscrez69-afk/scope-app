@@ -12,7 +12,7 @@ export function createHomeCarousel() {
         <!-- Header Section -->
         <div style="text-align: center; margin-bottom: 2.5rem;">
           <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.05); color: var(--text-main); font-family: var(--font-mono); font-size: 0.75rem; padding: 0.35rem 1rem; border-radius: var(--radius-pill); border: 1px solid rgba(255, 255, 255, 0.12); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1.5px;">
-            <span style="color: var(--nothing-red)">●</span> KATHMANDU VALLEY PORTAL // CHALLENGES
+            <span style="color: var(--nothing-red)">●</span> SYSTEMIC CHALLENGES
           </div>
 
           <h2 style="font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--text-main); line-height: 1; margin: 0.4rem 0 0; text-transform: uppercase; letter-spacing: 1px;">
