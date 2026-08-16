@@ -69,20 +69,42 @@ export function createHomeCarousel() {
                 <!-- Enlarged Arch Meter & Symmetrical Full-Space KPI Matrix -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; align-items: stretch; width: 100%; margin: 0.4rem 0 0.6rem; flex: 1;">
                   
-                  <!-- Left Metric Pillar (Compliant Section with 50% COMPLIANCE) -->
+                  <!-- Left Metric Pillar (Compliant Section with 50% COMPLIANCE & Architectural Drawing) -->
                   <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.3rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; overflow: hidden;">
                     <div>
-                      <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #FFF; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase;">
+                      <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #FFF; letter-spacing: 1px; margin-bottom: 0.4rem; text-transform: uppercase;">
                         ● COMPLIANCE FORECAST
                       </div>
                       <div style="font-family: var(--font-display); font-size: clamp(2.6rem, 4.5vw, 3.6rem); font-weight: 700; color: #FFF; line-height: 0.85;">
                         50%
                       </div>
-                      <div style="font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.1rem); font-weight: 700; color: #FFF; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 0.35rem;">
+                      <div style="font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.1rem); font-weight: 700; color: #FFF; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 0.25rem;">
                         COMPLIANCE
                       </div>
+
+                      <!-- Architectural Drawing: Reinforced NBC Standard Frame -->
+                      <div style="width: 100%; height: 62px; margin: 0.8rem 0 0.4rem; background: rgba(0,0,0,0.4); border: 1px dashed rgba(255,255,255,0.25); border-radius: 4px; padding: 4px; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 160 50" width="100%" height="100%" style="overflow: visible;">
+                          <!-- Ground Line -->
+                          <line x1="8" y1="44" x2="152" y2="44" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="3 2" />
+                          <!-- Reinforced Frame -->
+                          <rect x="22" y="16" width="50" height="28" fill="none" stroke="#FFFFFF" stroke-width="1.5" />
+                          <line x1="22" y1="30" x2="72" y2="30" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="2 2" />
+                          <line x1="47" y1="16" x2="47" y2="44" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="2 2" />
+                          <!-- Diagonal Seismic Ties -->
+                          <line x1="22" y1="16" x2="47" y2="44" stroke="#FFFFFF" stroke-width="0.8" opacity="0.5" />
+                          <line x1="47" y1="16" x2="72" y2="44" stroke="#FFFFFF" stroke-width="0.8" opacity="0.5" />
+                          <!-- Roof Gable -->
+                          <polygon points="18,16 47,4 76,16" fill="none" stroke="#FFFFFF" stroke-width="1.5" />
+                          <!-- Verified NBC Stamp -->
+                          <circle cx="118" cy="24" r="14" fill="#0A0A0A" stroke="#00FF66" stroke-width="1.5" />
+                          <polyline points="111,24 116,29 126,18" fill="none" stroke="#00FF66" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                          <text x="118" y="44" text-anchor="middle" font-family="'Space Mono', monospace" font-size="7" font-weight="700" fill="#00FF66">NBC OK</text>
+                        </svg>
+                      </div>
                     </div>
-                    <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); line-height: 1.35; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.7rem; margin-top: 0.8rem;">
+
+                    <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); line-height: 1.35; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.6rem; margin-top: 0.5rem;">
                       Forecasted municipal trajectory reaches 50% regulatory compliance ceiling.
                     </div>
                   </div>
@@ -119,20 +141,40 @@ export function createHomeCarousel() {
                     </div>
                   </div>
 
-                  <!-- Right Metric Pillar (Deficit Section with 50% DEFICIT) -->
+                  <!-- Right Metric Pillar (Deficit Section with 50% DEFICIT & Engineering Shortage Drawing) -->
                   <div style="background: rgba(215,25,33,0.06); border: 1px solid var(--nothing-red); border-radius: var(--radius-md); padding: 1.3rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; overflow: hidden;">
                     <div>
-                      <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--nothing-red); letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase;">
+                      <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--nothing-red); letter-spacing: 1px; margin-bottom: 0.4rem; text-transform: uppercase;">
                         ▲ CRITICAL BOTTLENECK
                       </div>
                       <div style="font-family: var(--font-display); font-size: clamp(2.6rem, 4.5vw, 3.6rem); font-weight: 700; color: var(--nothing-red); line-height: 0.85;">
                         50%
                       </div>
-                      <div style="font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.1rem); font-weight: 700; color: var(--nothing-red); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 0.35rem;">
+                      <div style="font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.1rem); font-weight: 700; color: var(--nothing-red); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 0.25rem;">
                         DEFICIT
                       </div>
+
+                      <!-- Architectural Drawing: Unreinforced / Shortage Warning Frame -->
+                      <div style="width: 100%; height: 62px; margin: 0.8rem 0 0.4rem; background: rgba(215,25,33,0.08); border: 1px dashed var(--nothing-red); border-radius: 4px; padding: 4px; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 160 50" width="100%" height="100%" style="overflow: visible;">
+                          <!-- Ground Line -->
+                          <line x1="8" y1="44" x2="152" y2="44" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="3 2" />
+                          <!-- Unreinforced Deficit Frame -->
+                          <rect x="22" y="16" width="50" height="28" fill="none" stroke="var(--nothing-red)" stroke-width="1.5" stroke-dasharray="4 2" />
+                          <line x1="22" y1="30" x2="72" y2="30" stroke="var(--nothing-red)" stroke-width="1" stroke-dasharray="2 2" />
+                          <!-- Structural Stress / Fracture Vector -->
+                          <path d="M 47 16 L 43 25 L 51 34 L 46 44" fill="none" stroke="var(--nothing-red)" stroke-width="1.8" />
+                          <!-- Roof Gable -->
+                          <polygon points="18,16 47,4 76,16" fill="none" stroke="var(--nothing-red)" stroke-width="1.5" stroke-dasharray="3 2" />
+                          <!-- Shortage Warning Badge -->
+                          <circle cx="118" cy="24" r="14" fill="#0A0A0A" stroke="var(--nothing-red)" stroke-width="1.5" />
+                          <text x="118" y="29" text-anchor="middle" font-family="'Space Mono', monospace" font-size="16" font-weight="700" fill="var(--nothing-red)">!</text>
+                          <text x="118" y="44" text-anchor="middle" font-family="'Space Mono', monospace" font-size="7" font-weight="700" fill="var(--nothing-red)">DEFICIT</text>
+                        </svg>
+                      </div>
                     </div>
-                    <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); line-height: 1.35; border-top: 1px solid rgba(215,25,33,0.2); padding-top: 0.7rem; margin-top: 0.8rem;">
+
+                    <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); line-height: 1.35; border-top: 1px solid rgba(215,25,33,0.2); padding-top: 0.6rem; margin-top: 0.5rem;">
                       Severe shortfall in certified municipal engineers across rural ward offices.
                     </div>
                   </div>
