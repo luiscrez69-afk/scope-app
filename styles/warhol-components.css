@@ -221,8 +221,8 @@
   font-family: 'MangoGrotesque', 'Bebas Neue', 'Syne', 'Impact', sans-serif;
   font-size: clamp(4.5rem, 18.5vw, 18rem);
   font-weight: 900;
-  line-height: 0.85;
-  letter-spacing: -0.02em;
+  line-height: 1;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
   display: flex;
   justify-content: center;
@@ -231,17 +231,19 @@
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
+  padding: 0.1em 0.2em;
   color: var(--text-main);
+  overflow: visible;
 }
 
 .letter-mask {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
-  vertical-align: bottom;
-  padding: 0.05em 0.08em;
+  vertical-align: middle;
+  padding: 0.1em 0.15em;
 }
 
 .letter-inner {
@@ -257,6 +259,7 @@
   background-size: 135% 135%;
   background-position: center;
   position: relative;
+  padding: 0.05em 0.1em;
 }
 
 /* Color-Coded In-Text Texture Reveals strictly INSIDE Letter Bounds */
@@ -270,7 +273,8 @@
 @media (max-width: 480px) {
   .giant-title {
     font-size: clamp(3.8rem, 21.5vw, 7rem);
-    letter-spacing: -0.06em;
+    letter-spacing: -0.02em;
+    padding: 0.1em 0.1em;
   }
   .giant-hero-container {
     padding: 2rem 0 1.5rem;

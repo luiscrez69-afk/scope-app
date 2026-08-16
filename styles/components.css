@@ -158,7 +158,7 @@
   font-family: var(--font-ndot);
   font-size: clamp(4rem, 16vw, 15rem);
   font-weight: 700;
-  line-height: 0.85;
+  line-height: 1;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   display: flex;
@@ -168,17 +168,19 @@
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
+  padding: 0.1em 0.2em;
   color: var(--text-main);
+  overflow: visible;
 }
 
 .letter-mask {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
-  vertical-align: bottom;
-  padding: 0.05em 0.08em;
+  vertical-align: middle;
+  padding: 0.1em 0.15em;
 }
 
 .letter-inner {
@@ -188,6 +190,8 @@
   transform-style: preserve-3d;
   backface-visibility: hidden;
   cursor: pointer;
+  position: relative;
+  padding: 0.05em 0.1em;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
