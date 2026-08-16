@@ -38,24 +38,51 @@ export function createHero() {
       <div class="scope-container" style="position: relative;">
         
         <!-- Outer Margin Decorative Pop-Art Stamp Badges -->
-        <div class="hero-margin-stamps" style="position: absolute; width: 100%; top: -10px; left: 0; pointer-events: none; z-index: 10; display: flex; justify-content: space-between; padding: 0 0.5rem; box-sizing: border-box;">
+        <div class="hero-margin-stamps" style="position: absolute; width: 100%; top: -14px; left: 0; pointer-events: none; z-index: 10; display: flex; justify-content: space-between; padding: 0 0.5rem; box-sizing: border-box;">
           <!-- Left Stamp: KMC APPROVED -->
-          <div style="transform: rotate(-6deg); background: #000; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-yellow); padding: 0.4rem 0.7rem; display: flex; align-items: center; gap: 0.6rem;">
-            <div style="width: 28px; height: 28px; border: 1px solid #FFF; overflow: hidden; flex-shrink: 0;">
-              <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=150&q=80" alt="KMC Approved" style="width: 100%; height: 100%; object-fit: cover; filter: contrast(1.5) sepia(1) hue-rotate(50deg);">
+          <div style="transform: rotate(-5deg); background: #000; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-yellow); padding: 0.45rem 0.8rem; display: flex; align-items: center; gap: 0.7rem; pointer-events: auto;">
+            <div style="width: 36px; height: 36px; border: 1.5px solid #FFF; overflow: hidden; flex-shrink: 0; background: #000; display: flex; align-items: center; justify-content: center; position: relative;">
+              <!-- Embedded Architectural KMC Permit Seal SVG -->
+              <svg viewBox="0 0 40 40" width="100%" height="100%" style="background: #000;">
+                <!-- Glowing Outer Seal Ring -->
+                <circle cx="20" cy="20" r="18" fill="#111" stroke="#FFE600" stroke-width="1.5" stroke-dasharray="3 2" />
+                <!-- Traditional Pagoda Roof Top Tier -->
+                <polygon points="20,7 13,13 27,13" fill="#FFE600" />
+                <!-- Middle Tier Roof -->
+                <polygon points="20,12 10,18 30,18" fill="#FFE600" />
+                <!-- Base Structure Columns -->
+                <rect x="14" y="18" width="12" height="11" fill="none" stroke="#FFF" stroke-width="1.2" />
+                <line x1="20" y1="18" x2="20" y2="29" stroke="#FFE600" stroke-width="1" />
+                <!-- Foundation Steps -->
+                <line x1="11" y1="29" x2="29" y2="29" stroke="#FFF" stroke-width="1.5" />
+                <line x1="8" y1="32" x2="32" y2="32" stroke="#FFE600" stroke-width="1.5" />
+                <!-- Mini Verified Stamp -->
+                <circle cx="28" cy="11" r="4.5" fill="#00FF66" stroke="#000" stroke-width="1" />
+                <polyline points="26,11 27.5,12.5 30.5,9.5" fill="none" stroke="#000" stroke-width="1.2" stroke-linecap="round" />
+              </svg>
             </div>
-            <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 900; color: var(--cmyk-yellow); text-transform: uppercase; line-height: 1.1;">
-              ★ KMC APPROVED<br><span style="color: #FFF; font-size: 0.55rem;">BYLAW 2026.1</span>
+            <div style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 900; color: var(--cmyk-yellow); text-transform: uppercase; line-height: 1.15;">
+              ★ KMC APPROVED<br><span style="color: #FFF; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.5px;">BYLAW 2026.1 VERIFIED</span>
             </div>
           </div>
 
           <!-- Right Stamp: NEPAL NBC 105 -->
-          <div style="transform: rotate(5deg); background: #000; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-pink); padding: 0.4rem 0.7rem; display: flex; align-items: center; gap: 0.6rem;">
-            <div style="width: 28px; height: 28px; border: 1px solid #FFF; overflow: hidden; flex-shrink: 0;">
-              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=150&q=80" alt="Nepal NBC 105" style="width: 100%; height: 100%; object-fit: cover; filter: contrast(1.5) sepia(1) hue-rotate(290deg);">
+          <div style="transform: rotate(5deg); background: #000; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-pink); padding: 0.45rem 0.8rem; display: flex; align-items: center; gap: 0.7rem; pointer-events: auto;">
+            <div style="width: 36px; height: 36px; border: 1.5px solid #FFF; overflow: hidden; flex-shrink: 0; background: #000; display: flex; align-items: center; justify-content: center; position: relative;">
+              <!-- Embedded Seismic NBC 105 Seal SVG -->
+              <svg viewBox="0 0 40 40" width="100%" height="100%" style="background: #000;">
+                <!-- Outer Ring -->
+                <circle cx="20" cy="20" r="18" fill="#111" stroke="#FF2A85" stroke-width="1.5" stroke-dasharray="3 2" />
+                <!-- Seismic Wave / Pulse Graph -->
+                <path d="M 6 22 L 13 22 L 16 11 L 20 29 L 24 15 L 27 22 L 34 22" fill="none" stroke="#FF2A85" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                <!-- Central Pass Star -->
+                <circle cx="20" cy="8" r="3" fill="#FFE600" />
+                <!-- Subtitle Label -->
+                <text x="20" y="34" text-anchor="middle" font-family="'Space Mono', monospace" font-size="5" font-weight="900" fill="#FFF">NBC 105</text>
+              </svg>
             </div>
-            <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 900; color: var(--cmyk-pink); text-transform: uppercase; line-height: 1.1;">
-              ● NEPAL NBC 105<br><span style="color: #FFF; font-size: 0.55rem;">SEISMIC CERTIFIED</span>
+            <div style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 900; color: var(--cmyk-pink); text-transform: uppercase; line-height: 1.15;">
+              ● NEPAL NBC 105<br><span style="color: #FFF; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.5px;">SEISMIC CERTIFIED</span>
             </div>
           </div>
         </div>
