@@ -36,57 +36,79 @@ export function createHero() {
   return `
     <section class="giant-hero-container" style="padding-top: 2.5rem; padding-bottom: 2rem; position: relative;">
       <div class="scope-container" style="position: relative;">
-        <!-- Outer Margin Decorative Miniature Architectural House Reticle Badges -->
+        <!-- Outer Margin Decorative Miniature Architectural House Reticle Badges (Animated, Pure Graphic) -->
+        <style>
+          @keyframes reticle-spin-cw {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+          @keyframes reticle-spin-ccw {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+          }
+          @keyframes reticle-pulse-glow {
+            0% { transform: scale(0.9); opacity: 0.75; }
+            100% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 4px currentColor); }
+          }
+          @keyframes crosshair-scan-motion {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(45deg); }
+            100% { transform: rotate(0deg); }
+          }
+          @keyframes emblem-float-l {
+            0% { transform: translateY(0px) rotate(-6deg); }
+            100% { transform: translateY(-6px) rotate(-2deg); }
+          }
+          @keyframes emblem-float-r {
+            0% { transform: translateY(0px) rotate(6deg); }
+            100% { transform: translateY(-6px) rotate(2deg); }
+          }
+        </style>
+
         <div class="hero-margin-stamps" style="position: absolute; width: 100%; top: -16px; left: 0; pointer-events: none; z-index: 10; display: flex; justify-content: space-between; padding: 0 0.5rem; box-sizing: border-box;">
           
-          <!-- Left Miniature Emblem -->
-          <div style="transform: rotate(-5deg); background: #000; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-yellow); padding: 0.35rem 0.6rem; display: flex; align-items: center; gap: 0.6rem; pointer-events: auto;">
-            <div style="width: 36px; height: 32px; flex-shrink: 0;">
-              <svg viewBox="0 0 100 90" width="100%" height="100%" style="overflow: visible;">
-                <!-- Pitch Roof -->
-                <polygon points="50,6 6,32 94,32" fill="none" stroke="#FFF" stroke-width="3" stroke-linejoin="round" />
-                <!-- 4-Storey Rectangular Frame -->
-                <rect x="6" y="32" width="88" height="54" rx="2" fill="none" stroke="#FFF" stroke-width="3" />
-                <line x1="6" y1="45.5" x2="94" y2="45.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
-                <line x1="6" y1="59" x2="94" y2="59" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
-                <line x1="6" y1="72.5" x2="94" y2="72.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
-                <!-- Outer Dotted Reticle -->
-                <circle cx="50" cy="59" r="22" fill="none" stroke="#FFE600" stroke-width="1.8" stroke-dasharray="3 3" />
-                <!-- Inner Solid Reticle -->
-                <circle cx="50" cy="59" r="14.5" fill="none" stroke="#FFE600" stroke-width="2.5" />
-                <!-- Crosshairs -->
-                <line x1="35.5" y1="59" x2="64.5" y2="59" stroke="#FFE600" stroke-width="2" />
-                <line x1="50" y1="44.5" x2="50" y2="73.5" stroke="#FFE600" stroke-width="2" />
-              </svg>
-            </div>
-            <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 900; color: var(--cmyk-yellow); text-transform: uppercase; line-height: 1.1;">
-              SCOPE ARCH // 01<br><span style="color: #FFF; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.5px;">ELEVATION RETICLE</span>
-            </div>
+          <!-- Left Animated Emblem (Pure Graphic) -->
+          <div style="background: #000; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-yellow); padding: 0.4rem; display: flex; align-items: center; justify-content: center; width: 44px; height: 42px; pointer-events: auto; animation: emblem-float-l 3.5s ease-in-out infinite alternate; box-sizing: border-box;">
+            <svg viewBox="0 0 100 90" width="100%" height="100%" style="overflow: visible;">
+              <!-- Pitch Roof -->
+              <polygon points="50,6 6,32 94,32" fill="none" stroke="#FFF" stroke-width="3" stroke-linejoin="round" />
+              <!-- 4-Storey Rectangular Frame -->
+              <rect x="6" y="32" width="88" height="54" rx="2" fill="none" stroke="#FFF" stroke-width="3" />
+              <line x1="6" y1="45.5" x2="94" y2="45.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+              <line x1="6" y1="59" x2="94" y2="59" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+              <line x1="6" y1="72.5" x2="94" y2="72.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+              <!-- Outer Rotating Dotted Reticle -->
+              <circle cx="50" cy="59" r="22" fill="none" stroke="#FFE600" stroke-width="2" stroke-dasharray="4 3" style="transform-origin: 50px 59px; animation: reticle-spin-cw 12s linear infinite;" />
+              <!-- Inner Pulsing Solid Reticle -->
+              <circle cx="50" cy="59" r="14.5" fill="none" stroke="#FFE600" stroke-width="2.5" style="transform-origin: 50px 59px; animation: reticle-pulse-glow 2.5s ease-in-out infinite alternate;" />
+              <!-- Center Rotating Scanning Crosshairs -->
+              <g style="transform-origin: 50px 59px; animation: crosshair-scan-motion 4s ease-in-out infinite alternate;">
+                <line x1="35" y1="59" x2="65" y2="59" stroke="#FFE600" stroke-width="2.2" stroke-linecap="round" />
+                <line x1="50" y1="44" x2="50" y2="74" stroke="#FFE600" stroke-width="2.2" stroke-linecap="round" />
+              </g>
+            </svg>
           </div>
 
-          <!-- Right Miniature Emblem -->
-          <div style="transform: rotate(5deg); background: #000; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-pink); padding: 0.35rem 0.6rem; display: flex; align-items: center; gap: 0.6rem; pointer-events: auto;">
-            <div style="width: 36px; height: 32px; flex-shrink: 0;">
-              <svg viewBox="0 0 100 90" width="100%" height="100%" style="overflow: visible;">
-                <!-- Pitch Roof -->
-                <polygon points="50,6 6,32 94,32" fill="none" stroke="#FFF" stroke-width="3" stroke-linejoin="round" />
-                <!-- 4-Storey Rectangular Frame -->
-                <rect x="6" y="32" width="88" height="54" rx="2" fill="none" stroke="#FFF" stroke-width="3" />
-                <line x1="6" y1="45.5" x2="94" y2="45.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
-                <line x1="6" y1="59" x2="94" y2="59" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
-                <line x1="6" y1="72.5" x2="94" y2="72.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
-                <!-- Outer Dotted Reticle -->
-                <circle cx="50" cy="59" r="22" fill="none" stroke="#FF2A85" stroke-width="1.8" stroke-dasharray="3 3" />
-                <!-- Inner Solid Reticle -->
-                <circle cx="50" cy="59" r="14.5" fill="none" stroke="#FF2A85" stroke-width="2.5" />
-                <!-- Crosshairs -->
-                <line x1="35.5" y1="59" x2="64.5" y2="59" stroke="#FF2A85" stroke-width="2" />
-                <line x1="50" y1="44.5" x2="50" y2="73.5" stroke="#FF2A85" stroke-width="2" />
-              </svg>
-            </div>
-            <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 900; color: var(--cmyk-pink); text-transform: uppercase; line-height: 1.1;">
-              SCOPE ARCH // 02<br><span style="color: #FFF; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.5px;">CROSSHAIR SCHEMATIC</span>
-            </div>
+          <!-- Right Animated Emblem (Pure Graphic) -->
+          <div style="background: #000; border: 2px solid #FFF; box-shadow: 4px 4px 0px var(--cmyk-pink); padding: 0.4rem; display: flex; align-items: center; justify-content: center; width: 44px; height: 42px; pointer-events: auto; animation: emblem-float-r 3.5s ease-in-out infinite alternate 0.5s; box-sizing: border-box;">
+            <svg viewBox="0 0 100 90" width="100%" height="100%" style="overflow: visible;">
+              <!-- Pitch Roof -->
+              <polygon points="50,6 6,32 94,32" fill="none" stroke="#FFF" stroke-width="3" stroke-linejoin="round" />
+              <!-- 4-Storey Rectangular Frame -->
+              <rect x="6" y="32" width="88" height="54" rx="2" fill="none" stroke="#FFF" stroke-width="3" />
+              <line x1="6" y1="45.5" x2="94" y2="45.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+              <line x1="6" y1="59" x2="94" y2="59" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+              <line x1="6" y1="72.5" x2="94" y2="72.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+              <!-- Outer Rotating Dotted Reticle -->
+              <circle cx="50" cy="59" r="22" fill="none" stroke="#FF2A85" stroke-width="2" stroke-dasharray="4 3" style="transform-origin: 50px 59px; animation: reticle-spin-ccw 12s linear infinite;" />
+              <!-- Inner Pulsing Solid Reticle -->
+              <circle cx="50" cy="59" r="14.5" fill="none" stroke="#FF2A85" stroke-width="2.5" style="transform-origin: 50px 59px; animation: reticle-pulse-glow 2.5s ease-in-out infinite alternate;" />
+              <!-- Center Rotating Scanning Crosshairs -->
+              <g style="transform-origin: 50px 59px; animation: crosshair-scan-motion 4s ease-in-out infinite alternate 0.5s;">
+                <line x1="35" y1="59" x2="65" y2="59" stroke="#FF2A85" stroke-width="2.2" stroke-linecap="round" />
+                <line x1="50" y1="44" x2="50" y2="74" stroke="#FF2A85" stroke-width="2.2" stroke-linecap="round" />
+              </g>
+            </svg>
           </div>
 
         </div>
