@@ -49,7 +49,7 @@ export function createHomeCarousel() {
             <div class="issues-carousel-track" style="display: flex; transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); width: 200%;">
               
               <!-- SLIDE 1: ISSUE 01 -->
-              <div class="issues-carousel-slide" style="width: 50%; padding: 2rem 2.2rem; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; flex-shrink: 0; min-height: 400px; position: relative;">
+              <div class="issues-carousel-slide" style="width: 50%; padding: 2rem 2.2rem; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; flex-shrink: 0; min-height: 420px; position: relative;">
                 
                 <!-- Top Meta Ribbon Bar -->
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.8rem; border-bottom: 2px dashed #333; padding-bottom: 0.9rem;">
@@ -66,61 +66,64 @@ export function createHomeCarousel() {
                   </div>
                 </div>
 
-                <!-- 2-Column Content + Visual Pie Chart Matrix -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; align-items: center; margin-bottom: 0.5rem;">
+                <!-- Enlarged Arch Meter & Dual KPI Columns (Style 1: Semi-Circular Gauge) -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; align-items: center; width: 100%; margin: 0.5rem 0 0.8rem;">
                   
-                  <!-- Left: Quote & Analytical Context -->
-                  <div>
-                    <blockquote style="margin: 0 0 1rem 0; font-family: 'MangoGrotesque', var(--font-display), sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; color: #FFF; line-height: 1.15; letter-spacing: 0.3px;">
-                      "Based on trends, rural municipalities are forecasted to reach only 50% compliance next year unless engineer availability improves."
-                    </blockquote>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cmyk-cyan); font-weight: 700;">
-                      <span>⚡ NBC 105:2020 TECHNICAL WORKFORCE DEFICIT</span>
+                  <!-- Left Metric Pillar -->
+                  <div style="background: #000; border: 2px solid #FFF; padding: 1.2rem; box-shadow: 4px 4px 0px #FFE600; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                    <div style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 900; color: #FFE600; letter-spacing: 1px; margin-bottom: 0.4rem;">
+                      ● 50% COMPLIANT
+                    </div>
+                    <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(2.4rem, 4.5vw, 3.5rem); font-weight: 900; color: #FFF; line-height: 0.9;">
+                      50% CAP
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.7rem; color: #AAA; margin-top: 0.5rem; line-height: 1.3;">
+                      Projected ceiling under current municipal technical staffing
                     </div>
                   </div>
 
-                  <!-- Right: High-Contrast Pop-Art Pie Chart Card -->
-                  <div style="background: #000; border: 2px solid #FFF; padding: 1.2rem; box-shadow: 5px 5px 0px var(--cmyk-yellow);">
-                    <div style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 900; color: #AAA; letter-spacing: 1px; margin-bottom: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 0.4rem; display: flex; justify-content: space-between;">
-                      <span>FORECAST BREAKDOWN</span>
-                      <span style="color: #FF2A85;">[ 50/50 SPLIT ]</span>
+                  <!-- Center: Enlarged Semicircular Radial Arch Gauge -->
+                  <div style="background: #0A0A0A; border: 2px solid #FFF; padding: 1.2rem; box-shadow: 5px 5px 0px #FF2A85; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+                    <div style="width: 100%; max-width: 260px; height: 135px; position: relative;">
+                      <svg viewBox="0 0 260 140" width="100%" height="100%" style="overflow: visible;">
+                        <!-- Gauge Background Outer Track -->
+                        <path d="M 30 130 A 100 100 0 0 1 230 130" fill="none" stroke="#222" stroke-width="22" stroke-linecap="round" />
+                        
+                        <!-- Left Arc: 50% Compliant (Yellow) -->
+                        <path d="M 30 130 A 100 100 0 0 1 130 30" fill="none" stroke="#FFE600" stroke-width="22" stroke-linecap="round" />
+                        
+                        <!-- Right Arc: 50% Deficit (Pink) -->
+                        <path d="M 130 30 A 100 100 0 0 1 230 130" fill="none" stroke="#FF2A85" stroke-width="22" stroke-linecap="round" />
+                        
+                        <!-- Divider Notch at Top (50%) -->
+                        <line x1="130" y1="15" x2="130" y2="45" stroke="#000" stroke-width="4" />
+                        
+                        <!-- Center Core Hub -->
+                        <circle cx="130" cy="130" r="45" fill="#000" stroke="#FFF" stroke-width="2" />
+                        <text x="130" y="118" text-anchor="middle" font-family="'Space Mono', monospace" font-size="28" font-weight="900" fill="#FFF">50%</text>
+                        <text x="130" y="132" text-anchor="middle" font-family="'Space Mono', monospace" font-size="7.5" font-weight="900" fill="#FFE600" letter-spacing="1">CEILING</text>
+                        
+                        <!-- 0% and 100% Labels -->
+                        <text x="30" y="150" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" font-weight="700" fill="#777">0%</text>
+                        <text x="130" y="10" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" font-weight="900" fill="#FFE600">50% CAP</text>
+                        <text x="230" y="150" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" font-weight="700" fill="#777">100%</text>
+                      </svg>
                     </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: #AAA; text-align: center; margin-top: 0.6rem; letter-spacing: 0.5px;">
+                      NBC 105:2020 BYLAW CAPACITY GAUGE
+                    </div>
+                  </div>
 
-                    <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; justify-content: center;">
-                      <!-- Visual SVG Pie / Donut Chart -->
-                      <div style="width: 130px; height: 130px; flex-shrink: 0; position: relative;">
-                        <svg viewBox="0 0 200 200" width="100%" height="100%" style="overflow: visible;">
-                          <!-- Outer Dotted Radar Guideline -->
-                          <circle cx="100" cy="100" r="92" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4 4" />
-                          
-                          <!-- Segment A: 50% Compliance (Yellow) -->
-                          <circle cx="100" cy="100" r="70" fill="none" stroke="#FFE600" stroke-width="26"
-                            stroke-dasharray="219.9 219.9" stroke-dashoffset="0"
-                            transform="rotate(-90 100 100)" />
-                          
-                          <!-- Segment B: 50% Non-Compliance Deficit (Pink) -->
-                          <circle cx="100" cy="100" r="70" fill="none" stroke="#FF2A85" stroke-width="26"
-                            stroke-dasharray="219.9 219.9" stroke-dashoffset="-219.9"
-                            transform="rotate(-90 100 100)" />
-                          
-                          <!-- Inner Core & Readout -->
-                          <circle cx="100" cy="100" r="54" fill="#000" stroke="#FFF" stroke-width="2" />
-                          <text x="100" y="97" text-anchor="middle" font-family="'Space Mono', monospace" font-size="24" font-weight="900" fill="#FFF">50%</text>
-                          <text x="100" y="115" text-anchor="middle" font-family="'Space Mono', monospace" font-size="7.5" font-weight="900" fill="#FFE600" letter-spacing="1">CAP LIMIT</text>
-                        </svg>
-                      </div>
-
-                      <!-- Legend Items -->
-                      <div style="flex: 1; min-width: 130px; display: flex; flex-direction: column; gap: 0.6rem;">
-                        <div style="background: #111; border-left: 3px solid #FFE600; padding: 0.35rem 0.5rem;">
-                          <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 900; color: #FFE600;">50% COMPLIANT</div>
-                          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #AAA;">Forecasted under current trends</div>
-                        </div>
-                        <div style="background: #111; border-left: 3px solid #FF2A85; padding: 0.35rem 0.5rem;">
-                          <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 900; color: #FF2A85;">50% GAP / DEFICIT</div>
-                          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #AAA;">Engineer availability shortage</div>
-                        </div>
-                      </div>
+                  <!-- Right Metric Pillar -->
+                  <div style="background: #000; border: 2px solid #FFF; padding: 1.2rem; box-shadow: 4px 4px 0px #FF2A85; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                    <div style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 900; color: #FF2A85; letter-spacing: 1px; margin-bottom: 0.4rem;">
+                      ▲ 50% DEFICIT
+                    </div>
+                    <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(2.4rem, 4.5vw, 3.5rem); font-weight: 900; color: #FF2A85; line-height: 0.9;">
+                      GAP 50%
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.7rem; color: #AAA; margin-top: 0.5rem; line-height: 1.3;">
+                      Engineer availability bottleneck across rural ward offices
                     </div>
                   </div>
 
@@ -129,7 +132,7 @@ export function createHomeCarousel() {
               </div>
 
               <!-- SLIDE 2: ISSUE 02 -->
-              <div class="issues-carousel-slide" style="width: 50%; padding: 2rem 2.2rem; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; flex-shrink: 0; min-height: 400px; position: relative;">
+              <div class="issues-carousel-slide" style="width: 50%; padding: 2rem 2.2rem; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; flex-shrink: 0; min-height: 420px; position: relative;">
                 
                 <!-- Top Meta Ribbon Bar -->
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.8rem; border-bottom: 2px dashed #333; padding-bottom: 0.9rem;">
@@ -146,60 +149,48 @@ export function createHomeCarousel() {
                   </div>
                 </div>
 
-                <!-- 2-Column Content + Visual Pie Chart Matrix -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; align-items: center; margin-bottom: 0.5rem;">
+                <!-- Enlarged 100-Unit Waffle Grid & Radial Polar Panel (Style 2: Matrix & Target) -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: center; width: 100%; margin: 0.5rem 0 0.8rem;">
                   
-                  <!-- Left: Quote & Analytical Context -->
-                  <div>
-                    <blockquote style="margin: 0 0 1rem 0; font-family: 'MangoGrotesque', var(--font-display), sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; color: #FFF; line-height: 1.15; letter-spacing: 0.3px;">
-                      "Last year, 68% of houses in Kathmandu Metropolitan City had NBC-compliant designs approved before construction started,"
-                    </blockquote>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cmyk-yellow); font-weight: 700;">
-                      <span>★ KMC NAKSHA PASS PRE-CLEARANCE RATE</span>
+                  <!-- Left: 100-House Waffle Matrix Visual -->
+                  <div style="background: #000; border: 2px solid #FFF; padding: 1.2rem; box-shadow: 5px 5px 0px #00FF66;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 900; border-bottom: 1px solid #333; padding-bottom: 0.4rem; flex-wrap: wrap; gap: 0.4rem;">
+                      <span style="color: #00FF66;">■ 68% PRE-APPROVED (68/100)</span>
+                      <span style="color: #FF2A85;">■ 32% UNREGULATED (32/100)</span>
+                    </div>
+
+                    <!-- 10x10 Matrix Cells -->
+                    <div style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-bottom: 0.8rem;">
+                      ${Array.from({ length: 100 }).map((_, i) => `
+                        <div style="aspect-ratio: 1; border-radius: 1px; background: ${i < 68 ? '#00FF66' : '#FF2A85'}; box-shadow: 0 0 ${i < 68 ? '3px #00FF66' : '3px #FF2A85'}; opacity: ${i < 68 ? '0.95' : '0.8'};"></div>
+                      `).join('')}
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.65rem; color: #AAA;">
+                      <span>KMC RESIDENTIAL HOUSES SAMPLE (N = 100)</span>
+                      <span style="color: #00FF66; font-weight: 700;">NBC-COMPLIANT CLEARANCE</span>
                     </div>
                   </div>
 
-                  <!-- Right: High-Contrast Pop-Art Pie Chart Card -->
-                  <div style="background: #000; border: 2px solid #FFF; padding: 1.2rem; box-shadow: 5px 5px 0px var(--cmyk-pink);">
-                    <div style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 900; color: #AAA; letter-spacing: 1px; margin-bottom: 0.8rem; border-bottom: 1px solid #333; padding-bottom: 0.4rem; display: flex; justify-content: space-between;">
-                      <span>KMC PERMIT STATUS</span>
-                      <span style="color: #00FF66;">[ 68% PRE-CLEARED ]</span>
+                  <!-- Right: Target Summary Card -->
+                  <div style="background: #0A0A0A; border: 2px solid #FFF; padding: 1.3rem; box-shadow: 5px 5px 0px #FF007F; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div>
+                      <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 900; color: #00FF66; letter-spacing: 1px; margin-bottom: 0.4rem;">
+                        ● PRE-CONSTRUCTION AUDIT
+                      </div>
+                      <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(2.8rem, 5.5vw, 4.2rem); font-weight: 900; color: #00FF66; line-height: 0.85;">
+                        68% APPROVED
+                      </div>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; justify-content: center;">
-                      <!-- Visual SVG Pie / Donut Chart -->
-                      <div style="width: 130px; height: 130px; flex-shrink: 0; position: relative;">
-                        <svg viewBox="0 0 200 200" width="100%" height="100%" style="overflow: visible;">
-                          <!-- Outer Dotted Radar Guideline -->
-                          <circle cx="100" cy="100" r="92" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4 4" />
-                          
-                          <!-- Segment A: 68% Approved (Neon Green) -->
-                          <circle cx="100" cy="100" r="70" fill="none" stroke="#00FF66" stroke-width="26"
-                            stroke-dasharray="299.1 140.7" stroke-dashoffset="0"
-                            transform="rotate(-90 100 100)" />
-                          
-                          <!-- Segment B: 32% Unapproved (Pink) -->
-                          <circle cx="100" cy="100" r="70" fill="none" stroke="#FF2A85" stroke-width="26"
-                            stroke-dasharray="140.7 299.1" stroke-dashoffset="-299.1"
-                            transform="rotate(-90 100 100)" />
-                          
-                          <!-- Inner Core & Readout -->
-                          <circle cx="100" cy="100" r="54" fill="#000" stroke="#FFF" stroke-width="2" />
-                          <text x="100" y="97" text-anchor="middle" font-family="'Space Mono', monospace" font-size="24" font-weight="900" fill="#FFF">68%</text>
-                          <text x="100" y="115" text-anchor="middle" font-family="'Space Mono', monospace" font-size="7.5" font-weight="900" fill="#00FF66" letter-spacing="1">APPROVED</text>
-                        </svg>
+                    <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; border-top: 1px solid #333; padding-top: 0.8rem;">
+                      <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem;">
+                        <span style="color: #AAA;">Pre-Build NBC Permit:</span>
+                        <span style="color: #00FF66; font-weight: 900;">68% (Passed)</span>
                       </div>
-
-                      <!-- Legend Items -->
-                      <div style="flex: 1; min-width: 130px; display: flex; flex-direction: column; gap: 0.6rem;">
-                        <div style="background: #111; border-left: 3px solid #00FF66; padding: 0.35rem 0.5rem;">
-                          <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 900; color: #00FF66;">68% PRE-APPROVED</div>
-                          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #AAA;">NBC designs cleared before build</div>
-                        </div>
-                        <div style="background: #111; border-left: 3px solid #FF2A85; padding: 0.35rem 0.5rem;">
-                          <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 900; color: #FF2A85;">32% UNREGULATED</div>
-                          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #AAA;">Started without prior permit</div>
-                        </div>
+                      <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem;">
+                        <span style="color: #AAA;">Began Prior to Swikriti:</span>
+                        <span style="color: #FF2A85; font-weight: 900;">32% (Unregulated)</span>
                       </div>
                     </div>
                   </div>
