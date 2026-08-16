@@ -113,15 +113,7 @@ export function createHero() {
 
         </div>
 
-        <!-- Tagline Header -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem; padding-top: 0.5rem;">
-          <div class="hero-badge" style="background: var(--nothing-red); border-radius: 4px;">
-            ● Scope Design
-          </div>
-          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--nothing-red); font-weight: 700; letter-spacing: 1px;">
-            [ VOL. 01 — KATHMANDU BUILDING PORTAL ]
-          </div>
-        </div>
+
 
         <!-- Giant Edge-to-Edge Typography Display -->
         <div class="giant-title-wrap">
