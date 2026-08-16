@@ -70,22 +70,23 @@ export function createHomeCarousel() {
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; align-items: stretch; width: 100%; margin: 0.4rem 0 0.6rem; flex: 1;">
                   
                   <!-- Left Metric Pillar (Compliant Section with 50% GAP) -->
-                  <div style="background: #000; border: 2px solid #FFF; padding: 1.4rem 1.2rem; box-shadow: 5px 5px 0px #FFE600; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                  <div style="background: #000; border: 2px solid #FFF; padding: 1.2rem; box-shadow: 5px 5px 0px #FFE600; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; overflow: hidden;">
                     <div>
                       <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 900; color: #FFE600; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase;">
                         ● COMPLIANCE FORECAST
                       </div>
-                      <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 900; color: #FFF; line-height: 0.9;">
-                        50% GAP
+                      <div style="display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;">
+                        <span style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(2.2rem, 3.8vw, 3.2rem); font-weight: 900; color: #FFF; line-height: 0.85;">50%</span>
+                        <span style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #FFE600; line-height: 0.85;">GAP</span>
                       </div>
                     </div>
-                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; line-height: 1.4; border-top: 1px solid #222; padding-top: 0.8rem; margin-top: 1rem;">
+                    <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; line-height: 1.35; border-top: 1px solid #222; padding-top: 0.7rem; margin-top: 0.8rem;">
                       Forecasted municipal trajectory leaves a 50% regulatory compliance ceiling.
                     </div>
                   </div>
 
                   <!-- Center: Enlarged Semicircular Radial Arch Gauge with Lifted Readout -->
-                  <div style="background: #0A0A0A; border: 2px solid #FFF; padding: 1.4rem 1.2rem; box-shadow: 6px 6px 0px #FF2A85; display: flex; flex-direction: column; align-items: center; justify-content: space-between; position: relative;">
+                  <div style="background: #0A0A0A; border: 2px solid #FFF; padding: 1.2rem 1rem; box-shadow: 6px 6px 0px #FF2A85; display: flex; flex-direction: column; align-items: center; justify-content: space-between; position: relative; box-sizing: border-box; overflow: hidden;">
                     <div style="width: 100%; max-width: 270px; height: 145px; position: relative; margin-top: 0.2rem;">
                       <svg viewBox="0 0 280 155" width="100%" height="100%" style="overflow: visible;">
                         <!-- Gauge Background Outer Track -->
@@ -117,16 +118,17 @@ export function createHomeCarousel() {
                   </div>
 
                   <!-- Right Metric Pillar (Deficit Section) -->
-                  <div style="background: #000; border: 2px solid #FFF; padding: 1.4rem 1.2rem; box-shadow: 5px 5px 0px #FF2A85; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                  <div style="background: #000; border: 2px solid #FFF; padding: 1.2rem; box-shadow: 5px 5px 0px #FF2A85; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; overflow: hidden;">
                     <div>
                       <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 900; color: #FF2A85; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase;">
                         ▲ CRITICAL BOTTLENECK
                       </div>
-                      <div style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 900; color: #FF2A85; line-height: 0.9;">
-                        50% DEFICIT
+                      <div style="display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;">
+                        <span style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(2.2rem, 3.8vw, 3.2rem); font-weight: 900; color: #FF2A85; line-height: 0.85;">50%</span>
+                        <span style="font-family: 'MangoGrotesque', var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #FF2A85; line-height: 0.85;">DEFICIT</span>
                       </div>
                     </div>
-                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #AAA; line-height: 1.4; border-top: 1px solid #222; padding-top: 0.8rem; margin-top: 1rem;">
+                    <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #AAA; line-height: 1.35; border-top: 1px solid #222; padding-top: 0.7rem; margin-top: 0.8rem;">
                       Severe shortfall in certified municipal engineers across rural ward offices.
                     </div>
                   </div>
