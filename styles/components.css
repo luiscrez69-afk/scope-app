@@ -175,10 +175,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   vertical-align: bottom;
-  padding: 0.05em 0.08em;
+  padding: 0.12em 0.08em;
+}
+
+.giant-title.is-revealing .letter-mask {
+  overflow: hidden;
 }
 
 .letter-inner {

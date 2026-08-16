@@ -89,11 +89,16 @@ export function createHero() {
 export function initHeroEvents() {
   const letterInners = document.querySelectorAll('.letter-inner');
   const heroContainer = document.querySelector('.giant-hero-container');
+  const giantTitle = document.getElementById('giant-hero-title');
 
   if (!letterInners.length || !heroContainer) return;
 
   // GSAP Entrance Reveal Stagger
   if (window.gsap) {
+    // Clip the letter masks only while the slide-up reveal is running, then
+    // release so the tilt physics can't shave the glyph edges afterwards.
+    if (giantTitle) giantTitle.classList.add('is-revealing');
+
     window.gsap.fromTo(letterInners,
       {
         yPercent: 130,
@@ -107,7 +112,10 @@ export function initHeroEvents() {
         duration: 1.25,
         stagger: 0.12,
         ease: "power4.out",
-        delay: 0.2
+        delay: 0.2,
+        onComplete: () => {
+          if (giantTitle) giantTitle.classList.remove('is-revealing');
+        }
       }
     );
 
