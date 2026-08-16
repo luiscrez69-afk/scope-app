@@ -238,23 +238,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* NOTE: was `overflow: hidden`, which permanently clipped the glyphs.
-     Once the 3D tilt physics rotate/lift a letter it pushes past this box,
-     so the edges got shaved — worst on the leading "S", which carries the
-     largest tilt offset. Clipping is now only enabled during the entrance
-     reveal (see .is-revealing below). */
-  overflow: visible;
+  overflow: hidden;
   position: relative;
   vertical-align: bottom;
-  /* Extra vertical breathing room so tall display faces (MangoGrotesque,
-     and the Syne/Impact fallbacks) aren't cramped by line-height: 0.85 */
-  padding: 0.12em 0.08em;
-}
-
-/* Clip ONLY while the entrance stagger is running, so the slide-up mask
-   reveal still works, then release so nothing is cut off afterwards. */
-.giant-title.is-revealing .letter-mask {
-  overflow: hidden;
+  padding: 0.05em 0.08em;
 }
 
 .letter-inner {
