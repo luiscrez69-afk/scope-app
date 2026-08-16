@@ -225,13 +225,16 @@ export function createHomeCarousel() {
                   </div>
 
                   <!-- Right: Target Summary Card -->
-                  <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.3rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                  <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.3rem 1.1rem; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; overflow: hidden;">
                     <div>
-                      <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #00FF66; letter-spacing: 1px; margin-bottom: 0.4rem;">
+                      <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #00FF66; letter-spacing: 1px; margin-bottom: 0.4rem; text-transform: uppercase;">
                         ● PRE-CONSTRUCTION AUDIT
                       </div>
-                      <div style="font-family: var(--font-display); font-size: clamp(2.4rem, 4.5vw, 3.5rem); font-weight: 700; color: #00FF66; line-height: 0.95;">
-                        68% APPROVED
+                      <div style="font-family: var(--font-display); font-size: clamp(2.6rem, 4.5vw, 3.6rem); font-weight: 700; color: #00FF66; line-height: 0.85;">
+                        68%
+                      </div>
+                      <div style="font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.1rem); font-weight: 700; color: #00FF66; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 0.25rem;">
+                        APPROVAL RATE
                       </div>
                     </div>
 
