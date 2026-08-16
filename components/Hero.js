@@ -36,7 +36,61 @@ export function createHero() {
   return `
     <section class="giant-hero-container" style="padding-top: 2.5rem; padding-bottom: 2rem; position: relative;">
       <div class="scope-container" style="position: relative;">
-        
+        <!-- Outer Margin Decorative Miniature Architectural House Reticle Badges -->
+        <div class="hero-margin-stamps" style="position: absolute; width: 100%; top: -16px; left: 0; pointer-events: none; z-index: 10; display: flex; justify-content: space-between; padding: 0 0.5rem; box-sizing: border-box;">
+          
+          <!-- Left Miniature Emblem -->
+          <div style="transform: rotate(-5deg); background: #000; border: 1px solid var(--border-color); border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); padding: 0.35rem 0.6rem; display: flex; align-items: center; gap: 0.6rem; pointer-events: auto;">
+            <div style="width: 36px; height: 32px; flex-shrink: 0;">
+              <svg viewBox="0 0 100 90" width="100%" height="100%" style="overflow: visible;">
+                <!-- Pitch Roof -->
+                <polygon points="50,6 6,32 94,32" fill="none" stroke="#FFF" stroke-width="3" stroke-linejoin="round" />
+                <!-- 4-Storey Rectangular Frame -->
+                <rect x="6" y="32" width="88" height="54" rx="2" fill="none" stroke="#FFF" stroke-width="3" />
+                <line x1="6" y1="45.5" x2="94" y2="45.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+                <line x1="6" y1="59" x2="94" y2="59" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+                <line x1="6" y1="72.5" x2="94" y2="72.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+                <!-- Outer Dotted Reticle -->
+                <circle cx="50" cy="59" r="22" fill="none" stroke="var(--nothing-red)" stroke-width="1.8" stroke-dasharray="3 3" />
+                <!-- Inner Solid Reticle -->
+                <circle cx="50" cy="59" r="14.5" fill="none" stroke="var(--nothing-red)" stroke-width="2.5" />
+                <!-- Crosshairs -->
+                <line x1="35.5" y1="59" x2="64.5" y2="59" stroke="var(--nothing-red)" stroke-width="2" />
+                <line x1="50" y1="44.5" x2="50" y2="73.5" stroke="var(--nothing-red)" stroke-width="2" />
+              </svg>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #FFF; text-transform: uppercase; line-height: 1.1;">
+              SCOPE ARCH // 01<br><span style="color: var(--nothing-red); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.5px;">ELEVATION RETICLE</span>
+            </div>
+          </div>
+
+          <!-- Right Miniature Emblem -->
+          <div style="transform: rotate(5deg); background: #000; border: 1px solid var(--border-color); border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); padding: 0.35rem 0.6rem; display: flex; align-items: center; gap: 0.6rem; pointer-events: auto;">
+            <div style="width: 36px; height: 32px; flex-shrink: 0;">
+              <svg viewBox="0 0 100 90" width="100%" height="100%" style="overflow: visible;">
+                <!-- Pitch Roof -->
+                <polygon points="50,6 6,32 94,32" fill="none" stroke="#FFF" stroke-width="3" stroke-linejoin="round" />
+                <!-- 4-Storey Rectangular Frame -->
+                <rect x="6" y="32" width="88" height="54" rx="2" fill="none" stroke="#FFF" stroke-width="3" />
+                <line x1="6" y1="45.5" x2="94" y2="45.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+                <line x1="6" y1="59" x2="94" y2="59" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+                <line x1="6" y1="72.5" x2="94" y2="72.5" stroke="#FFF" stroke-width="1.2" opacity="0.6" />
+                <!-- Outer Dotted Reticle -->
+                <circle cx="50" cy="59" r="22" fill="none" stroke="var(--nothing-red)" stroke-width="1.8" stroke-dasharray="3 3" />
+                <!-- Inner Solid Reticle -->
+                <circle cx="50" cy="59" r="14.5" fill="none" stroke="var(--nothing-red)" stroke-width="2.5" />
+                <!-- Crosshairs -->
+                <line x1="35.5" y1="59" x2="64.5" y2="59" stroke="var(--nothing-red)" stroke-width="2" />
+                <line x1="50" y1="44.5" x2="50" y2="73.5" stroke="var(--nothing-red)" stroke-width="2" />
+              </svg>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #FFF; text-transform: uppercase; line-height: 1.1;">
+              SCOPE ARCH // 02<br><span style="color: var(--nothing-red); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.5px;">CROSSHAIR SCHEMATIC</span>
+            </div>
+          </div>
+
+        </div>
+
         <!-- Tagline Header -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem; padding-top: 0.5rem;">
           <div class="hero-badge" style="background: var(--nothing-red); border-radius: 4px;">
