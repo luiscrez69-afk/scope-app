@@ -9,6 +9,7 @@ import { createHomeCarousel, initHomeCarouselEvents } from './components/warhol/
 import { createCostEstimator, initCostEstimatorEvents } from './components/warhol/CostEstimator.js';
 import { createPermitHub, initPermitHubEvents } from './components/warhol/PermitHub.js';
 import { createFooter, initFooterEvents } from './components/warhol/Footer.js';
+import { createLoginModal, initLoginModalEvents } from './components/LoginModal.js';
 
 // Route Resolution Helper
 function resolveRoute() {
@@ -35,6 +36,11 @@ function navigateTo(path) {
   renderCurrentRoute();
 }
 
+function openLoginModal() {
+  const modal = document.getElementById('scope-login-modal');
+  if (modal) modal.classList.add('active');
+}
+
 function renderCurrentRoute() {
   const appRoot = document.getElementById('app');
   if (!appRoot) return;
@@ -50,11 +56,13 @@ function renderCurrentRoute() {
         </section>
       </main>
       ${createFooter()}
+      ${createLoginModal()}
     `;
 
-    initHeaderEvents(navigateTo);
+    initHeaderEvents(navigateTo, openLoginModal);
     initCostEstimatorEvents();
     initFooterEvents();
+    initLoginModalEvents(() => renderCurrentRoute());
 
   } else if (route === '/legal-hub') {
     appRoot.innerHTML = `
@@ -65,11 +73,13 @@ function renderCurrentRoute() {
         </section>
       </main>
       ${createFooter()}
+      ${createLoginModal()}
     `;
 
-    initHeaderEvents(navigateTo);
+    initHeaderEvents(navigateTo, openLoginModal);
     initPermitHubEvents();
     initFooterEvents();
+    initLoginModalEvents(() => renderCurrentRoute());
 
   } else {
     appRoot.innerHTML = `
@@ -79,12 +89,14 @@ function renderCurrentRoute() {
         ${createHomeCarousel()}
       </main>
       ${createFooter()}
+      ${createLoginModal()}
     `;
 
-    initHeaderEvents(navigateTo);
+    initHeaderEvents(navigateTo, openLoginModal);
     initHeroEvents();
     initHomeCarouselEvents(navigateTo);
     initFooterEvents();
+    initLoginModalEvents(() => renderCurrentRoute());
 
     // Bind all data-route buttons
     document.querySelectorAll('[data-route]').forEach(btn => {

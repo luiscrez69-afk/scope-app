@@ -676,28 +676,129 @@
   box-shadow: 5px 5px 0px var(--shadow-color);
 }
 
-.legal-mod-tab.active {
-  box-shadow: 4px 4px 0px var(--border-color) !important;
+
+/* User Login Tab & Modal Styles */
+.pop-login-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #000;
+  color: #FFF;
+  border: 2px solid #FFF;
+  box-shadow: 3px 3px 0px var(--cmyk-yellow, #FFE600);
+  padding: 0.45rem 0.95rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 900;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  user-select: none;
+  border-radius: 0;
+  text-decoration: none;
 }
 
-@media (max-width: 768px) {
-  .home-carousel-slide {
-    padding: 1.5rem !important;
-    min-height: auto !important;
-  }
+.pop-login-tab:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--cmyk-yellow, #FFE600);
+  background: #111;
+}
 
-  .wizard-slide {
-    padding: 1rem !important;
-  }
+.pop-login-tab:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--cmyk-yellow, #FFE600);
+}
 
-  .wizard-steps-nav span:not(.wiz-dot) {
-    display: none;
-  }
+.pop-login-tab.logged-in {
+  border-color: #00FF66;
+  box-shadow: 3px 3px 0px #00FF66;
+}
 
-  .legal-tab-nav {
-    flex-wrap: nowrap;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
+.pop-login-tab.logged-in:hover {
+  box-shadow: 5px 5px 0px #00FF66;
+}
+
+/* User Login Modal */
+.scope-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.scope-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scope-modal-card {
+  background: #0A0A0A;
+  border: 3px solid #FFF;
+  box-shadow: 8px 8px 0px var(--cmyk-pink, #FF2A85);
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  padding: 1.8rem;
+  box-sizing: border-box;
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scope-modal-overlay.active .scope-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.modal-role-btn {
+  background: #111;
+  color: #888;
+  border: 1px solid #333;
+  padding: 0.5rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex: 1;
+  text-align: center;
+  user-select: none;
+}
+
+.modal-role-btn.active {
+  background: #FFF;
+  color: #000;
+  border-color: #FFF;
+  box-shadow: 2px 2px 0px var(--cmyk-yellow, #FFE600);
+}
+
+.scope-auth-input {
+  width: 100%;
+  background: #111;
+  border: 1.5px solid #444;
+  color: #FFF;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.65rem 0.8rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scope-auth-input:focus {
+  border-color: var(--cmyk-yellow, #FFE600);
+  box-shadow: 3px 3px 0px var(--cmyk-yellow, #FFE600);
 }
 

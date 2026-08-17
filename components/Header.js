@@ -35,17 +35,13 @@ export function createHeader(currentPath = '/') {
             </a>
           </nav>
 
-          <!-- Live Status Indicator Pill & Switcher -->
+          <!-- Live Status & User Login Tab -->
           <div style="display: flex; align-items: center; gap: 0.8rem;">
-            <!-- Link to Original Warhol Design -->
-            <a href="/warhol.html#/" title="View Original Warhol Dark Pop-Art Design" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.35rem 0.8rem; border-radius: var(--radius-pill); transition: all 0.2s ease; font-weight: 700; letter-spacing: 0.5px;">
-              ⚡ WARHOL DESIGN
-            </a>
-
-            <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.05); padding: 0.35rem 0.85rem; border-radius: var(--radius-pill); border: 1px solid rgba(255, 255, 255, 0.12);">
-              <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--nothing-red); box-shadow: 0 0 8px var(--nothing-red);"></span>
-              <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-main); font-weight: 700; letter-spacing: 1px;">KMC // LIVE</span>
-            </div>
+            <!-- User Login Tab -->
+            <button id="header-login-btn" class="pop-login-tab" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); border-radius: var(--radius-pill); box-shadow: none; font-size: 0.72rem; padding: 0.35rem 0.85rem;" title="Kathmandu Valley Municipal & Architectural Login">
+              <span id="header-login-indicator" style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--nothing-red); box-shadow: 0 0 6px var(--nothing-red);"></span>
+              <span id="header-login-btn-text">USER LOGIN</span>
+            </button>
           </div>
 
         </div>
@@ -54,7 +50,7 @@ export function createHeader(currentPath = '/') {
   `;
 }
 
-export function initHeaderEvents(onNavigate) {
+export function initHeaderEvents(onNavigate, onOpenLogin) {
   // Navigation Link Handlers
   document.querySelectorAll('[data-route]').forEach(el => {
     el.addEventListener('click', (e) => {
@@ -63,6 +59,37 @@ export function initHeaderEvents(onNavigate) {
       if (onNavigate) onNavigate(route);
     });
   });
+
+  // User Login Tab Click Handler
+  const loginBtn = document.getElementById('header-login-btn');
+  if (loginBtn) {
+    loginBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (onOpenLogin) {
+        onOpenLogin();
+      } else {
+        const modal = document.getElementById('scope-login-modal');
+        if (modal) modal.classList.add('active');
+      }
+    });
+  }
+
+  // Update Header Button State based on persistent user session
+  try {
+    const rawUser = localStorage.getItem('scope_user_session');
+    if (rawUser) {
+      const user = JSON.parse(rawUser);
+      const textEl = document.getElementById('header-login-btn-text');
+      const indicatorEl = document.getElementById('header-login-indicator');
+      if (textEl && user.name) {
+        textEl.textContent = user.name.toUpperCase();
+        if (indicatorEl) {
+          indicatorEl.style.background = '#00FF66';
+          indicatorEl.style.boxShadow = '0 0 8px #00FF66';
+        }
+      }
+    }
+  } catch (e) {}
 
   // AUTOMATED BILINGUAL TRANSITION EXCLUSIVELY ON HEADER LOGO INNER TEXT (SCOPE ⇄ स्कोप)
   const logoTextEl = document.getElementById('header-logo-text');

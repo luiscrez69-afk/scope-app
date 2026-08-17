@@ -29,13 +29,11 @@ export function createHeader(currentPath = '/') {
               </a>
             ` : ''}
 
-            <!-- CMYK Channel Switcher -->
-            <div class="cmyk-bar" title="Toggle CMYK Accent Modes">
-              <button class="cmyk-btn active" data-channel="all">ALL</button>
-              <button class="cmyk-btn" data-channel="cyan">C</button>
-              <button class="cmyk-btn" data-channel="pink">M</button>
-              <button class="cmyk-btn" data-channel="yellow">Y</button>
-            </div>
+            <!-- User Login Tab -->
+            <button id="header-login-btn" class="pop-login-tab" title="Kathmandu Valley Municipal & Architectural Login">
+              <span id="header-login-indicator" style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--cmyk-yellow, #FFE600); box-shadow: 0 0 6px var(--cmyk-yellow, #FFE600);"></span>
+              <span id="header-login-btn-text">USER LOGIN</span>
+            </button>
           </div>
         </div>
 
@@ -59,7 +57,7 @@ export function createHeader(currentPath = '/') {
   `;
 }
 
-export function initHeaderEvents(onNavigate) {
+export function initHeaderEvents(onNavigate, onOpenLogin) {
   // Navigation Link Handlers
   document.querySelectorAll('[data-route]').forEach(el => {
     el.addEventListener('click', (e) => {
@@ -69,16 +67,37 @@ export function initHeaderEvents(onNavigate) {
     });
   });
 
-  // CMYK Channel Switcher Handlers
-  const cmykBtns = document.querySelectorAll('.cmyk-btn');
-  cmykBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      cmykBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const channel = btn.getAttribute('data-channel');
-      document.documentElement.setAttribute('data-cmyk-mode', channel);
+  // User Login Tab Click Handler
+  const loginBtn = document.getElementById('header-login-btn');
+  if (loginBtn) {
+    loginBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (onOpenLogin) {
+        onOpenLogin();
+      } else {
+        const modal = document.getElementById('scope-login-modal');
+        if (modal) modal.classList.add('active');
+      }
     });
-  });
+  }
+
+  // Update Header Button State based on persistent user session
+  try {
+    const rawUser = localStorage.getItem('scope_user_session');
+    if (rawUser) {
+      const user = JSON.parse(rawUser);
+      const textEl = document.getElementById('header-login-btn-text');
+      const indicatorEl = document.getElementById('header-login-indicator');
+      if (textEl && user.name) {
+        textEl.textContent = user.name.toUpperCase();
+        if (loginBtn) loginBtn.classList.add('logged-in');
+        if (indicatorEl) {
+          indicatorEl.style.background = '#00FF66';
+          indicatorEl.style.boxShadow = '0 0 8px #00FF66';
+        }
+      }
+    }
+  } catch (e) {}
 
   // AUTOMATED BILINGUAL TRANSITION EXCLUSIVELY ON HEADER LOGO INNER TEXT (SCOPE ⇄ स्कोप)
   // Hold: 2.5s, Transition: 0.5s (Total cycle: 3000ms)
